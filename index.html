@@ -573,44 +573,108 @@
             </div>
         </section>
 <section id="quiz">
-            <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
 
-            <div class="quiz-question" data-question="1">
-                <p>1. Manakah di bawah ini yang merupakan Sistem Persamaan Linear Dua Variabel (SPLDV)?</p>
-                <div class="options" id="quiz-question-1">
-                    <div class="option" data-answer="A" data-correct="true" onclick="selectAnswer(this, 'A', 1)">A. $2x + y = 5$ dan $x - y = 1$</div>
-                    <div class="option" data-answer="B" onclick="selectAnswer(this, 'B', 1)">B. $x^2 + y = 3$ dan $x - y = 2$</div>
-                    <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 1)">C. $3x = 6$ dan $2y = 4$</div>
-                </div>
-                <div class="explanation" id="explanation1">
-                    <p>Jawaban benar: <strong>A</strong></p>
-                    <p>SPLDV terdiri dari dua persamaan linear dengan dua variabel yang sama. Pilihan B memiliki variabel $x$ yang dikuadratkan, dan pilihan C memiliki dua persamaan dengan variabel yang terpisah.</p>
-                </div>
-                <div class="feedback" id="feedback-quiz-1"></div>
-            </div>
+            <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
 
-            <div class="quiz-question" data-question="2">
-                <p>2. Manakah pasangan nilai $(x, y)$ yang merupakan penyelesaian dari sistem persamaan $x + y = 7$ dan $x - y = 3$?</p>
-                <div class="options" id="quiz-question-2">
-                    <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 2)">A. $(4, 3)$</div>
-                    <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(this, 'B', 2)">B. $(5, 2)$</div>
-                    <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 2)">C. $(6, 1)$</div>
-                </div>
-                <div class="explanation" id="explanation2">
-                    <p>Jawaban benar: <strong>B</strong></p>
-                    <p>Jika $x = 5$ dan $y = 2$, maka:</p>
-                    <ul>
-                        <li>$5 + 2 = 7$ (Benar)</li>
-                        <li>$5 - 2 = 3$ (Benar)</li>
-                    </ul>
-                    <p>Pasangan nilai $(5, 2)$ memenuhi kedua persamaan.</p>
-                </div>
-                <div class="feedback" id="feedback-quiz-2"></div>
-            </div>
 
-            <button class="btn" onclick="submitQuiz()">Periksa Kuis</button>
-            <div id="quiz-result" class="result"></div>
-        </section>
+
+            <div class="quiz-question">
+
+                <p>1. Manakah yang merupakan SPLDV?</p>
+
+                <div class="options">
+
+                    <div class="option" data-correct>A. $2x + y = 5$ dan $x - y = 1$</div>
+
+                    <div class="option">B. $x^2 + y = 3$ dan $x - y = 2$</div>
+
+                    <div class="option">C. $3x = 6$ dan $2y = 4$</div>
+
+                </div>
+
+                <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
+
+                <div class="explanation">
+
+                    <p>Jawaban benar: <strong>A</strong></p>
+
+                    <p>SPLDV harus memiliki dua persamaan linear dengan dua variabel yang sama.</p>
+
+                </div>
+
+            </div>
+
+<section id="quiz">
+
+            <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
+
+
+
+            <div class="quiz-question" data-question="1">
+
+                <p>1. Manakah yang merupakan SPLDV?</p>
+
+                <div class="options" id="quiz-question-1">
+
+                    <div class="option" data-answer="A" data-correct="true" onclick="selectAnswer(this, 'A', 1)">A. 2x + y = 5 dan x - y = 1</div>
+
+                    <div class="option" data-answer="B" onclick="selectAnswer(this, 'B', 1)">B. x² + y = 3 dan x - y = 2</div>
+
+                    <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 1)">C. 3x = 6 dan 2y = 4</div>
+
+                </div>
+
+                <div class="explanation" id="explanation1">
+
+                    <p>Jawaban benar: <strong>A</strong></p>
+
+                    <p>SPLDV harus memiliki dua persamaan linear dengan dua variabel yang sama.</p>
+
+                </div>
+
+                <div class="feedback" id="feedback-quiz-1"></div>
+
+            </div>
+
+
+
+            <div class="quiz-question" data-question="2">
+
+                <p>2. Penyelesaian dari x + y = 7 dan x - y = 3 adalah:</p>
+
+                <div class="options" id="quiz-question-2">
+
+                    <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 2)">A. x=4, y=3</div>
+
+                    <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(this, 'B', 2)">B. x=5, y=2</div>
+
+                    <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 2)">C. x=6, y=1</div>
+
+                </div>
+
+                <div class="explanation" id="explanation2">
+
+                    <p>Jawaban benar: <strong>B</strong></p>
+
+                    <p>Tambahkan kedua persamaan: 2x = 10 → x=5</p>
+
+                    <p>Substitusi: 5 + y = 7 → y=2</p>
+
+                </div>
+
+                <div class="feedback" id="feedback-quiz-2"></div>
+
+            </div>
+
+
+
+            <button class="btn" onclick="submitQuiz()">Periksa Kuis</button>
+
+            <div id="quiz-result" class="result"></div>
+
+        </section>
+
+    </div>
     <footer>
         <p>&copy; 2025 Media Pembelajaran Matematika Kelas 8 SMP</p>
         <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
