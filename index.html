@@ -496,7 +496,7 @@
                     <span>x +</span>
                     <input type="number" id="calc-b1" value="3" placeholder="b₁">
                     <span>y =</span>
-                    <input type="number" id="calc-c1" value="7" placeholder="c₁">
+                    <input type="number" id="calc-c1" value=" 7" placeholder="c₁">
                 </div>
 
                 <div class="equation-input">
@@ -777,7 +777,7 @@
                     const x = (b2 * c1 - b1 * c2) / det;
                     const y = (a1 * c2 - a2 * c1) / det;
                     solutionType.textContent = "Sistem memiliki satu solusi";
-                    solutionPoint.innerHTML = `Titik potong: ($${x.toFixed(2)}, ${y.toFixed(2)}$)`;
+                    solutionPoint.innerHTML = `Titik potong: $(${x.toFixed(2)}, ${y.toFixed(2)})$`;
                 }
 
                 resultDiv.style.display = 'block';
@@ -813,9 +813,9 @@
                     const x = xNum / det;
                     const y = yNum / det;
 
-                    latexString += `<p>Determinan ($D$) = ($${a1} \\times ${b2}$) - ($${a2} \\times ${b1}$) = $${det}$</p>`;
-                    latexString += `<p>Nilai $x$ ($D_x$) = ($${c1} \\times ${b2}$) - ($${c2} \\times ${b1}$) = $${xNum}$</p>`;
-                    latexString += `<p>Nilai $y$ ($D_y$) = ($${a1} \\times ${c2}$) - ($${a2} \\times ${c1}$) = $${yNum}$</p>`;
+                    latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) = ${det}$</p>`;
+                    latexString += `<p>Nilai $x$ ($D_x$) = $(${c1} \\times ${b2}) - (${c2} \\times ${b1}) = ${xNum}$</p>`;
+                    latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
                     latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} = ${y.toFixed(2)}$</strong></p>`;
                 }
 
@@ -841,5 +841,4 @@
         });
     </script>
 </body>
-</html>
 </html>
