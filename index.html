@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Media Pembelajaran 8 SMP - SPLDV</title>
+    <title>Media Pembelajaran 8 SMP - SPLDV</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <style>
         :root {
             --primary-color: #3498db;
@@ -486,7 +494,8 @@
                 <div class="equation-input">
                     <input type="number" id="calc-a1" value="2" placeholder="a₁">
                     <span>x +</span>
-                    <input type="number" id="calc-b1" value="3" placeholder="b₁">
+                    <input type="number" id="calc-b1" value="3" placeholder="b₁
+                        ">
                     <span>y =</span>
                     <input type="number" id="calc-c1" value="7" placeholder="c₁">
                 </div>
@@ -497,7 +506,7 @@
                     <input type="number" id="calc-b2" value="-1" placeholder="b₂">
                     <span>y =</span>
                     <input type="number" id="calc-c2" value="5" placeholder="c₂">
-</div>
+                </div>
 
                 <button class="btn" id="solve-btn">Hitung Solusi</button>
                 <div id="calculation-steps" class="result"></div>
@@ -556,7 +565,7 @@
                 <button class="btn btn-outline check-answer">Periksa Jawaban</button>
                 <div class="feedback">
                     <p><strong>Pembahasan:</strong></p>
-                    <p>Misal: buku = x, pensil = y</p>
+                    <p>Misal: buku = $x$, pensil = $y$</p>
                     <p>$3x + 2y = 19500$</p>
                     <p>$2x + 3y = 16000$</p>
                     <p>Solusi: $x=5300, y=1800$</p>
@@ -721,7 +730,7 @@
                                 label: `${a1}x + ${b1}y = ${c1}`,
                                 data: data1,
                                 borderColor: 'rgb(75, 192, 192)',
-                                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                                backgroundColor: 'rgba(75, 192, 192, 0.1)`,
                                 tension: 0.1,
                                 fill: false
                             },
@@ -729,7 +738,7 @@
                                 label: `${a2}x + ${b2}y = ${c2}`,
                                 data: data2,
                                 borderColor: 'rgb(255, 99, 132)',
-                                backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                                backgroundColor: 'rgba(255, 99, 132, 0.1)`,
                                 tension: 0.1,
                                 fill: false
                             }
