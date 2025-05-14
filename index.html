@@ -589,23 +589,39 @@
                     <p>SPLDV harus memiliki dua persamaan linear dengan dua variabel yang sama.</p>
                 </div>
             </div>
+<section id="quiz">
+            <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
 
-            <div class="quiz-question">
-                <p>2. Penyelesaian dari $x + y = 7$ dan $x - y = 3$ adalah:</p>
-                <div class="options">
-                    <div class="option">A. $x=4, y=3$</div>
-                    <div class="option" data-correct>B. $x=5, y=2$</div>
-                    <div class="option">C. $x=6, y=1$</div>
+            <div class="quiz-question" data-question="1">
+                <p>1. Manakah yang merupakan SPLDV?</p>
+                <div class="options" id="quiz-question-1">
+                    <div class="option" data-answer="A" data-correct="true" onclick="selectAnswer(this, 'A', 1)">A. 2x + y = 5 dan x - y = 1</div>
+                    <div class="option" data-answer="B" onclick="selectAnswer(this, 'B', 1)">B. x² + y = 3 dan x - y = 2</div>
+                    <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 1)">C. 3x = 6 dan 2y = 4</div>
                 </div>
-                <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p>Jawaban benar: <strong>B</strong></p>
-                    <p>Tambahkan kedua persamaan: $2x = 10 \rightarrow x=5$</p>
-                    <p>Substitusi: $5 + y = 7 \rightarrow y=2$</p>
+                <div class="explanation" id="explanation1">
+                    <p>Jawaban benar: <strong>A</strong></p>
+                    <p>SPLDV harus memiliki dua persamaan linear dengan dua variabel yang sama.</p>
                 </div>
+                <div class="feedback" id="feedback-quiz-1"></div>
             </div>
 
-            <button class="btn" id="check-quiz">Periksa Kuis</button>
+            <div class="quiz-question" data-question="2">
+                <p>2. Penyelesaian dari x + y = 7 dan x - y = 3 adalah:</p>
+                <div class="options" id="quiz-question-2">
+                    <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 2)">A. x=4, y=3</div>
+                    <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(this, 'B', 2)">B. x=5, y=2</div>
+                    <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 2)">C. x=6, y=1</div>
+                </div>
+                <div class="explanation" id="explanation2">
+                    <p>Jawaban benar: <strong>B</strong></p>
+                    <p>Tambahkan kedua persamaan: 2x = 10 → x=5</p>
+                    <p>Substitusi: 5 + y = 7 → y=2</p>
+                </div>
+                <div class="feedback" id="feedback-quiz-2"></div>
+            </div>
+
+            <button class="btn" onclick="submitQuiz()">Periksa Kuis</button>
             <div id="quiz-result" class="result"></div>
         </section>
     </div>
