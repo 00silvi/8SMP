@@ -494,7 +494,8 @@
                 <div class="equation-input">
                     <input type="number" id="calc-a1" value="2" placeholder="a₁">
                     <span>x +</span>
-                    <input type="number" id="calc-b1" value="3" placeholder="b₁"><span>y =</span>
+                    <input type="number" id="calc-b1" value="3" placeholder="b₁">
+                    <span>y =</span>
                     <input type="number" id="calc-c1" value="7" placeholder="c₁">
                 </div>
 
@@ -615,20 +616,15 @@
     </footer>
 
     <script>
-        // Accordion Functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Accordion Functionality
             const accordionHeaders = document.querySelectorAll('.accordion-header');
-
             accordionHeaders.forEach(header => {
                 header.addEventListener('click', () => {
                     const accordion = header.parentElement;
                     const content = header.nextElementSibling;
-
-                    // Toggle current accordion
                     accordion.classList.toggle('active');
                     content.style.display = accordion.classList.contains('active') ? 'block' : 'none';
-
-                    // Rotate icon
                     const icon = header.querySelector('i');
                     icon.style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
                 });
@@ -653,13 +649,8 @@
             // Quiz functionality
             document.querySelectorAll('.option').forEach(option => {
                 option.addEventListener('click', function() {
-                    // Remove selection from other options in same question
                     const question = this.closest('.quiz-question');
-                    question.querySelectorAll('.option').forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
-
-                    // Select current option
+                    question.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
                     this.classList.add('selected');
                 });
             });
@@ -674,7 +665,6 @@
             document.getElementById('check-quiz').addEventListener('click', function() {
                 let score = 0;
                 const questions = document.querySelectorAll('.quiz-question');
-
                 questions.forEach(question => {
                     const selected = question.querySelector('.option.selected');
                     if (selected && selected.hasAttribute('data-correct')) {
@@ -682,14 +672,10 @@
                         selected.classList.add('correct');
                     } else if (selected) {
                         selected.classList.add('incorrect');
-                        // Highlight correct answer
                         const correctOption = question.querySelector('.option[data-correct]');
-                        if (correctOption) {
-                            correctOption.classList.add('correct');
-                        }
+                        if (correctOption) correctOption.classList.add('correct');
                     }
                 });
-
                 const resultDiv = document.getElementById('quiz-result');
                 resultDiv.innerHTML = `<h4>Hasil Kuis: ${score} dari ${questions.length} benar</h4>`;
                 resultDiv.style.display = 'block';
@@ -697,27 +683,25 @@
 
             // Graph Simulation
             let chart = null;
+            const graphCanvas = document.getElementById('graphCanvas');
+            const graphResultDiv = document.getElementById('graph-result');
+            const solutionTypeElement = document.getElementById('solution-type');
+            const solutionPointElement = document.getElementById('solution-point');
 
             document.getElementById('draw-graph').addEventListener('click', function() {
                 const a1 = parseFloat(document.getElementById('a1').value);
                 const b1 = parseFloat(document.getElementById('b1').value);
                 const c1 = parseFloat(document.getElementById('c1').value);
-
                 const a2 = parseFloat(document.getElementById('a2').value);
                 const b2 = parseFloat(document.getElementById('b2').value);
                 const c2 = parseFloat(document.getElementById('c2').value);
+                const ctx = graphCanvas.getContext('2d');
 
-                const ctx = document.getElementById('graphCanvas').getContext('2d');
+                if (chart) chart.destroy();
 
-                // Destroy previous chart if exists
-                if (chart) {
-                    chart.destroy();
-                }
-
-                // Create data for equations
-                const labels = Array.from({length: 21}, (_, i) => i - 10); // x values from -10 to 10
-                const data1 = labels.map(x => (b1 === 0) ? NaN : (c1 - a1 * x) / b1); // y values for equation 1
-                const data2 = labels.map(x => (b2 === 0) ? NaN : (c2 - a2 * x) / b2); // y values for equation 2
+                const labels = Array.from({length: 21}, (_, i) => i - 10);
+                const data1 = labels.map(x => (b1 === 0) ? NaN : (c1 - a1 * x) / b1);
+                const data2 = labels.map(x => (b2 === 0) ? NaN : (c2 - a2 * x) / b2);
 
                 chart = new Chart(ctx, {
                     type: 'line',
@@ -745,65 +729,56 @@
                     options: {
                         responsive: true,
                         scales: {
-                            x: {
-                                type: 'linear',
-                                position: 'center'
-                            },
-                            y: {
-                                type: 'linear',
-                                position: 'center'
-                            }
+                            x: { type: 'linear', position: 'center' },
+                            y: { type: 'linear', position: 'center' }
                         }
                     }
                 });
 
-                // Show solution analysis
                 const det = a1 * b2 - a2 * b1;
-                const resultDiv = document.getElementById('graph-result');
-                const solutionType = document.getElementById('solution-type');
-                const solutionPoint = document.getElementById('solution-point');
+                let solutionTypeText = "";
+                let solutionPointText = "";
 
-                let solutionText = "";
                 if (det === 0) {
                     if ((a1 * c2 - a2 * c1) === 0 && (b1 * c2 - b2 * c1) === 0) {
-                        solutionType.innerHTML = "Sistem memiliki tak hingga solusi (garis berhimpit)";
-                        solutionPoint.innerHTML = "";
+                        solutionTypeText = "Sistem memiliki tak hingga solusi (garis berhimpit)";
                     } else {
-                        solutionType.innerHTML = "Sistem tidak memiliki solusi (garis sejajar)";
-                        solutionPoint.innerHTML = "";
+                        solutionTypeText = "Sistem tidak memiliki solusi (garis sejajar)";
                     }
+                    solutionPointText = "";
                 } else {
                     const x = (b2 * c1 - b1 * c2) / det;
                     const y = (a1 * c2 - a2 * c1) / det;
-                    solutionType.innerHTML = "Sistem memiliki satu solusi";
-                    solutionPoint.innerHTML = `Titik potong: $(${x.toFixed(2)}, ${y.toFixed(2)})$`;
+                    solutionTypeText = "Sistem memiliki satu solusi";
+                    solutionPointText = `Titik potong: $\\left(${x.toFixed(2)}, ${y.toFixed(2)}\\right)$`;
                 }
 
-                resultDiv.style.display = 'block';
+                solutionTypeElement.innerHTML = solutionTypeText;
+                solutionPointElement.innerHTML = solutionPointText;
+                graphResultDiv.style.display = 'block';
             });
 
             // Equation Solver
-            document.getElementById('solve-btn').addEventListener('click', function() {
-                const method = document.getElementById('method').value;
+            const solveBtn = document.getElementById('solve-btn');
+            const methodSelect = document.getElementById('method');
+            const calculationStepsDiv = document.getElementById('calculation-steps');
+
+            solveBtn.addEventListener('click', function() {
+                const method = methodSelect.value;
                 const a1 = parseFloat(document.getElementById('calc-a1').value);
                 const b1 = parseFloat(document.getElementById('calc-b1').value);
                 const c1 = parseFloat(document.getElementById('calc-c1').value);
-
                 const a2 = parseFloat(document.getElementById('calc-a2').value);
                 const b2 = parseFloat(document.getElementById('calc-b2').value);
-                const c2 = parseFloat(documentgetElementById('calc-c2').value);
+                const c2 = parseFloat(document.getElementById('calc-c2').value);
 
-                const stepsDiv = document.getElementById('calculation-steps');
-                stepsDiv.innerHTML = '';
-
+                calculationStepsDiv.innerHTML = '';
                 let latexString = `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
 
                 if (method === 'substitution') {
-                    // Contoh implementasi sederhana metode substitusi (perlu disempurnakan untuk semua kasus)
                     if (b1 !== 0) {
                         latexString += `<p>Dari persamaan 1: $${a1}x + ${b1}y = ${c1} \implies y = \\frac{${c1} - ${a1}x}{${b1}}$</p>`;
                         latexString += `<p>Substitusi ke persamaan 2: $${a2}x + ${b2}\\left(\\frac{${c1} - ${a1}x}{${b1}}\\right) = ${c2}$</p>`;
-                        // (Langkah-langkah aljabar selanjutnya untuk menyelesaikan x dan y perlu ditambahkan di sini)
                         const det = a1 * b2 - a2 * b1;
                         const xNum = (b2 * c1 - b1 * c2);
                         const yNum = (a1 * c2 - a2 * c1);
@@ -817,7 +792,6 @@
                     } else if (a1 !== 0) {
                         latexString += `<p>Dari persamaan 1: $${a1}x = ${c1} \implies x = \\frac{${c1}}{${a1}}$</p>`;
                         latexString += `<p>Substitusi ke persamaan 2: $${a2}\\left(\\frac{${c1}}{${a1}}\\right) + ${b2}y = ${c2}$</p>`;
-                        // (Langkah-langkah aljabar selanjutnya untuk menyelesaikan y perlu ditambahkan di sini)
                         const det = a1 * b2 - a2 * b1;
                         const xNum = (b2 * c1 - b1 * c2);
                         const yNum = (a1 * c2 - a2 * c1);
@@ -834,7 +808,7 @@
                 } else if (method === 'elimination') {
                     const det = a1 * b2 - a2 * b1;
                     if (det === 0) {
-                        if ((a1 * c2 - a2 * c1) === 0 && (b1 * c2 - b2 * c1) === 0) {
+                        if ((a1 * c2 - a2 * c1) === 0 && (b1 *c2 - b2 * c1) === 0) {
                             latexString += "<p>Sistem memiliki tak hingga solusi</p>";
                         } else {
                             latexString += "<p>Sistem tidak memiliki solusi</p>";
@@ -852,8 +826,8 @@
                     }
                 }
 
-                stepsDiv.innerHTML = latexString;
-                stepsDiv.style.display = 'block';
+                calculationStepsDiv.innerHTML = latexString;
+                calculationStepsDiv.style.display = 'block';
             });
 
             // Dynamic Navigation Toggle
@@ -864,7 +838,6 @@
                 nav.classList.toggle('open');
             });
 
-            // Close navigation when clicking outside
             document.addEventListener('click', (event) => {
                 const isClickInside = navToggle.contains(event.target) || nav.contains(event.target);
                 if (!isClickInside && nav.classList.contains('open')) {
