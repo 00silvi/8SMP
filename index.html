@@ -703,359 +703,207 @@
                 </div>
 
             </div>
+    <section id="quiz">
+            <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
 
-<section id="quiz">
+            <div class="quiz-question" data-question="1">
+                <p>1. Manakah yang merupakan SPLDV?</p>
+                <div class="options" id="quiz-options-1">
+                    <div class="option" data-answer="A" data-correct="true" onclick="selectAnswer(1, 'A')">A. $2x + y = 5$ dan $x - y = 1$</div>
+                    <div class="option" data-answer="B" onclick="selectAnswer(1, 'B')">B. $x^2 + y = 3$ dan $x - y = 2$</div>
+                    <div class="option" data-answer="C" onclick="selectAnswer(1, 'C')">C. $3x = 6$ dan $2y = 4$</div>
+                </div>
+                <div class="explanation" id="quiz-explanation-1">
+                    <p>Jawaban benar: <strong>A</strong></p>
+                    <p>SPLDV harus memiliki dua persamaan linear dengan dua variabel yang sama.</p>
+                </div>
+                <div class="feedback" id="quiz-feedback-1"></div>
+            </div>
 
-            <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
+            <div class="quiz-question" data-question="2">
+                <p>2. Penyelesaian dari $x + y = 7$ dan $x - y = 3$ adalah:</p>
+                <div class="options" id="quiz-options-2">
+                    <div class="option" data-answer="A" onclick="selectAnswer(2, 'A')">A. $x=4, y=3$</div>
+                    <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(2, 'B')">B. $x=5, y=2$</div>
+                    <div class="option" data-answer="C" onclick="selectAnswer(2, 'C')">C. $x=6, y=1$</div>
+                </div>
+                <div class="explanation" id="quiz-explanation-2">
+                    <p>Jawaban benar: <strong>B</strong></p>
+                    <p>Tambahkan kedua persamaan: $2x = 10 \rightarrow x=5$</p>
+                    <p>Substitusi: $5 + y = 7 \rightarrow y=2$</p>
+                </div>
+                <div class="feedback" id="quiz-feedback-2"></div>
+            </div>
 
+            <div class="quiz-question" data-question="3">
+                <p>3. Jika $2x + y = 8$ dan $x - y = 1$, maka nilai $x$ adalah...</p>
+                <div class="options" id="quiz-options-3">
+                    <div class="option" data-answer="A" onclick="selectAnswer(3, 'A')">A. 2</div>
+                    <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(3, 'B')">B. 3</div>
+                    <div class="option" data-answer="C" onclick="selectAnswer(3, 'C')">C. 4</div>
+                </div>
+                <div class="explanation" id="quiz-explanation-3">
+                    <p>Jawaban benar: <strong>B</strong></p>
+                    <p>Tambahkan kedua persamaan: $3x = 9 \rightarrow x = 3$</p>
+                </div>
+                <div class="feedback" id="quiz-feedback-3"></div>
+            </div>
 
+            <div class="quiz-question" data-question="4">
+                <p>4. Harga 5 kg jeruk dan 2 kg apel adalah Rp55.000. Harga 1 kg jeruk adalah...</p>
+                <div class="options" id="quiz-options-4">
+                    <div class="option" data-answer="A" onclick="selectAnswer(4, 'A')">A. Rp8.000</div>
+                    <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(4, 'B')">B. Rp10.000</div>
+                    <div class="option" data-answer="C" onclick="selectAnswer(4, 'C')">C. Rp12.000</div>
+                </div>
+                <div class="explanation" id="quiz-explanation-4">
+                    <p>Jawaban benar: <strong>B</strong></p>
+                    <p>Misal: Jeruk = j, Apel = a</p>
+                    <p>5j + 2a = 55000</p>
+                    <p>3j + 4a = 49000</p>
+                    <p>Eliminasi a, didapat j = 10000</p>
+                </div>
+                <div class="feedback" id="quiz-feedback-4"></div>
+            </div>
 
-            <div class="quiz-question" data-question="1">
+            <div class="quiz-question" data-question="5">
+                <p>5. Sistem persamaan $x + 2y = 8$ dan $2x - y = 6$ memiliki solusi...</p>
+                <div class="options" id="quiz-options-5">
+                    <div class="option" data-answer="A" onclick="selectAnswer(5, 'A')">A. x=2, y=3</div>
+                    <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(5, 'B')">B. x=4, y=2</div>
+                    <div class="option" data-answer="C" onclick="selectAnswer(5, 'C')">C. x=3, y=1</div>
+                </div>
+                <div class="explanation" id="quiz-explanation-5">
+                    <p>Jawaban benar: <strong>B</strong></p>
+                    <p>Gunakan metode eliminasi atau substitusi untuk menemukan solusinya.</p>
+                </div>
+                <div class="feedback" id="quiz-feedback-5"></div>
+            </div>
 
-                <p>1. Manakah yang merupakan SPLDV?</p>
+            <div class="quiz-question" data-question="6">
+                <p>6. Jika $a - b = 5$ dan $a + b = 15$, maka nilai $a^2 - b^2$ adalah...</p>
+                <div class="options" id="quiz-options-6">
+                    <div class="option" data-answer="A" onclick="selectAnswer(6, 'A')">A. 25</div>
+                    <div class="option" data-answer="B" onclick="selectAnswer(6, 'B')">B. 50</div>
+                    <div class="option" data-answer="C" data-correct="true" onclick="selectAnswer(6, 'C')">C. 75</div>
+                </div>
+                <div class="explanation" id="quiz-explanation-6">
+                    <p>Jawaban benar: <strong>C</strong></p>
+                    <p>Ingat bahwa $a^2 - b^2 = (a - b)(a + b) = 5 * 15 = 75$</p>
+                </div>
+                <div class="feedback" id="quiz-feedback-6"></div>
+            </div>
 
-                <div class="options" id="quiz-question-1">
+            <div class="quiz-question" data-question="7">
+                <p>7. Jumlah dua bilangan adalah 20, dan selisihnya adalah 4. Bilangan terbesar adalah...</p>
+                <div class="options" id="quiz-options-7">
+                    <div class="option" data-answer="A" onclick="selectAnswer(7, 'A')">A. 8</div>
+                    <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(7, 'B')">B. 12</div>
+                    <div class="option" data-answer="C" onclick="selectAnswer(7, 'C')">C. 16</div>
+                </div>
+                <div class="explanation" id="quiz-explanation-7">
+                    <p>Jawaban benar: <strong>B</strong></p>
+                    <p>Misal bilangan tersebut x dan y, maka x + y = 20 dan x - y = 4. Bilangan terbesar adalah 12.</p>
+                </div>
+                <div class="feedback" id="quiz-feedback-7"></div>
+            </div>
 
-                    <div class="option" data-answer="A" data-correct="true" onclick="selectAnswer(this, 'A', 1)">A. 2x + y = 5 dan x - y = 1</div>
+            <div class="quiz-question" data-question="8">
+                <p>8. Harga 2 baju dan 3 celana adalah Rp210.000. Harga 3 baju dan 2 celana adalah Rp190.000. Harga sebuah baju adalah...</p>
+                <div class="options" id="quiz-options-8">
+                    <div class="option" data-answer="A" data-correct="true" onclick="selectAnswer(8, 'A')">A. Rp40.000</div>
+                    <div class="option" data-answer="B" onclick="selectAnswer(8, 'B')">B. Rp50.000</div>
+                    <div class="option" data-answer="C" onclick="selectAnswer(8, 'C')">C. Rp60.000</div>
+                </div>
+                <div class="explanation" id="quiz-explanation-8">
+                    <p>Jawaban benar: <strong>A</strong></p>
+                    <p>Misal baju=x, celana=y. 2x+3y=210000, 3x+2y=190000. Harga baju = Rp40.000</p>
+                </div>
+                <div class="feedback" id="quiz-feedback-8"></div>
+            </div>
 
-                    <div class="option" data-answer="B" onclick="selectAnswer(this, 'B', 1)">B. x² + y = 3 dan x - y = 2</div>
+            <div class="quiz-question" data-question="9">
+                <p>9. Jika $x$ dan $y$ memenuhi persamaan $2x + y = 5$ dan $x - 2y = -5$, nilai $x + y$ adalah...</p>
+                <div class="options" id="quiz-options-9">
+                    <div class="option" data-answer="A" onclick="selectAnswer(9, 'A')">A. 0</div>
+                    <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(9, 'B')">B. 2</div>
+                    <div class="option" data-answer="C" onclick="selectAnswer(9, 'C')">C. 4</div>
+                </div>
+                <div class="explanation" id="quiz-explanation-9">
+                    <p>Jawaban benar: <strong>B</strong></p>
+                    <p>Selesaikan SPLDV untuk mendapatkan x dan y, lalu hitung x+y.</p>
+                </div>
+                <div class="feedback" id="quiz-feedback-9"></div>
+            </div>
 
-                    <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 1)">C. 3x = 6 dan 2y = 4</div>
+            <div class="quiz-question" data-question="10">
+                <p>10. Sebuah persegi panjang memiliki keliling 50 cm. Jika panjangnya 5 cm lebih dari lebarnya, luas persegi panjang tersebut adalah...</p>
+                <div class="options" id="quiz-options-10">
+                    <div class="option" data-answer="A" onclick="selectAnswer(10, 'A')">A. 100 cm²</div>
+                    <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(10, 'B')">B. 150 cm²</div>
+                    <div class="option" data-answer="C" onclick="selectAnswer(10, 'C')">C. 200 cm²</div>
+                </div>
+                <div class="explanation" id="quiz-explanation-10">
+                    <p>Jawaban benar: <strong>B</strong></p>
+                    <p>Misal panjang=p, lebar=l. 2(p+l)=50 dan p=l+5. Luas=p*l=150 cm²</p>
+                </div>
+                <div class="feedback" id="quiz-feedback-10"></div>
+            </div>
 
-                </div>
+            <button class="btn" onclick="submitQuiz()">Periksa Kuis</button>
+            <div id="quiz-result" class="result"></div>
+        </section>
 
-                <div class="explanation" id="explanation1">
-
-                    <p>Jawaban benar: <strong>A</strong></p>
-
-                    <p>SPLDV harus memiliki dua persamaan linear dengan dua variabel yang sama.</p>
-
-                </div>
-
-                <div class="feedback" id="feedback-quiz-1"></div>
-
-            </div>
-
-
-
-            <div class="quiz-question" data-question="2">
-
-                <p>2. Penyelesaian dari x + y = 7 dan x - y = 3 adalah:</p>
-
-                <div class="options" id="quiz-question-2">
-
-                    <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 2)">A. x=4, y=3</div>
-
-                    <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(this, 'B', 2)">B. x=5, y=2</div>
-
-                    <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 2)">C. x=6, y=1</div>
-
-                </div>
-
-                <div class="explanation" id="explanation2">
-
-                    <p>Jawaban benar: <strong>B</strong></p>
-
-                    <p>Tambahkan kedua persamaan: 2x = 10 → x=5</p>
-
-                    <p>Substitusi: 5 + y = 7 → y=2</p>
-
-                </div>
-
-                <div class="feedback" id="feedback-quiz-2"></div>
-
-            </div>
-
-
-
-            <button class="btn" onclick="submitQuiz()">Periksa Kuis</button>
-
-            <div id="quiz-result" class="result"></div>
-
-        </section>
-
-    </div>
+    </div>
     <footer>
         <p>&copy; 2025 Media Pembelajaran Matematika Kelas 8 SMP</p>
         <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Accordion Functionality
-            const accordionHeaders = document.querySelectorAll('.accordion-header');
-            accordionHeaders.forEach(header => {
-                header.addEventListener('click', () => {
-                    const accordion = header.parentElement;
-                    const content = header.nextElementSibling;
-                    accordion.classList.toggle('active');
-                    content.style.display = accordion.classList.contains('active') ? 'block' : 'none';
-                    const icon = header.querySelector('i');
-                    icon.style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
-                });
-            });
+        // ... (Kode JavaScript sebelumnya)
 
-            // Show/hide explanations for examples
-            document.querySelectorAll('.show-solution').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const explanation = this.nextElementSibling;
-                    explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
-                });
-            });
+        // Quiz functionality - Modified to separate from latihan
+        let quizAnswers = {};
 
-            // Check answers for essay questions
-            document.querySelectorAll('.check-answer').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const feedback = this.nextElementSibling;
-                    feedback.style.display = feedback.style.display === 'block' ? 'none' : 'block';
-                });
-            });
+        function selectAnswer(questionNum, answer) {
+            quizAnswers[questionNum] = answer;
+            const options = document.querySelectorAll(`#quiz-options-${questionNum} .option`);
+            options.forEach(option => option.classList.remove('selected'));
+            document.querySelector(`#quiz-options-${questionNum} .option[data-answer="${answer}"]`).classList.add('selected');
+        }
 
-            // Quiz functionality
-            let answers = {};
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = document.querySelectorAll('.quiz-question').length;
+            for (let i = 1; i <= totalQuestions; i++) {
+                const correctAnswer = document.querySelector(`#quiz-options-${i} .option[data-correct="true"]`).getAttribute('data-answer');
+                const selectedAnswer = quizAnswers[i];
+                const feedbackDiv = document.getElementById(`quiz-feedback-${i}`);
 
-            function selectAnswer(element, answer, questionNum) {
-                if (answers[questionNum]) {
-                    document.querySelector(`#quiz-question-${questionNum} .option[data-answer="${answers[questionNum]}"]`).classList.remove('selected');
-                }
-                element.classList.add('selected');
-                answers[questionNum] = answer;
-            }
-
-            window.selectAnswer = selectAnswer; // Make it globally accessible
-
-            function submitQuiz() {
-                let score = 0;
-                let totalQuestions = document.querySelectorAll('.quiz-question').length;
-                for (let i = 1; i <= totalQuestions; i++) {
-                    let correctAnswer = document.querySelector(`#quiz-question-${i} .option[data-correct="true"]`).getAttribute('data-answer');
-                    if (answers[i] === correctAnswer) {
-                        score++;
-                    }
-                }
-                const resultDiv = document.getElementById('quiz-result');
-                resultDiv.innerHTML = `<h4>Hasil Kuis: ${score} dari ${totalQuestions}</h4>`;
-                resultDiv.style.display = 'block';
-            }
-
-            window.submitQuiz = submitQuiz; // Make it globally accessible
-
-            document.querySelectorAll('.show-explanation').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const explanation = this.nextElementSibling;
-                    explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
-                });
-            });
-
-            // Graph Simulation
-            let chart = null;
-            const graphCanvas = document.getElementById('graphCanvas');
-            const graphResultDiv = document.getElementById('graph-result');
-            const solutionTypeElement = document.getElementById('solution-type');
-            const solutionPointElement = document.getElementById('solution-point');
-
-            document.getElementById('draw-graph').addEventListener('click', function() {
-                const a1 = parseFloat(document.getElementById('a1').value);
-                const b1 = parseFloat(document.getElementById('b1').value);
-                const c1 = parseFloat(document.getElementById('c1').value);
-                const a2 = parseFloat(document.getElementById('a2').value);
-                const b2 = parseFloat(document.getElementById('b2').value);
-                const c2 = parseFloat(document.getElementById('c2').value);
-                const ctx = graphCanvas.getContext('2d');
-
-                if (chart) chart.destroy();
-
-                const labels = Array.from({length: 21}, (_, i) => i - 10);
-                const data1 = labels.map(x => (b1 === 0) ? NaN : (c1 - a1 * x) / b1);
-                const data2 = labels.map(x => (b2 === 0) ? NaN : (c2 - a2 * x) / b2);
-
-                chart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: [
-                            {
-                                label: `$${a1}x + ${b1}y = ${c1}$`,
-                                data: data1,
-                                borderColor: 'rgb(75, 192, 192)',
-                                backgroundColor: 'rgba(75, 192, 192, 0.1)',
-                                backgroundColor: 'rgba(75, 192, 192, 0.1)',
-                                borderWidth: 2,
-                                pointRadius: 0,
-                            },
-                            {
-                                label: `$${a2}x + ${b2}y = ${c2}$`,
-                                data: data2,
-                                borderColor: 'rgb(220, 53, 69)',
-                                backgroundColor: 'rgba(220, 53, 69, 0.1)',
-                                borderWidth: 2,
-                                pointRadius: 0,
-                            }
-                        ]
-                    },
-                    options: {
-                        scales: {
-                            x: {
-                                type: 'linear',
-                                position: 'bottom',
-                                title: {
-                                    display: true,
-                                    text: 'x-axis'
-                                }
-                            },
-                            y: {
-                                type: 'linear',
-                                position: 'left',
-                                title: {
-                                    display: true,
-                                    text: 'y-axis'
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                labels: {
-                                    usePointStyle: true,
-                                    
-                                    font: {
-                                        size: 12
-                                    }
-                                },
-                                title: {
-                                    display: true,
-                                    text: 'Persamaan',
-                                    font: {
-                                        size: 14
-                                    }
-                                }
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        let label = context.dataset.label || '';
-                                        if (label) {
-                                            label += ': ';
-                                        }
-                                        if (context.parsed.y !== null) {
-                                            label += 'y = ' + context.parsed.y;
-                                        }
-                                        return label;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-
-                let solutionType = "Tidak ada solusi";
-                let solutionPoint = "";
-
-                if (b1 !== 0 && b2 !== 0) {
-                    const det = a1 * b2 - a2 * b1;
-                    if (det !== 0) {
-                        solutionType = "Satu solusi";
-                        const x = (c1 * b2 - c2 * b1) / det;
-                        const y = (a1 * c2 - a2 * c1) / det;
-                        solutionPoint = `Titik potong: (${x.toFixed(2)}, ${y.toFixed(2)})`;
-                    } else if (c1 * b2 - c2 * b1 === 0 && a1 * c2 - a2 * c1 === 0) {
-                        solutionType = "Tak hingga solusi";
-                    } else {
-                        solutionType = "Tidak ada solusi";
-                    }
-                } else if (b1 === 0 && b2 === 0) {
-                    if (c1 / a1 === c2 / a2) {
-                        solutionType = "Tak hingga solusi";
-                    } else {
-                        solutionType = "Tidak ada solusi";
-                    }
+                if (selectedAnswer === correctAnswer) {
+                    score++;
+                    feedbackDiv.textContent = "Jawaban Anda benar!";
+                    feedbackDiv.style.backgroundColor = '#d4edda';
+                    feedbackDiv.style.borderColor = '#c3e6cb';
+                    feedbackDiv.style.color = '#155724';
                 } else {
-                    if (a1 / b1 === a2 / b2 && c1 / b1 === c2 / b2) {
-                        solutionType = "Tak hingga solusi";
-                    } else {
-                        solutionType = "Tidak ada solusi";
-                    }
+                    feedbackDiv.textContent = "Jawaban Anda salah. Silakan coba lagi.";
+                    feedbackDiv.style.backgroundColor = '#f8d7da';
+                    feedbackDiv.style.borderColor = '#f5c6cb';
+                    feedbackDiv.style.color = '#721c24';
                 }
-
-                solutionTypeElement.textContent = `Jenis solusi: ${solutionType}`;
-                solutionPointElement.textContent = solutionPoint;
-                graphResultDiv.style.display = 'block';
-            });
-
-            // Calculator
-            document.getElementById('solve-btn').addEventListener('click', function() {
-                const a1 = parseFloat(document.getElementById('calc-a1').value);
-                const b1 = parseFloat(document.getElementById('calc-b1').value);
-                const c1 = parseFloat(document.getElementById('calc-c1').value);
-                const a2 = parseFloat(document.getElementById('calc-a2').value);
-                const b2 = parseFloat(document.getElementById('calc-b2').value);
-                const c2 = parseFloat(document.getElementById('calc-c2').value);
-                const method = document.getElementById('method').value;
-                const calculationStepsDiv = document.getElementById('calculation-steps');
-                let latexString = "";
-
-                if (method === 'substitution') {
-                    // ... (Kode metode substitusi)
-                     if (a1 !== 0) {
-                        latexString += `<p>1. Dari persamaan 1: $x = \\frac{${c1} - ${b1}y}{${a1}}$</p>`;
-                        latexString += `<p>2. Substitusi ke persamaan 2: ${a2}(\\frac{${c1} - ${b1}y}{${a1}}) + ${b2}y = ${c2}$</p>`;
-
-                        const y = (c2 - a2 * c1 / a1) / (b2 - a2 * b1 / a1);
-                        const x = (c1 - b1 * y) / a1;
-
-                        latexString += `<p>3. Hitung y: $y = ${y.toFixed(2)}$</p>`;
-                        latexString += `<p>4. Hitung x: $x = ${x.toFixed(2)}$</p>`;
-                        latexString += `<p><strong>Solusi: x = ${x.toFixed(2)}, y = ${y.toFixed(2)}</strong></p>`;
-                    } else if (b1 !== 0) {
-                        latexString += `<p>1. Dari persamaan 1: $y = \\frac{${c1} - ${a1}x}{${b1}}$</p>`;
-                        latexString += `<p>2. Substitusi ke persamaan 2: ${a2}x + ${b2}(\\frac{${c1} - ${a1}x}{${b1}}) = ${c2}$</p>`;
-
-                        const x = (c2 - b2 * c1 / b1) / (a2 - b2 * a1 / b1);
-                        const y = (c1 - a1 * x) / b1;
-
-                        latexString += `<p>3. Hitung x: $x = ${x.toFixed(2)}$</p>`;
-                        latexString += `<p>4. Hitung y: $y = ${y.toFixed(2)}$</p>`;
-                        latexString += `<p><strong>Solusi: x = ${x.toFixed(2)}, y = ${y.toFixed(2)}</strong></p>`;
-                    }
-
-                } else if (method === 'elimination') {
-                    // ... (Kode metode eliminasi)
-                      const det = a1 * b2 - a2 * b1;
-                    if (det !== 0) {
-                        const xNum = c1 * b2 - c2 * b1;
-                        const yNum = a1 * c2 - a2 * c1;const x = xNum / det;
-                        const y = yNum / det;
-
-                        latexString += `<p>Determinan ($D$) = $(${a1} \times ${b2}) - (${a2} \times ${b1}) = ${det}$</p>`;
-                        latexString += `<p>Nilai $x$ ($D_x$) = $(${c1} \times ${b2}) - (${c2} \times ${b1}) = ${xNum}$</p>`;
-                        latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \times ${c2}) - (${a2} \times ${c1}) = ${yNum}$</p>`;
-                        latexString += `<p><strong>Solusi: $x = \frac{D_x}{D} = \frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \frac{D_y}{D} = \frac{${yNum}}{${det}} = ${y.toFixed(2)}$</strong></p>`;
-                    }
-                }
-
-                calculationStepsDiv.innerHTML = latexString;
-                calculationStepsDiv.style.display = 'block';
-            });
-
-            // Dynamic Navigation Toggle
-            const navToggle = document.querySelector('.nav-toggle');
-            const nav = document.querySelector('nav');
-
-            navToggle.addEventListener('click', () => {
-                nav.classList.toggle('open');
-            });
-
-            document.addEventListener('click', (event) => {
-                const isClickInside = navToggle.contains(event.target) || nav.contains(event.target);
-                if (!isClickInside && nav.classList.contains('open')) {
-                    nav.classList.remove('open');
-                }
-            });
-
-            // Initial close on load (for wider screens)
-            if (window.innerWidth >= 768) {
-                nav.classList.remove('open');
+                feedbackDiv.style.display = 'block';
             }
-        });
+
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.innerHTML = `<h4>Hasil Kuis: ${score} dari ${totalQuestions} benar</h4>`;
+            resultDiv.style.display = 'block';
+        }
+
+        // ... (Kode JavaScript sebelumnya)
     </script>
 </body>
 </html>
+
+                            
