@@ -496,7 +496,7 @@
                     <span>x +</span>
                     <input type="number" id="calc-b1" value="3" placeholder="b₁">
                     <span>y =</span>
-                    <input type="number" id="calc-c1" value="7" placeholder="c₁">
+                    <inputtype="number" id="calc-c1" value="7" placeholder="c₁">
                 </div>
 
                 <div class="equation-input">
@@ -657,6 +657,12 @@
                         }
                     }
                 });
+
+                // Coba render ulang label setelah grafik dibuat
+                setTimeout(() => {
+                    MathJax.typesetPromise();
+                    console.log('MathJax.typesetPromise() dijalankan setelah chart dibuat');
+                }, 200);
 
                 const det = a1 * b2 - a2 * b1;
                 let solutionTypeText = "";
