@@ -501,8 +501,7 @@
 
                 <div class="equation-input">
                     <input type="number" id="calc-a2" value="4" placeholder="a₂">
-                    <span>x +</span>
-                    <input type="number" id="calc-b2" value="-1" placeholder="b₂">
+                    <span>x +</span><input type="number" id="calc-b2" value="-1" placeholder="b₂">
                     <span>y =</span>
                     <input type="number" id="calc-c2" value="5" placeholder="c₂">
                 </div>
@@ -706,7 +705,7 @@
 
                 const a2 = parseFloat(document.getElementById('a2').value);
                 const b2 = parseFloat(document.getElementById('b2').value);
-                const c2 = parseFloat(document.getElementById('c2').value);
+                const c2 = parseFloat(documentgetElementById('c2').value);
 
                 const ctx = document.getElementById('graphCanvas').getContext('2d');
 
@@ -767,16 +766,16 @@
                 let solutionText = "";
                 if (det === 0) {
                     if ((a1 * c2 - a2 * c1) === 0 && (b1 * c2 - b2 * c1) === 0) {
-                        solutionType.textContent = "Sistem memiliki tak hingga solusi (garis berhimpit)";
-                        solutionPoint.textContent = "";
+                        solutionType.innerHTML = "Sistem memiliki tak hingga solusi (garis berhimpit)";
+                        solutionPoint.innerHTML = "";
                     } else {
-                        solutionType.textContent = "Sistem tidak memiliki solusi (garis sejajar)";
-                        solutionPoint.textContent = "";
+                        solutionType.innerHTML = "Sistem tidak memiliki solusi (garis sejajar)";
+                        solutionPoint.innerHTML = "";
                     }
                 } else {
                     const x = (b2 * c1 - b1 * c2) / det;
                     const y = (a1 * c2 - a2 * c1) / det;
-                    solutionType.textContent = "Sistem memiliki satu solusi";
+                    solutionType.innerHTML = "Sistem memiliki satu solusi";
                     solutionPoint.innerHTML = `Titik potong: $(${x.toFixed(2)}, ${y.toFixed(2)})$`;
                 }
 
@@ -792,7 +791,7 @@
 
                 const a2 = parseFloat(document.getElementById('calc-a2').value);
                 const b2 = parseFloat(document.getElementById('calc-b2').value);
-                const c2 = parseFloat(documentgetElementById('calc-c2').value);
+                const c2 = parseFloat(document.getElementById('calc-c2').value);
 
                 const stepsDiv = document.getElementById('calculation-steps');
                 stepsDiv.innerHTML = '';
@@ -829,11 +828,12 @@
                         const x = det === 0 ? NaN : xNum / det;
                         const y = det === 0 ? NaN : yNum / det;
                         if (!isNaN(x) && !isNaN(y)) {
-                            latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;} else if (det === 0) {
+                            latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
+                        } else if (det === 0) {
                             latexString += "<p>Sistem tidak memiliki solusi atau memiliki tak hingga solusi.</p>";
                         }
                     } else {
-                        latexString += "<p>Persamaan 1 tidak memiliki variabel x atau y untuk diselesaikan secara langsung.</p>";
+                        latexString +="<p>Persamaan 1 tidak memiliki variabel x atau y untuk diselesaikan secara langsung.</p>";
                     }
                 } else if (method === 'elimination') {
                     const det = a1 * b2 - a2 * b1;
