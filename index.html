@@ -6,9 +6,14 @@
     <title>Media Pembelajaran 8 SMP - SPLDV</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVvbnzB7tGIHPIc1gaDNH1yRJU60QmkC6cJLMhUsxFaM0W+rHuASbe9zTE+A1m" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1Y0ETY0tmaqzQISfQJlMYlZhF7fC+bjWjyUzY9" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XWcW5q1Y1olFltM8Jxuo6PWQTnus3zjFhCnAtVxInYWvKjvS9aG7zNS+" crossorigin="anonymous"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <style>
         :root {
             --primary-color: #3498db;
@@ -38,7 +43,6 @@
             text-align: center;
             padding: 2rem 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative; /* Needed for absolute positioning of toggle button */
         }
 
         header h1 {
@@ -51,31 +55,36 @@
             opacity: 0.9;
         }
 
-        .nav-toggle {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 101;
-            padding: 0.5rem;
-        }
-
-        nav {
+        .nav-container {
             background-color: var(--dark-color);
             position: sticky;
             top: 0;
             z-index: 100;
-            max-height: 0; /* Initially hidden */
+        }
+
+        .nav-toggle {
+            background-color: var(--dark-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+
+        .nav-toggle:focus {
+            outline: none;
+        }
+
+        nav {
             overflow: hidden;
+            max-height: 0;
             transition: max-height 0.3s ease-out;
         }
 
         nav.open {
-            max-height: 200px; /* Adjust as needed based on content height */
+            max-height: 200px; /* Sesuaikan dengan tinggi menu */
         }
 
         nav ul {
@@ -356,23 +365,23 @@
 </head>
 <body>
     <header>
-        <button class="nav-toggle" aria-label="Toggle Navigation">
-            <i class="fas fa-bars"></i>
-        </button>
         <h1>Media Pembelajaran Matematika Kelas 8 SMP</h1>
         <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#tujuan"><i class="fas fa-bullseye"></i> Tujuan</a></li>
-            <li><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
-            <li><a href="#simulasi"><i class="fas fa-laptop-code"></i> Simulasi</a></li>
-            <li><a href="#contoh"><i class="fas fa-chalkboard-teacher"></i> Contoh</a></li>
-            <li><a href="#latihan"><i class="fas fa-pencil-alt"></i> Latihan</a></li>
-            <li><a href="#quiz"><i class="fas fa-question-circle"></i> Kuis</a></li>
-        </ul>
-    </nav>
+    <div class="nav-container">
+        <button class="nav-toggle"><i class="fas fa-bars"></i> Menu</button>
+        <nav>
+            <ul>
+                <li><a href="#tujuan"><i class="fas fa-bullseye"></i> Tujuan</a></li>
+                <li><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
+                <li><a href="#simulasi"><i class="fas fa-laptop-code"></i> Simulasi</a></li>
+                <li><a href="#contoh"><i class="fas fa-chalkboard-teacher"></i> Contoh</a></li>
+                <li><a href="#latihan"><i class="fas fa-pencil-alt"></i> Latihan</a></li>
+                <li><a href="#quiz"><i class="fas fa-question-circle"></i> Kuis</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <div class="container">
         <section id="tujuan">
@@ -462,7 +471,7 @@
                     <span>x +</span>
                     <input type="number" id="b2" value="-1">
                     <span>y =</span>
-                    <input type="number"<input type="number" id="c2" value="1">
+                    <input type="number" id="c2" value="1">
                 </div>
 
                 <button class="btn" id="draw-graph">Gambar Grafik</button>
@@ -485,8 +494,7 @@
                 <div class="equation-input">
                     <input type="number" id="calc-a1" value="2" placeholder="a₁">
                     <span>x +</span>
-                    <input type="number" id="calc-b1" value="3" placeholder="b₁">
-                    <span>y =</span>
+                    <input type="number" id="calc-b1" value="3" placeholder="b₁"><span>y =</span>
                     <input type="number" id="calc-c1" value="7" placeholder="c₁">
                 </div>
 
@@ -513,7 +521,7 @@
                 <div class="explanation">
                     <p><strong>Penyelesaian:</strong></p>
                     <p>1. Dari persamaan 2: $x = y - 1$</p>
-                    <p>2. Substitusi ke persamaan 1: $2(y-1) + y = 7 \Rightarrow 3y = 9 \Rightarrow y = 3$</p>
+                    <p>2. Substitusi ke persamaan 1: $2(y-1) + y = 7 \rightarrow 3y = 9 \rightarrow y = 3$</p>
                     <p>3. $x = 3 - 1 = 2$</p>
                     <p><strong>Solusi: $x=2, y=3$</strong></p>
                 </div>
@@ -527,8 +535,8 @@
                     <p><strong>Penyelesaian:</strong></p>
                     <p>1. Eliminasi x: Pers.1 × 2 → $6x + 4y = 24$</p>
                     <p>Pers.2 × 3 → $6x + 9y = 39$</p>
-                    <p>2. Kurangkan: $-5y = -15 \Rightarrow y = 3$</p>
-                    <p>3. Substitusi y ke pers.1: $3x + 6 = 12 \Rightarrow x = 2$</p>
+                    <p>2. Kurangkan: $-5y = -15 \rightarrow y = 3$</p>
+                    <p>3. Substitusi y ke pers.1: $3x + 2(3) = 12 \rightarrow 3x + 6 = 12 \rightarrow x = 2$</p>
                     <p><strong>Solusi: $x=2, y=3$</strong></p>
                 </div>
             </div>
@@ -543,8 +551,8 @@
                 <button class="btn btn-outline check-answer">Periksa Jawaban</button>
                 <div class="feedback">
                     <p><strong>Pembahasan:</strong></p>
-                    <p>Tambahkan kedua persamaan: $3x = 9 \Rightarrow x = 3$</p>
-                    <p>Substitusi x ke pers.1: $3 + y = 5 \Rightarrow y = 2$</p>
+                    <p>Tambahkan kedua persamaan: $3x = 9 \rightarrow x = 3$</p>
+                    <p>Substitusi x ke pers.1: $3 + y = 5 \rightarrow y = 2$</p>
                     <p><strong>Solusi: $x=3, y=2$</strong></p>
                 </div>
             </div>
@@ -591,8 +599,8 @@
                 <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
                 <div class="explanation">
                     <p>Jawaban benar: <strong>B</strong></p>
-                    <p>Tambahkan kedua persamaan: $2x = 10 \Rightarrow x=5$</p>
-                    <p>Substitusi: $5 + y = 7 \Rightarrow y=2$</p>
+                    <p>Tambahkan kedua persamaan: $2x = 10 \rightarrow x=5$</p>
+                    <p>Substitusi: $5 + y = 7 \rightarrow y=2$</p>
                 </div>
             </div>
 
@@ -602,23 +610,13 @@
     </div>
 
     <footer>
-        <p>@2025 Media Pembelajaran Matematika Kelas 8 SMP</p>
+        <p>&copy; 2025 Media Pembelajaran Matematika Kelas 8 SMP</p>
         <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-              delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\(', right: '\\)', display: false},
-                {left: '\\[', right: '\\]', display: true}
-              ],
-              throwOnError : false
-            });
-
-            // Accordion Functionality
+        // Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function() {
             const accordionHeaders = document.querySelectorAll('.accordion-header');
 
             accordionHeaders.forEach(header => {
@@ -636,7 +634,7 @@
                 });
             });
 
-            // Show/hide explanations
+            // Show/hide explanations for examples
             document.querySelectorAll('.show-solution').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const explanation = this.nextElementSibling;
@@ -644,7 +642,7 @@
                 });
             });
 
-            // Check answers
+            // Check answers for essay questions
             document.querySelectorAll('.check-answer').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const feedback = this.nextElementSibling;
@@ -653,8 +651,6 @@
             });
 
             // Quiz functionality
-            let selectedOptions = [];
-
             document.querySelectorAll('.option').forEach(option => {
                 option.addEventListener('click', function() {
                     // Remove selection from other options in same question
@@ -687,7 +683,10 @@
                     } else if (selected) {
                         selected.classList.add('incorrect');
                         // Highlight correct answer
-                        question.querySelector('.option[data-correct]').classList.add('correct');
+                        const correctOption = question.querySelector('.option[data-correct]');
+                        if (correctOption) {
+                            correctOption.classList.add('correct');
+                        }
                     }
                 });
 
@@ -717,8 +716,8 @@
 
                 // Create data for equations
                 const labels = Array.from({length: 21}, (_, i) => i - 10); // x values from -10 to 10
-                const data1 = labels.map(x => (c1 - a1 * x) / b1); // y values for equation 1
-                const data2 = labels.map(x => (c2 - a2 * x) / b2); // y values for equation 2
+                const data1 = labels.map(x => (b1 === 0) ? NaN : (c1 - a1 * x) / b1); // y values for equation 1
+                const data2 = labels.map(x => (b2 === 0) ? NaN : (c2 - a2 * x) / b2); // y values for equation 2
 
                 chart = new Chart(ctx, {
                     type: 'line',
@@ -758,31 +757,32 @@
                     }
                 });
 
-                // Show solution with KaTeX
+                // Show solution analysis
                 const det = a1 * b2 - a2 * b1;
                 const resultDiv = document.getElementById('graph-result');
                 const solutionType = document.getElementById('solution-type');
                 const solutionPoint = document.getElementById('solution-point');
 
+                let solutionText = "";
                 if (det === 0) {
-                    if (Math.abs(a1/a2 - b1/b2) < 1e-6 || (Math.abs(a1) < 1e-6 && Math.abs(a2) < 1e-6 && Math.abs(b1/b2 - c1/c2) < 1e-6) || (Math.abs(b1) < 1e-6 && Math.abs(b2) < 1e-6 && Math.abs(a1/a2 - c1/c2) < 1e-6)) {
-                        solutionType.textContent = "Sistem memiliki tak hingga solusi (garis berhimpit atau satu garis)";
-                        solutionPoint.textContent = "";
+                    if ((a1 * c2 - a2 * c1) === 0 && (b1 * c2 - b2 * c1) === 0) {
+                        solutionType.innerHTML = "Sistem memiliki tak hingga solusi (garis berhimpit)";
+                        solutionPoint.innerHTML = "";
                     } else {
-                        solutionType.textContent = "Sistem tidak memiliki solusi (garis sejajar)";
-                        solutionPoint.textContent = "";
+                        solutionType.innerHTML = "Sistem tidak memiliki solusi (garis sejajar)";
+                        solutionPoint.innerHTML = "";
                     }
                 } else {
                     const x = (b2 * c1 - b1 * c2) / det;
                     const y = (a1 * c2 - a2 * c1) / det;
-                    solutionType.textContent = "Sistem memiliki satu solusi";
-                    solutionPoint.innerHTML = `Titik potong: ($${x.toFixed(2)}, ${y.toFixed(2)}$)`;
+                    solutionType.innerHTML = "Sistem memiliki satu solusi";
+                    solutionPoint.innerHTML = `Titik potong: $(${x.toFixed(2)}, ${y.toFixed(2)})$`;
                 }
 
                 resultDiv.style.display = 'block';
             });
 
-            // Equation Solver with KaTeX
+            // Equation Solver
             document.getElementById('solve-btn').addEventListener('click', function() {
                 const method = document.getElementById('method').value;
                 const a1 = parseFloat(document.getElementById('calc-a1').value);
@@ -791,46 +791,69 @@
 
                 const a2 = parseFloat(document.getElementById('calc-a2').value);
                 const b2 = parseFloat(document.getElementById('calc-b2').value);
-                const c2 = parseFloat(document.getElementById('calc-c2').value);
+                const c2 = parseFloat(documentgetElementById('calc-c2').value);
 
                 const stepsDiv = document.getElementById('calculation-steps');
                 stepsDiv.innerHTML = '';
+
                 let latexString = `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
 
-                // Calculate determinant
-                const det = a1 * b2 - a2 * b1;
-
-                if (Math.abs(det) < 1e-6) {
-                    if (Math.abs(a1 * c2 - a2 * c1) < 1e-6 && Math.abs(b1 * c2 - b2 * c1) < 1e-6) {
-                        latexString += "<p>Sistem memiliki tak hingga solusi</p>";
+                if (method === 'substitution') {
+                    // Contoh implementasi sederhana metode substitusi (perlu disempurnakan untuk semua kasus)
+                    if (b1 !== 0) {
+                        latexString += `<p>Dari persamaan 1: $${a1}x + ${b1}y = ${c1} \implies y = \\frac{${c1} - ${a1}x}{${b1}}$</p>`;
+                        latexString += `<p>Substitusi ke persamaan 2: $${a2}x + ${b2}\\left(\\frac{${c1} - ${a1}x}{${b1}}\\right) = ${c2}$</p>`;
+                        // (Langkah-langkah aljabar selanjutnya untuk menyelesaikan x dan y perlu ditambahkan di sini)
+                        const det = a1 * b2 - a2 * b1;
+                        const xNum = (b2 * c1 - b1 * c2);
+                        const yNum = (a1 * c2 - a2 * c1);
+                        const x = det === 0 ? NaN : xNum / det;
+                        const y = det === 0 ? NaN : yNum / det;
+                        if (!isNaN(x) && !isNaN(y)) {
+                            latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
+                        } else if (det === 0) {
+                            latexString += "<p>Sistem tidak memiliki solusi atau memiliki tak hingga solusi.</p>";
+                        }
+                    } else if (a1 !== 0) {
+                        latexString += `<p>Dari persamaan 1: $${a1}x = ${c1} \implies x = \\frac{${c1}}{${a1}}$</p>`;
+                        latexString += `<p>Substitusi ke persamaan 2: $${a2}\\left(\\frac{${c1}}{${a1}}\\right) + ${b2}y = ${c2}$</p>`;
+                        // (Langkah-langkah aljabar selanjutnya untuk menyelesaikan y perlu ditambahkan di sini)
+                        const det = a1 * b2 - a2 * b1;
+                        const xNum = (b2 * c1 - b1 * c2);
+                        const yNum = (a1 * c2 - a2 * c1);
+                        const x = det === 0 ? NaN : xNum / det;
+                        const y = det === 0 ? NaN : yNum / det;
+                        if (!isNaN(x) && !isNaN(y)) {
+                            latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
+                        } else if (det === 0) {
+                            latexString += "<p>Sistem tidak memiliki solusi atau memiliki tak hingga solusi.</p>";
+                        }
                     } else {
-                        latexString += "<p>Sistem tidak memiliki solusi</p>";
+                        latexString += "<p>Persamaan 1 tidak memiliki variabel x atau y untuk diselesaikan secara langsung.</p>";
                     }
-                } else if (method === 'substitution') {
-                    const xNum = (b2 * c1 - b1 * c2);
-                    const yNum = (a1 * c2 - a2 * c1);
-                    const x = xNum / det;
-                    const y = yNum / det;
-
-                    latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) =${det}$</p>`;
-                    latexString += `<p>Nilai $x$ ($D_x$) = $(${b2} \\times ${c1}) - (${b1} \\times ${c2}) = ${xNum}$</p>`;
-                    latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
-                    latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} \\approx ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} \\approx ${y.toFixed(2)}$</strong></p>`;
                 } else if (method === 'elimination') {
-                    const xNum = (b2 * c1 - b1 * c2);
-                    const yNum = (a1 * c2 - a2 * c1);
-                    const x = xNum / det;
-                    const y = yNum / det;
+                    const det = a1 * b2 - a2 * b1;
+                    if (det === 0) {
+                        if ((a1 * c2 - a2 * c1) === 0 && (b1 * c2 - b2 * c1) === 0) {
+                            latexString += "<p>Sistem memiliki tak hingga solusi</p>";
+                        } else {
+                            latexString += "<p>Sistem tidak memiliki solusi</p>";
+                        }
+                    } else {
+                        const xNum = (b2 * c1 - b1 * c2);
+                        const yNum = (a1 * c2 - a2 * c1);
+                        const x = xNum / det;
+                        const y = yNum / det;
 
-                    latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) = ${det}$</p>`;
-                    latexString += `<p>Nilai $x$ ($D_x$) = $(${c1} \\times ${b2}) - (${c2} \\times ${b1}) = ${xNum}$</p>`;
-                    latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
-                    latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} \\approx ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} \\approx ${y.toFixed(2)}$</strong></p>`;
+                        latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) = ${det}$</p>`;
+                        latexString += `<p>Nilai $x$ ($D_x$) = $(${c1} \\times ${b2}) - (${c2} \\times ${b1}) = ${xNum}$</p>`;
+                        latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
+                        latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} = ${y.toFixed(2)}$</strong></p>`;
+                    }
                 }
 
                 stepsDiv.innerHTML = latexString;
                 stepsDiv.style.display = 'block';
-                renderMathInElement(stepsDiv);
             });
 
             // Dynamic Navigation Toggle
