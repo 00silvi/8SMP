@@ -462,7 +462,7 @@
                     <span>x +</span>
                     <input type="number" id="b2" value="-1">
                     <span>y =</span>
-                    <input type="number" id="c2" value="1">
+                    <input type="number"<input type="number" id="c2" value="1">
                 </div>
 
                 <button class="btn" id="draw-graph">Gambar Grafik</button>
@@ -471,7 +471,8 @@
                 <div id="graph-result" class="result">
                     <h4>Hasil Analisis:</h4>
                     <p id="solution-type"></p>
-                    <p id="solution-point"></</div>
+                    <p id="solution-point"></p>
+                </div>
             </div>
 
             <div class="simulation-container">
@@ -618,13 +619,213 @@
             });
 
             // Accordion Functionality
-            const accordionHeaders = document.querySelectorAllconst x = xNum / det;
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordion = header.parentElement;
+                    const content = header.nextElementSibling;
+
+                    // Toggle current accordion
+                    accordion.classList.toggle('active');
+                    content.style.display = accordion.classList.contains('active') ? 'block' : 'none';
+
+                    // Rotate icon
+                    const icon = header.querySelector('i');
+                    icon.style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                });
+            });
+
+            // Show/hide explanations
+            document.querySelectorAll('.show-solution').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const explanation = this.nextElementSibling;
+                    explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+
+            // Check answers
+            document.querySelectorAll('.check-answer').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const feedback = this.nextElementSibling;
+                    feedback.style.display = feedback.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+
+            // Quiz functionality
+            let selectedOptions = [];
+
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selection from other options in same question
+                    const question = this.closest('.quiz-question');
+                    question.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+
+                    // Select current option
+                    this.classList.add('selected');
+                });
+            });
+
+            document.querySelectorAll('.show-explanation').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const explanation = this.nextElementSibling;
+                    explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+
+            document.getElementById('check-quiz').addEventListener('click', function() {
+                let score = 0;
+                const questions = document.querySelectorAll('.quiz-question');
+
+                questions.forEach(question => {
+                    const selected = question.querySelector('.option.selected');
+                    if (selected && selected.hasAttribute('data-correct')) {
+                        score++;
+                        selected.classList.add('correct');
+                    } else if (selected) {
+                        selected.classList.add('incorrect');
+                        // Highlight correct answer
+                        question.querySelector('.option[data-correct]').classList.add('correct');
+                    }
+                });
+
+                const resultDiv = document.getElementById('quiz-result');
+                resultDiv.innerHTML = `<h4>Hasil Kuis: ${score} dari ${questions.length} benar</h4>`;
+                resultDiv.style.display = 'block';
+            });
+
+            // Graph Simulation
+            let chart = null;
+
+            document.getElementById('draw-graph').addEventListener('click', function() {
+                const a1 = parseFloat(document.getElementById('a1').value);
+                const b1 = parseFloat(document.getElementById('b1').value);
+                const c1 = parseFloat(document.getElementById('c1').value);
+
+                const a2 = parseFloat(document.getElementById('a2').value);
+                const b2 = parseFloat(document.getElementById('b2').value);
+                const c2 = parseFloat(document.getElementById('c2').value);
+
+                const ctx = document.getElementById('graphCanvas').getContext('2d');
+
+                // Destroy previous chart if exists
+                if (chart) {
+                    chart.destroy();
+                }
+
+                // Create data for equations
+                const labels = Array.from({length: 21}, (_, i) => i - 10); // x values from -10 to 10
+                const data1 = labels.map(x => (c1 - a1 * x) / b1); // y values for equation 1
+                const data2 = labels.map(x => (c2 - a2 * x) / b2); // y values for equation 2
+
+                chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: `$${a1}x + ${b1}y = ${c1}$`,
+                                data: data1,
+                                borderColor: 'rgb(75, 192, 192)',
+                                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                                tension: 0.1,
+                                fill: false
+                            },
+                            {
+                                label: `$${a2}x + ${b2}y = ${c2}$`,
+                                data: data2,
+                                borderColor: 'rgb(255, 99, 132)',
+                                backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                                tension: 0.1,
+                                fill: false
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                type: 'linear',
+                                position: 'center'
+                            },
+                            y: {
+                                type: 'linear',
+                                position: 'center'
+                            }
+                        }
+                    }
+                });
+
+                // Show solution with KaTeX
+                const det = a1 * b2 - a2 * b1;
+                const resultDiv = document.getElementById('graph-result');
+                const solutionType = document.getElementById('solution-type');
+                const solutionPoint = document.getElementById('solution-point');
+
+                if (det === 0) {
+                    if (Math.abs(a1/a2 - b1/b2) < 1e-6 || (Math.abs(a1) < 1e-6 && Math.abs(a2) < 1e-6 && Math.abs(b1/b2 - c1/c2) < 1e-6) || (Math.abs(b1) < 1e-6 && Math.abs(b2) < 1e-6 && Math.abs(a1/a2 - c1/c2) < 1e-6)) {
+                        solutionType.textContent = "Sistem memiliki tak hingga solusi (garis berhimpit atau satu garis)";
+                        solutionPoint.textContent = "";
+                    } else {
+                        solutionType.textContent = "Sistem tidak memiliki solusi (garis sejajar)";
+                        solutionPoint.textContent = "";
+                    }
+                } else {
+                    const x = (b2 * c1 - b1 * c2) / det;
+                    const y = (a1 * c2 - a2 * c1) / det;
+                    solutionType.textContent = "Sistem memiliki satu solusi";
+                    solutionPoint.innerHTML = `Titik potong: ($${x.toFixed(2)}, ${y.toFixed(2)}$)`;
+                }
+
+                resultDiv.style.display = 'block';
+            });
+
+            // Equation Solver with KaTeX
+            document.getElementById('solve-btn').addEventListener('click', function() {
+                const method = document.getElementById('method').value;
+                const a1 = parseFloat(document.getElementById('calc-a1').value);
+                const b1 = parseFloat(document.getElementById('calc-b1').value);
+                const c1 = parseFloat(document.getElementById('calc-c1').value);
+
+                const a2 = parseFloat(document.getElementById('calc-a2').value);
+                const b2 = parseFloat(document.getElementById('calc-b2').value);
+                const c2 = parseFloat(document.getElementById('calc-c2').value);
+
+                const stepsDiv = document.getElementById('calculation-steps');
+                stepsDiv.innerHTML = '';
+                let latexString = `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
+
+                // Calculate determinant
+                const det = a1 * b2 - a2 * b1;
+
+                if (Math.abs(det) < 1e-6) {
+                    if (Math.abs(a1 * c2 - a2 * c1) < 1e-6 && Math.abs(b1 * c2 - b2 * c1) < 1e-6) {
+                        latexString += "<p>Sistem memiliki tak hingga solusi</p>";
+                    } else {
+                        latexString += "<p>Sistem tidak memiliki solusi</p>";
+                    }
+                } else if (method === 'substitution') {
+                    const xNum = (b2 * c1 - b1 * c2);
+                    const yNum = (a1 * c2 - a2 * c1);
+                    const x = xNum / det;
+                    const y = yNum / det;
+
+                    latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) =${det}$</p>`;
+                    latexString += `<p>Nilai $x$ ($D_x$) = $(${b2} \\times ${c1}) - (${b1} \\times ${c2}) = ${xNum}$</p>`;
+                    latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
+                    latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} \\approx ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} \\approx ${y.toFixed(2)}$</strong></p>`;
+                } else if (method === 'elimination') {
+                    const xNum = (b2 * c1 - b1 * c2);
+                    const yNum = (a1 * c2 - a2 * c1);
+                    const x = xNum / det;
                     const y = yNum / det;
 
                     latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) = ${det}$</p>`;
                     latexString += `<p>Nilai $x$ ($D_x$) = $(${c1} \\times ${b2}) - (${c2} \\times ${b1}) = ${xNum}$</p>`;
                     latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
-                    latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} = ${y.toFixed(2)}$</strong></p>`;
+                    latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} \\approx ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} \\approx ${y.toFixed(2)}$</strong></p>`;
                 }
 
                 stepsDiv.innerHTML = latexString;
