@@ -496,7 +496,7 @@
                     <span>x +</span>
                     <input type="number" id="calc-b1" value="3" placeholder="b₁">
                     <span>y =</span>
-                    <input type="number" id="calc-c1" value=" 7" placeholder="c₁">
+                    <input type="number" id="calc-c1" value="7" placeholder="c₁">
                 </div>
 
                 <div class="equation-input">
@@ -792,31 +792,68 @@
 
                 const a2 = parseFloat(document.getElementById('calc-a2').value);
                 const b2 = parseFloat(document.getElementById('calc-b2').value);
-                const c2 = parseFloat(document.getElementById('calc-c2').value);
+                const c2 = parseFloat(documentgetElementById('calc-c2').value);
 
                 const stepsDiv = document.getElementById('calculation-steps');
                 stepsDiv.innerHTML = '';
 
-                const det = a1 * b2 - a2 * b1;
-
                 let latexString = `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
 
-                if (det === 0) {
-                    if ((a1 * c2 - a2 * c1) === 0 && (b1 * c2 - b2 * c1) === 0) {
-                        latexString += "<p>Sistem memiliki tak hingga solusi</p>";
+                if (method === 'substitution') {
+                    // Logika metode substitusi
+                    // Contoh: Menyelesaikan y dari persamaan 1
+                    if (b1 !== 0) {
+                        latexString += `<p>Dari persamaan 1: $${a1}x + ${b1}y = ${c1} \implies y = \\frac{${c1} - ${a1}x}{${b1}}$</p>`;
+                        // Substitusi ke persamaan 2
+                        latexString += `<p>Substitusi ke persamaan 2: $${a2}x + ${b2}\\left(\\frac{${c1} - ${a1}x}{${b1}}\\right) = ${c2}$</p>`;
+                        // ... lanjutkan langkah-langkah aljabar untuk menyelesaikan x ...
+                        // ... lalu substitusi kembali untuk mendapatkan y ...
+                        // (Implementasi lengkap metode substitusi memerlukan langkah-langkah aljabar yang lebih detail)
+                        const det = a1 * b2 - a2 * b1;
+                        const xNum = (b2 * c1 - b1 * c2);
+                        const yNum = (a1 * c2 - a2 * c1);
+                        const x = det === 0 ? NaN : xNum / det;
+                        const y = det === 0 ? NaN : yNum / det;
+                        if (!isNaN(x) && !isNaN(y)) {
+                            latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
+                        } else if (det === 0) {
+                            latexString += "<p>Sistem tidak memiliki solusi atau memiliki tak hingga solusi.</p>";
+                        }
+                    } else if (a1 !== 0) {
+                        latexString += `<p>Dari persamaan 1: $${a1}x = ${c1} \implies x = \\frac{${c1}}{${a1}}$</p>`;
+                        latexString += `<p>Substitusi ke persamaan 2: $${a2}\\left(\\frac{${c1}}{${a1}}\\right) + ${b2}y = ${c2}$</p>`;
+                        // ... lanjutkan untuk menyelesaikan y ...
+                        const det = a1 * b2 - a2 * b1;
+                        const xNum = (b2 * c1 - b1 * c2);
+                        const yNum = (a1 * c2 - a2 * c1);
+                        const x = det === 0 ? NaN : xNum / det;
+                        const y = det === 0 ? NaN : yNum / det;
+                        if (!isNaN(x) && !isNaN(y)) {
+                            latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;} else if (det === 0) {
+                            latexString += "<p>Sistem tidak memiliki solusi atau memiliki tak hingga solusi.</p>";
+                        }
                     } else {
-                        latexString += "<p>Sistem tidak memiliki solusi</p>";
+                        latexString += "<p>Persamaan 1 tidak memiliki variabel x atau y untuk diselesaikan secara langsung.</p>";
                     }
-                } else {
-                    const xNum = (b2 * c1 - b1 * c2);
-                    const yNum = (a1 * c2 - a2 * c1);
-                    const x = xNum / det;
-                    const y = yNum / det;
+                } else if (method === 'elimination') {
+                    const det = a1 * b2 - a2 * b1;
+                    if (det === 0) {
+                        if ((a1 * c2 - a2 * c1) === 0 && (b1 * c2 - b2 * c1) === 0) {
+                            latexString += "<p>Sistem memiliki tak hingga solusi</p>";
+                        } else {
+                            latexString += "<p>Sistem tidak memiliki solusi</p>";
+                        }
+                    } else {
+                        const xNum = (b2 * c1 - b1 * c2);
+                        const yNum = (a1 * c2 - a2 * c1);
+                        const x = xNum / det;
+                        const y = yNum / det;
 
-                    latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) = ${det}$</p>`;
-                    latexString += `<p>Nilai $x$ ($D_x$) = $(${c1} \\times ${b2}) - (${c2} \\times ${b1}) = ${xNum}$</p>`;
-                    latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
-                    latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} = ${y.toFixed(2)}$</strong></p>`;
+                        latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) = ${det}$</p>`;
+                        latexString += `<p>Nilai $x$ ($D_x$) = $(${c1} \\times ${b2}) - (${c2} \\times ${b1}) = ${xNum}$</p>`;
+                        latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
+                        latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} = ${y.toFixed(2)}$</strong></p>`;
+                    }
                 }
 
                 stepsDiv.innerHTML = latexString;
