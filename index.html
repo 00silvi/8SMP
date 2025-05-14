@@ -499,11 +499,67 @@
                     <span>x +</span>
                     <input type="number" id="calc-b1" value="3" placeholder="b₁">
                     <span>y =</span>
-                    <input type="number" id="calc-c1" value="7" placeholder="c₁">
+                    <input type="number" id="calc-c1" value="7"placeholder="c₁">
                 </div>
 
-                <div class="equation-input"><p>Substitusi x ke pers.1: $3 + y = 5 \rightarrow y = 2$</p>
-                    <p><strong>Solusi: $x=3, y=2$</strong></p>
+                <div class="equation-input">
+                    <input type="number" id="calc-a2" value="1" placeholder="a₂">
+                    <span>x +</span>
+                    <input type="number" id="calc-b2" value="-1" placeholder="b₂">
+                    <span>y =</span>
+                    <input type="number" id="calc-c2" value="1" placeholder="c₂">
+                </div>
+
+                <button class="btn" id="solve-btn">Hitung</button>
+
+                <div id="calculation-steps" class="result">
+                </div>
+            </div>
+        </section>
+
+        <section id="contoh">
+            <h2><i class="fas fa-chalkboard-teacher"></i> Contoh Soal dan Pembahasan</h2>
+
+            <div class="example">
+                <h4>Contoh 1: Metode Substitusi</h4>
+                <p>Selesaikan: 2x + y = 7 dan x = y - 1</p>
+                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
+                <div class="explanation">
+                    <p><strong>Penyelesaian:</strong></p>
+                    <p>1. Dari persamaan 2: x = y - 1</p>
+                    <p>2. Substitusi ke persamaan 1: 2(y-1) + y = 7 → 3y = 9 → y = 3</p>
+                    <p>3. x = 3 - 1 = 2</p>
+                    <p><strong>Solusi: x=2, y=3</strong></p>
+                </div>
+            </div>
+
+            <div class="example">
+                <h4>Contoh 2: Metode Eliminasi</h4>
+                <p>Selesaikan: 3x + 2y = 12 dan 2x + 3y = 13</p>
+                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
+                <div class="explanation">
+                    <p><strong>Penyelesaian:</strong></p>
+                    <p>1. Eliminasi x: Pers.1 × 2 → 6x + 4y = 24</p>
+                    <p>Pers.2 × 3 → 6x + 9y = 39</p>
+                    <p>2. Kurangkan: -5y = -15 → y = 3</p>
+                    <p>3. Substitusi y ke pers.1: 3x + 6 = 12 → x = 2</p>
+                    <p><strong>Solusi: x=2, y=3</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="latihan">
+            <h2><i class="fas fa-pencil-alt"></i> Latihan Soal</h2>
+
+            <div class="quiz-question">
+                <p>1. Selesaikan: x + y = 5 dan 2x - y = 4</p>
+                <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
+                <button class="btn btn-outline check-answer">Periksa Jawaban</button>
+                <div class="feedback">
+                    <p><strong>Pembahasan:</strong></p>
+                    <p>Tambahkan kedua persamaan: 3x = 9 → x = 3</p>
+                    <p>Substitusi x ke pers.1: 3 + y = 5 → y = 2</p>
+                    <p><strong>Solusi: x=3, y=2</strong></p>
                 </div>
             </div>
 
@@ -513,10 +569,10 @@
                 <button class="btn btn-outline check-answer">Periksa Jawaban</button>
                 <div class="feedback">
                     <p><strong>Pembahasan:</strong></p>
-                    <p>Misal: buku = $x$, pensil = $y$</p>
-                    <p>$3x + 2y = 19500$</p>
-                    <p>$2x + 3y = 16000$</p>
-                    <p>Solusi: $x=5300, y=1800$</p>
+                    <p>Misal: buku = x, pensil = y</p>
+                    <p>3x + 2y = 19.500</p>
+                    <p>2x + 3y = 16.000</p>
+                    <p>Solusi: x=5.300, y=1.800</p>
                     <p>Harga 1 buku + 1 pensil = Rp7.100</p>
                 </div>
             </div>
@@ -524,12 +580,13 @@
 
         <section id="quiz">
             <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
+
             <div class="quiz-question">
                 <p>1. Manakah yang merupakan SPLDV?</p>
                 <div class="options">
-                    <div class="option" data-correct>A. $2x + y = 5$ dan $x - y = 1$</div>
-                    <div class="option">B. $x^2 + y = 3$ dan $x - y = 2$</div>
-                    <div class="option">C. $3x = 6$ dan $2y = 4$</div>
+                    <div class="option" data-correct>A. 2x + y = 5 dan x - y = 1</div>
+                    <div class="option">B. x² + y = 3 dan x - y = 2</div>
+                    <div class="option">C. 3x = 6 dan 2y = 4</div>
                 </div>
                 <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
                 <div class="explanation">
@@ -539,17 +596,17 @@
             </div>
 
             <div class="quiz-question">
-                <p>2. Penyelesaian dari $x + y = 7$ dan $x - y = 3$ adalah:</p>
+                <p>2. Penyelesaian dari x + y = 7 dan x - y = 3 adalah:</p>
                 <div class="options">
-                    <div class="option">A. $x=4, y=3$</div>
-                    <div class="option" data-correct>B. $x=5, y=2$</div>
-                    <div class="option">C. $x=6, y=1$</div>
+                    <div class="option">A. x=4, y=3</div>
+                    <div class="option" data-correct>B. x=5, y=2</div>
+                    <div class="option">C. x=6, y=1</div>
                 </div>
                 <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
                 <div class="explanation">
                     <p>Jawaban benar: <strong>B</strong></p>
-                    <p>Tambahkan kedua persamaan: $2x = 10 \rightarrow x=5$</p>
-                    <p>Substitusi: $5 + y = 7 \rightarrow y=2$</p>
+                    <p>Tambahkan kedua persamaan: 2x = 10 → x=5</p>
+                    <p>Substitusi: 5 + y = 7 → y=2</p>
                 </div>
             </div>
 
@@ -791,8 +848,7 @@
                     stepsDiv.innerHTML += `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
                     stepsDiv.innerHTML += `<p>1. Determinan = (${a1} × ${b2}) - (${a2} × ${b1}) = ${det}</p>`;
                     stepsDiv.innerHTML += `<p>2. Nilai x = (${b2} × ${c1} - ${b1} × ${c2}) / ${det} = ${x.toFixed(2)}</p>`;
-                    stepsDiv.innerHTML += `<p>3. Nilai y = (${a1} × ${c2} - ${a2} × ${c1}) / ${det} = ${y.toFixed(2)}</p>`;
-                    stepsDiv.innerHTML += `<p><strong>Solusi: x = ${x.toFixed(2)}, y = ${y.toFixed(2)}</strong></p>`;
+                    stepsDiv.innerHTML += `<p>3. Nilai y = (${a1} × ${c2} - ${a2} × ${c1}) / ${det} = ${y.toFixed(2)}</p>`;stepsDiv.innerHTML += `<p><strong>Solusi: x = ${x.toFixed(2)}, y = ${y.toFixed(2)}</strong></p>`;
                 }
 
                 stepsDiv.style.display = 'block';
@@ -815,4 +871,5 @@
         });
     </script>
 </body>
+
 </html>
