@@ -10,6 +10,9 @@
         MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
             }
         };
     </script>
@@ -496,7 +499,7 @@
                     <span>x +</span>
                     <input type="number" id="calc-b1" value="3" placeholder="b₁">
                     <span>y =</span>
-                    <inputtype="number" id="calc-c1" value="7" placeholder="c₁">
+                    <input type="number" id="calc-c1" value="7" placeholder="c₁">
                 </div>
 
                 <div class="equation-input">
@@ -548,38 +551,66 @@
         <section id="latihan">
             <h2><i class="fas fa-pencil-alt"></i> Latihan Soal</h2>
             <ol>
-                <li>Selesaikan sistem persamaan: $x + 2y = 7$ dan $3x - y = 0$</li>
-                <li>Sebuah toko menjual 2 kg jeruk dan 3 kg apel dengan harga Rp 70.000. Jika harga 1 kg jeruk Rp 5.000 lebih mahal dari harga 1 kg apel, tentukan harga per kg jeruk dan apel.</li>
-                <li>Gambarkan grafik dari sistem persamaan: $y = x + 1$ dan $y = -x + 3$. Tentukan titik potongnya.</li>
+                <li>
+                    Selesaikan sistem persamaan: $x + 2y = 7$ dan $3x - y = 0$
+                    <div class="equation-input">
+                        <span>x =</span> <input type="text" id="latihan1-x" placeholder="Jawaban x">
+                        <span>y =</span> <input type="text" id="latihan1-y" placeholder="Jawaban y">
+                        <button class="btn btn-outline" onclick="cekJawabanLatihan(1)">Cek</button>
+                        <div id="feedback-latihan1" class="feedback"></div>
+                    </div>
+                </li>
+                <li>
+                    Sebuah toko menjual 2 kg jeruk dan 3 kg apel dengan harga Rp 70.000. Jika harga 1 kg jeruk Rp 5.000 lebih mahal dari harga 1 kg apel, tentukan harga per kg jeruk dan apel.
+                    <div class="equation-input">
+                        <span>Harga Jeruk/kg = Rp</span> <input type="text" id="latihan2-jeruk" placeholder="Harga Jeruk">
+                        <span>Harga Apel/kg = Rp</span> <input type="text" id="latihan2-apel" placeholder="Harga Apel">
+                        <button class="btn btn-outline" onclick="cekJawabanLatihan(2)">Cek</button>
+                        <div id="feedback-latihan2" class="feedback"></div>
+                    </div>
+                </li>
+                <li>
+                    Gambarkan grafik dari sistem persamaan: $y = x + 1$ dan $y = -x + 3$. Tentukan titik potongnya.
+                    <div class="equation-input">
+                        <span>Titik potong x =</span> <input type="text" id="latihan3-x" placeholder="x">
+                        <span>Titik potong y =</span> <input type="text" id="latihan3-y" placeholder="y">
+                        <button class="btn btn-outline" onclick="cekJawabanLatihan(3)">Cek</button>
+                        <div id="feedback-latihan3" class="feedback"></div>
+                    </div>
+                </li>
             </ol>
         </section>
 
         <section id="quiz">
             <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
             <div class="quiz-container">
-                <div class="quiz-question">
+                <div class="quiz-question" id="quiz-question-1">
                     <p>1. Manakah di bawah ini yang merupakan contoh sistem persamaan linear dua variabel?</p>
                     <div class="options">
-                        <div class="option" onclick="checkAnswer(this, 'a', 'explanation1')">a) $x^2 + y = 5, x - y = 1$</div>
-                        <div class="option" onclick="checkAnswer(this, 'b', 'explanation1')">b) $2x + 3y = 7, x/y = 2$</div>
-                        <div class="option correct" onclick="checkAnswer(this, 'c', 'explanation1')">c) $2x + 3y = 7, x - y = 1$</div>
-                        <div class="option" onclick="checkAnswer(this, 'd', 'explanation1')">d) $x + y > 3, 2x - y = 0$</div>
+                        <div class="option" onclick="selectAnswer(this, 'a', 1)">a) $x^2 + y = 5, x - y = 1$</div>
+                        <div class="option" onclick="selectAnswer(this, 'b', 1)">b) $2x + 3y = 7, x/y = 2$</div>
+                        <div class="option correct" data-correct="c" onclick="selectAnswer(this, 'c', 1)">c) $2x + 3y = 7, x - y = 1$</div>
+                        <div class="option" onclick="selectAnswer(this, 'd', 1)">d) $x + y > 3, 2x - y = 0$</div>
                     </div>
                     <div id="explanation1" class="explanation">Jawaban yang benar adalah c) karena kedua persamaan adalah persamaan linear dengan dua variabel.</div>
+                    <div id="feedback-quiz-1" class="feedback"></div>
                 </div>
 
-                <div class="quiz-question">
+                <div class="quiz-question" id="quiz-question-2">
                     <p>2. Titik potong dari grafik persamaan $y = 2x - 3$ dan $y = -x + 3$ adalah...</p>
                     <div class="options">
-                        <div class="option" onclick="checkAnswer(this, 'a', 'explanation2')">a) (1, -1)</div>
-                        <div class="option correct" onclick="checkAnswer(this, 'b', 'explanation2')">b) (2, 1)</div>
-                        <div class="option" onclick="checkAnswer(this, 'c', 'explanation2')">c) (-2, -7)</div>
-                        <div class="option" onclick="checkAnswer(this, 'd', 'explanation2')">d) (-1, -5)</div>
+                        <div class="option" onclick="selectAnswer(this, 'a', 2)">a) (1, -1)</div>
+                        <div class="option correct" data-correct="b" onclick="selectAnswer(this, 'b', 2)">b) (2, 1)</div>
+                        <div class="option" onclick="selectAnswer(this, 'c', 2)">c) (-2, -7)</div>
+                        <div class="option" onclick="selectAnswer(this, 'd', 2)">d) (-1, -5)</div>
                     </div>
                     <div id="explanation2" class="explanation">Jawaban yang benar adalah b) karena jika $2x - 3 = -x + 3$, maka $3x = 6$, sehingga $x = 2$, dan $y = 2(2) - 3 = 1$.</div>
+                    <div id="feedback-quiz-2" class="feedback"></div>
                 </div>
 
-                </div>
+                <button class="btn" onclick="submitQuiz()">Submit Kuis</button>
+                <div id="quiz-result" style="display: none; margin-top: 1rem;"></div>
+            </div>
         </section>
     </div>
 
@@ -610,6 +641,18 @@
             const graphResultDiv = document.getElementById('graph-result');
             const solutionTypeElement = document.getElementById('solution-type');
             const solutionPointElement = document.getElementById('solution-point');
+
+            function updateGraphLabels(a, b, c, labelElement) {
+                let label = '';
+                if (a !== 0) label += `${a === 1 ? '' : (a === -1 ? '-' : a)}x`;
+                if (b !== 0) label += `${label ? (b > 0 ? ' + ' : ' - ') : (b === -1 ? '-' : b)}${Math.abs(b) === 1 && a !== 0 ? '' : Math.abs(b)}y`;
+                label += ` = ${c}`;
+                labelElement.data.datasets.forEach(dataset => {
+                    dataset.label = label;
+                });
+                chart.update();
+                MathJax.typesetPromise();
+            }
 
             document.getElementById('draw-graph').addEventListener('click', function() {
                 const a1 = parseFloat(document.getElementById('a1').value);
@@ -658,12 +701,6 @@
                     }
                 });
 
-                // Coba render ulang label setelah grafik dibuat
-                setTimeout(() => {
-                    MathJax.typesetPromise();
-                    console.log('MathJax.typesetPromise() dijalankan setelah chart dibuat');
-                }, 200);
-
                 const det = a1 * b2 - a2 * b1;
                 let solutionTypeText = "";
                 let solutionPointText = "";
@@ -679,13 +716,13 @@
                     const x = (b2 * c1 - b1 * c2) / det;
                     const y = (a1 * c2 - a2 * c1) / det;
                     solutionTypeText = "Sistem memiliki satu solusi";
-                    solutionPointText = `Titik potong: $\\left(${x.toFixed(2)}, ${y.toFixed(2)}\\right)$`;
+                    solutionPointText = `Titik potong: $(${x.toFixed(2)}, ${y.toFixed(2)})$`;
                 }
 
                 solutionTypeElement.innerHTML = solutionTypeText;
                 solutionPointElement.innerHTML = solutionPointText;
                 graphResultDiv.style.display = 'block';
-                MathJax.typesetPromise(); // Ditambahkan di sini
+                MathJax.typesetPromise();
             });
 
             // Equation Solver
@@ -749,33 +786,90 @@
                         const x = xNum / det;
                         const y = yNum / det;
 
-                        latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) = ${det}$</p>`;
-                        latexString += `<p>Nilai $x$ ($D_x$) = $(${c1} \\times ${b2}) - (${c2} \\times ${b1}) = ${xNum}$</p>`;
-                        latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
-                        latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} = ${y.toFixed(2)}$</strong></p>`;
+                        latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) = ${det}$</p>`;latexString += `<p>Determinan untuk $x$ ($D_x$) = $(${c1} \\times ${b2}) - (${c2} \\times ${b1}) = ${xNum}$</p>`;
+                        latexString += `<p>Determinan untuk $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
+                        latexString += `<p>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} = ${y.toFixed(2)}$</p>`;
                     }
                 }
 
                 calculationStepsDiv.innerHTML = latexString;
                 calculationStepsDiv.style.display = 'block';
-                MathJax.typesetPromise(); // Ditambahkan di sini
+                MathJax.typesetPromise();
             });
 
-            function checkAnswer(selectedOption, correctAnswer, explanationId) {
-                const options = selectedOption.parentNode.querySelectorAll('.option');
-                options.forEach(option => {
-                    option.classList.remove('selected', 'correct', 'incorrect');
-                });
-                selectedOption.classList.add('selected');
+            // Latihan Soal
+            function cekJawabanLatihan(nomorSoal) {
+                let feedbackElement = document.getElementById(`feedback-latihan${nomorSoal}`);
+                feedbackElement.style.display = 'block';
 
-                const explanationDiv = document.getElementById(explanationId);
-                if (selectedOption.classList.contains('correct')) {
-                    selectedOption.classList.add('correct');
-                    explanationDiv.style.display = 'block';
-                } else {
-                    selectedOption.classList.add('incorrect');
-                    explanationDiv.style.display = 'block';
+                if (nomorSoal === 1) {
+                    const xJawaban = parseFloat(document.getElementById('latihan1-x').value);
+                    const yJawaban = parseFloat(document.getElementById('latihan1-y').value);
+                    if (Math.abs(xJawaban - 1) < 0.001 && Math.abs(yJawaban - 3) < 0.001) {
+                        feedbackElement.innerHTML = '<span style="color: green;">Jawaban Anda benar! Solusinya adalah $x = 1$ dan $y = 3$.</span>';
+                    } else {
+                        feedbackElement.innerHTML = '<span style="color: red;">Jawaban Anda salah. Solusi yang benar adalah $x = 1$ dan $y = 3$.</span>';
+                    }
+                    MathJax.typesetPromise();
+                } else if (nomorSoal === 2) {
+                    const jerukJawaban = parseFloat(document.getElementById('latihan2-jeruk').value);
+                    const apelJawaban = parseFloat(document.getElementById('latihan2-apel').value);
+                    if (Math.abs(jerukJawaban - 20000) < 0.001 && Math.abs(apelJawaban - 15000) < 0.001) {
+                        feedbackElement.innerHTML = '<span style="color: green;">Jawaban Anda benar! Harga jeruk Rp 20.000/kg dan apel Rp 15.000/kg.</span>';
+                    } else {
+                        feedbackElement.innerHTML = '<span style="color: red;">Jawaban Anda salah. Harga jeruk Rp 20.000/kg dan apel Rp 15.000/kg.</span>';
+                    }
+                } else if (nomorSoal === 3) {
+                    const xJawaban = parseFloat(document.getElementById('latihan3-x').value);
+                    const yJawaban = parseFloat(document.getElementById('latihan3-y').value);
+                    if (Math.abs(xJawaban - 1) < 0.001 && Math.abs(yJawaban - 2) < 0.001) {
+                        feedbackElement.innerHTML = '<span style="color: green;">Jawaban Anda benar! Titik potongnya adalah (1, 2).</span>';
+                    } else {
+                        feedbackElement.innerHTML = '<span style="color: red;">Jawaban Anda salah. Titik potong yang benar adalah (1, 2).</span>';
+                    }
                 }
+            }
+
+            // Kuis Interaktif
+            let selectedAnswers = {};
+
+            function selectAnswer(element, answer, questionNumber) {
+                const options = document.querySelectorAll(`#quiz-question-${questionNumber} .option`);
+                options.forEach(option => option.classList.remove('selected'));
+                element.classList.add('selected');
+                selectedAnswers[questionNumber] = answer;
+
+                const explanation = document.getElementById(`explanation${questionNumber}`);
+                explanation.style.display = 'none';
+            }
+
+            function submitQuiz() {
+                let score = 0;
+                for (const questionNumber in selectedAnswers) {
+                    const selectedOption = document.querySelector(`#quiz-question-${questionNumber} .option.selected`);
+                    const correctAnswer = document.querySelector(`#quiz-question-${questionNumber} .option.correct`).dataset.correct;
+                    const feedbackElement = document.getElementById(`feedback-quiz-${questionNumber}`);
+                    feedbackElement.style.display = 'block';
+
+                    if (selectedAnswers[questionNumber] === correctAnswer) {
+                        score++;
+                        feedbackElement.innerHTML = '<span style="color: green;">Benar!</span>';
+                    } else if (selectedOption) {
+                        feedbackElement.innerHTML = `<span style="color: red;">Salah. Jawaban yang benar adalah ${correctAnswer}.</span>`;
+                        const explanation = document.getElementById(`explanation${questionNumber}`);
+                        explanation.style.display = 'block';
+                        MathJax.typesetPromise();
+                    } else {
+                        feedbackElement.innerHTML = '<span style="color: orange;">Tidak dijawab. Jawaban yang benar adalah c.</span>';
+                        const explanation = document.getElementById(`explanation${questionNumber}`);
+                        explanation.style.display = 'block';
+                        MathJax.typesetPromise();
+                    }
+                }
+
+                const quizResultDiv = document.getElementById('quiz-result');
+                quizResultDiv.innerHTML = `Anda mendapatkan skor ${score} dari 2 soal.`;
+                quizResultDiv.style.display = 'block';
             }
         });
     </script>
