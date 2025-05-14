@@ -494,8 +494,7 @@
                 <div class="equation-input">
                     <input type="number" id="calc-a1" value="2" placeholder="a₁">
                     <span>x +</span>
-                    <input type="number" id="calc-b1" value="3" placeholder="b₁
-                        ">
+                    <input type="number" id="calc-b1" value="3" placeholder="b₁">
                     <span>y =</span>
                     <input type="number" id="calc-c1" value="7" placeholder="c₁">
                 </div>
@@ -727,18 +726,18 @@
                         labels: labels,
                         datasets: [
                             {
-                                label: `${a1}x + ${b1}y = ${c1}`,
+                                label: `$${a1}x + ${b1}y = ${c1}$`,
                                 data: data1,
                                 borderColor: 'rgb(75, 192, 192)',
-                                backgroundColor: 'rgba(75, 192, 192, 0.1)`,
+                                backgroundColor: 'rgba(75, 192, 192, 0.1)',
                                 tension: 0.1,
                                 fill: false
                             },
                             {
-                                label: `${a2}x + ${b2}y = ${c2}`,
+                                label: `$${a2}x + ${b2}y = ${c2}$`,
                                 data: data2,
                                 borderColor: 'rgb(255, 99, 132)',
-                                backgroundColor: 'rgba(255, 99, 132, 0.1)`,
+                                backgroundColor: 'rgba(255, 99, 132, 0.1)',
                                 tension: 0.1,
                                 fill: false
                             }
@@ -765,6 +764,7 @@
                 const solutionType = document.getElementById('solution-type');
                 const solutionPoint = document.getElementById('solution-point');
 
+                let solutionText = "";
                 if (det === 0) {
                     if ((a1 * c2 - a2 * c1) === 0 && (b1 * c2 - b2 * c1) === 0) {
                         solutionType.textContent = "Sistem memiliki tak hingga solusi (garis berhimpit)";
@@ -777,7 +777,7 @@
                     const x = (b2 * c1 - b1 * c2) / det;
                     const y = (a1 * c2 - a2 * c1) / det;
                     solutionType.textContent = "Sistem memiliki satu solusi";
-                    solutionPoint.textContent = `Titik potong: (${x.toFixed(2)}, ${y.toFixed(2)})`;
+                    solutionPoint.innerHTML = `Titik potong: ($${x.toFixed(2)}, ${y.toFixed(2)}$)`;
                 }
 
                 resultDiv.style.display = 'block';
@@ -799,23 +799,27 @@
 
                 const det = a1 * b2 - a2 * b1;
 
+                let latexString = `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
+
                 if (det === 0) {
                     if ((a1 * c2 - a2 * c1) === 0 && (b1 * c2 - b2 * c1) === 0) {
-                        stepsDiv.innerHTML = "<p>Sistem memiliki tak hingga solusi</p>";
+                        latexString += "<p>Sistem memiliki tak hingga solusi</p>";
                     } else {
-                        stepsDiv.innerHTML = "<p>Sistem tidak memiliki solusi</p>";
+                        latexString += "<p>Sistem tidak memiliki solusi</p>";
                     }
                 } else {
-                    const x = (b2 * c1 - b1 * c2) / det;
-                    const y = (a1 * c2 - a2 * c1) / det;
+                    const xNum = (b2 * c1 - b1 * c2);
+                    const yNum = (a1 * c2 - a2 * c1);
+                    const x = xNum / det;
+                    const y = yNum / det;
 
-                    stepsDiv.innerHTML += `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
-                    stepsDiv.innerHTML += `<p>Determinan ($D$) = ($${a1} \times ${b2}$) - ($${a2} \times ${b1}$) = $${det}$</p>`;
-                    stepsDiv.innerHTML += `<p>Nilai $x$ ($D_x$) = ($${c1} \times ${b2}$) - ($${c2} \times ${b1}$) = $${c1 * b2 - c2 * b1}$</p>`;
-                    stepsDiv.innerHTML += `<p>Nilai $y$ ($D_y$) = ($${a1} \times ${c2}$) - ($${a2} \times ${c1}$) = $${a1 * c2 - a2 * c1}$</p>`;
-                    stepsDiv.innerHTML += `<p><strong>Solusi: $x = \frac{D_x}{D} = ${x.toFixed(2)}$, $y = \frac{D_y}{D} = ${y.toFixed(2)}$</strong></p>`;
+                    latexString += `<p>Determinan ($D$) = ($${a1} \\times ${b2}$) - ($${a2} \\times ${b1}$) = $${det}$</p>`;
+                    latexString += `<p>Nilai $x$ ($D_x$) = ($${c1} \\times ${b2}$) - ($${c2} \\times ${b1}$) = $${xNum}$</p>`;
+                    latexString += `<p>Nilai $y$ ($D_y$) = ($${a1} \\times ${c2}$) - ($${a2} \\times ${c1}$) = $${yNum}$</p>`;
+                    latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} = ${y.toFixed(2)}$</strong></p>`;
                 }
 
+                stepsDiv.innerHTML = latexString;
                 stepsDiv.style.display = 'block';
             });
 
