@@ -306,27 +306,40 @@
             margin-top: 2rem;
         }
         
-        @media (max-width: 768px) {
+@media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             nav li {
                 margin: 0.5rem 0;
             }
-            
+
             header h1 {
                 font-size: 2rem;
             }
-            
+
             .equation-input {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .equation-input input {
                 margin: 0.5rem 0;
+            }
+
+            .nav-toggle {
+                display: block; /* Pastikan tombol toggle terlihat di layar kecil */
+            }
+            nav {
+                max-height: 0; /* Menu tertutup secara default di layar kecil */
+                overflow: hidden; /* Pastikan konten yang melebihi batas tersembunyi */
+                transition: max-height 0.3s ease-out; /* Tambahkan transisi untuk animasi */
+            }
+
+            nav.open {
+                max-height: 500px; /* Sesuaikan dengan tinggi total menu Anda */
             }
         }
     </style>
@@ -338,17 +351,17 @@
     </header>
     
 <div class="nav-container">
-    <button class="nav-toggle"><i class="fas fa-bars"></i> Menu</button>
-    <nav>
-        <ul>
-            <li><a href="#tujuan"><i class="fas fa-bullseye"></i> Tujuan</a></li>
-            <li><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
-            <li><a href="#simulasi"><i class="fas fa-laptop-code"></i> Simulasi</a></li>
-            <li><a href="#contoh"><i class="fas fa-chalkboard-teacher"></i> Contoh</a></li>
-            <li><a href="#latihan"><i class="fas fa-pencil-alt"></i> Latihan</a></li>
-            <li><a href="#quiz"><i class="fas fa-question-circle"></i> Kuis</a></li>
-        </ul>
-    </nav>
+        <button class="nav-toggle"><i class="fas fa-bars"></i> Menu</button>
+        <nav>
+            <ul>
+                <li><a href="#tujuan"><i class="fas fa-bullseye"></i> Tujuan</a></li>
+                <li><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
+                <li><a href="#simulasi"><i class="fas fa-laptop-code"></i> Simulasi</a></li>
+                <li><a href="#contoh"><i class="fas fa-chalkboard-teacher"></i> Contoh</a></li>
+                <li><a href="#latihan"><i class="fas fa-pencil-alt"></i> Latihan</a></li>
+                <li><a href="#quiz"><i class="fas fa-question-circle"></i> Kuis</a></li>
+            </ul>
+        </nav>
 </div>
     
     <div class="container">
@@ -582,9 +595,41 @@
         <p>@2025 Media Pembelajaran Matematika Kelas 8 SMP</p>
         <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
     </footer>
+    <script>
+        // Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dynamic Navigation Toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const nav = document.querySelector('nav');
+
+            navToggle.addEventListener('click', () => {
+                nav.classList.toggle('open');
+            });
+
+            // Accordion functionality (tetap ada)
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordion = header.parentElement;
+                    const content = header.nextElementSibling;
+
+                    // Toggle current accordion
+                    accordion.classList.toggle('active');
+                    content.style.display = accordion.classList.contains('active') ? 'block' : 'none';
+
+                    // Rotate icon
+                    const icon = header.querySelector('i');
+                    icon.style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                });
+            });
+
+            // ... (kode JavaScript lainnya untuk accordion, simulasi, kuis, dll.)
+        });
+    </
 
     <script>
-            background-color: var(--dark-color);
+          background-color: var(--dark-color);
             color: white;
             text-align: center;
             padding: 2rem 0;
