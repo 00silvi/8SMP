@@ -792,242 +792,148 @@
 <section id="quiz">
     <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
 
-    <div class="quiz-question">
-        <p>1. Manakah yang merupakan SPLDV?</p>
-        <div class="options">
-            <button class="option" data-answer="A">A. $2x + y = 5$ dan $x - y = 1$</button>
-            <button class="option" data-answer="B">B. $x^2 + y = 3$ dan $x - y = 2$</button>
-            <button class="option" data-answer="C">C. $3x = 6$ dan $2y = 4$</button>
+    <div class="quiz-question" data-question="1">
+        <p>1.  Manakah di bawah ini yang merupakan Sistem Persamaan Linear Dua Variabel (SPLDV)?</p>
+        <div class="options" id="quiz-question-1">
+            <div class="option" data-answer="A" data-correct="true" onclick="selectAnswer(this, 'A', 1)">A.  $3x - y = 5$ dan $2x + y = 10$</div>
+            <div class="option" data-answer="B" onclick="selectAnswer(this, 'B', 1)">B.  $x^2 + 2y = 8$ dan $x - y = 3$</div>
+            <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 1)">C.  $x + y = 7$ dan $y = 2x - 1$</div>
         </div>
-        <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-        <div class="feedback">
-            <p><strong>Pembahasan:</strong></p>
-            <p>Jawaban benar: A. $2x + y = 5$ dan $x - y = 1$</p>
-            <p>SPLDV harus memiliki dua persamaan linear dengan dua variabel yang sama.</p>
+        <div class="explanation" id="explanation1">
+            <p>Jawaban benar: <strong>A</strong></p>
+            <p>SPLDV terdiri dari dua persamaan linear. Pilihan B memiliki $x^2$, bukan linear.</p>
         </div>
+        <div class="feedback" id="feedback-quiz-1"></div>
     </div>
 
-    <div class="quiz-question">
-        <p>2. Penyelesaian dari $x + y = 7$ dan $x - y = 3$ adalah:</p>
-        <div class="options">
-            <button class="option" data-answer="A">A. $x=4, y=3$</button>
-            <button class="option" data-answer="B">B. $x=5, y=2$</button>
-            <button class="option" data-answer="C">C. $x=6, y=1$</button>
+    <div class="quiz-question" data-question="2">
+        <p>2.  Penyelesaian dari sistem persamaan $x + y = 8$ dan $x - y = 2$ adalah...</p>
+        <div class="options" id="quiz-question-2">
+            <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 2)">A.  $(4, 4)$</div>
+            <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(this, 'B', 2)">B.  $(5, 3)$</div>
+            <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 2)">C.  $(6, 2)$</div>
         </div>
-        <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-        <div class="feedback">
-            <p><strong>Pembahasan:</strong></p>
-            <p>Jawaban benar: B. $x=5, y=2$</p>
-            <p>1. Tambahkan kedua persamaan: $2x = 10 \rightarrow x=5$</p>
-            <p>2. Substitusi: $5 + y = 7 \rightarrow y=2$</p>
+        <div class="explanation" id="explanation2">
+            <p>Jawaban benar: <strong>B</strong></p>
+            <p>Dengan eliminasi, $2x = 10$, maka $x = 5$. Substitusi ke $x + y = 8$ menghasilkan $y = 3$.</p>
         </div>
+        <div class="feedback" id="feedback-quiz-2"></div>
     </div>
 
-    <div class="quiz-question">
-        <p>3. Jika $2x + y = 8$ dan $x - y = 1$, maka nilai $x$ adalah...</p>
-        <div class="options">
-            <button class="option" data-answer="A">A. 2</button>
-            <button class="option" data-answer="B">B. 3</button>
-            <button class="option" data-answer="C">C. 4</button>
+    <div class="quiz-question" data-question="3">
+        <p>3.  Jika $2x + y = 10$ dan $x = 3$, maka nilai $y$ adalah...</p>
+        <div class="options" id="quiz-question-3">
+            <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 3)">A.  2</div>
+            <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(this, 'B', 3)">B.  4</div>
+            <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 3)">C.  6</div>
         </div>
-        <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-        <div class="feedback">
-            <p><strong>Pembahasan:</strong></p>
-            <p>Jawaban benar: B. 3</p>
-            <p>1. Tambahkan kedua persamaan: $3x = 9 \rightarrow x = 3$</p>
+        <div class="explanation" id="explanation3">
+            <p>Jawaban benar: <strong>B</strong></p>
+            <p>Substitusi $x = 3$ ke $2x + y = 10$ menjadi $6 + y = 10$, maka $y = 4$.</p>
         </div>
+        <div class="feedback" id="feedback-quiz-3"></div>
     </div>
 
-    <div class="quiz-question">
-        <p>4. Harga 5 kg jeruk dan 2 kg apel adalah Rp55.000. Jika harga 3 kg jeruk dan 4 kg apel adalah Rp49.000, maka harga 1 kg jeruk adalah...</p>
-        <div class="options">
-            <button class="option" data-answer="A">A. Rp8.000</button>
-            <button class="option" data-answer="B">B. Rp10.000</button>
-            <button class="option" data-answer="C">C. Rp12.000</button>
+    <div class="quiz-question" data-question="4">
+        <p>4.  Metode penyelesaian SPLDV yang melibatkan penggantian variabel adalah...</p>
+        <div class="options" id="quiz-question-4">
+            <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 4)">A.  Eliminasi</div>
+            <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(this, 'B', 4)">B.  Substitusi</div>
+            <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 4)">C.  Grafik</div>
         </div>
-        <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-        <div class="feedback">
-            <p><strong>Pembahasan:</strong></p>
-            <p>Jawaban benar: B. Rp10.000</p>
-            <p>1. Misalkan harga 1 kg jeruk adalah $j$ dan harga 1 kg apel adalah $a$.</p>
-            <p>2. Persamaan yang terbentuk: $5j + 2a = 55000$ dan $3j + 4a = 49000$</p>
-            <p>3. Kalikan persamaan pertama dengan 2: $10j + 4a = 110000$</p>
-            <p>4. Kurangkan persamaan yang baru dengan persamaan kedua: $7j = 61000 \rightarrow j = 10000$</p>
+        <div class="explanation" id="explanation4">
+            <p>Jawaban benar: <strong>B</strong></p>
+            <p>Metode substitusi menggantikan variabel dari satu persamaan ke persamaan lainnya.</p>
         </div>
+        <div class="feedback" id="feedback-quiz-4"></div>
     </div>
 
-    <div class="quiz-question">
-        <p>5. Sistem persamaan $x + 2y = 8$ dan $2x - y = 6$ memiliki solusi...</p>
-        <div class="options">
-            <button class="option" data-answer="A">A. $x=2, y=3$</button>
-            <button class="option" data-answer="B">B. $x=4, y=2$</button>
-            <button class="option" data-answer="C">C. $x=3, y=1$</button>
+    <div class="quiz-question" data-question="5">
+        <p>5.  Dua garis pada grafik SPLDV yang memiliki satu solusi akan...</p>
+        <div class="options" id="quiz-question-5">
+            <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 5)">A.  Sejajar</div>
+            <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(this, 'B', 5)">B.  Berpotongan</div>
+            <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 5)">C.  Berhimpit</div>
         </div>
-        <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-        <div class="feedback">
-            <p><strong>Pembahasan:</strong></p>
-            <p>Jawaban benar: B. $x=4, y=2$</p>
-            <p>1. Kalikan persamaan kedua dengan 2: $4x - 2y = 12$</p>
-            <p>2. Tambahkan persamaan pertama dengan persamaan yang baru: $5x = 20 \rightarrow x = 4$</p>
-            <p>3. Substitusi nilai $x$ ke persamaan pertama: $4 + 2y = 8 \rightarrow y = 2$</p>
+        <div class="explanation" id="explanation5">
+            <p>Jawaban benar: <strong>B</strong></p>
+            <p>Garis yang berpotongan memiliki satu titik potong, yang merupakan solusi SPLDV.</p>
         </div>
+        <div class="feedback" id="feedback-quiz-5"></div>
     </div>
 
-    <div class="quiz-question">
-        <p>6. Jika $a - b = 5$ dan $a + b = 15$, maka nilai $a^2 - b^2$ adalah...</p>
-        <div class="options">
-            <button class="option" data-answer="A">A. 25</button>
-            <button class="option" data-answer="B">B. 50</button>
-            <button class="option" data-answer="C">C. 75</button>
+    <div class="quiz-question" data-question="6">
+        <p>6.  Harga 2 kg apel dan 1 kg jeruk adalah Rp46.000. Jika harga 1 kg apel adalah Rp16.000, maka harga 1 kg jeruk adalah...</p>
+        <div class="options" id="quiz-question-6">
+            <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 6)">A.  Rp12.000</div>
+            <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(this, 'B', 6)">B.  Rp14.000</div>
+            <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 6)">C.  Rp16.000</div>
         </div>
-        <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-        <div class="feedback">
-            <p><strong>Pembahasan:</strong></p>
-            <p>Jawaban benar: C. 75</p>
-            <p>Ingat bahwa $a^2 - b^2 = (a - b)(a + b)$. Maka, $a^2 - b^2 = 5 * 15 = 75$</p>
+        <div class="explanation" id="explanation6">
+            <p>Jawaban benar: <strong>B</strong></p>
+            <p>Misal apel = a, jeruk = j.  2a + j = 46.000. Jika a = 16.000, maka 32.000 + j = 46.000, jadi j = 14.000.</p>
         </div>
+        <div class="feedback" id="feedback-quiz-6"></div>
     </div>
 
-    <div class="quiz-question">
-        <p>7. Jumlah dua bilangan adalah 20, dan selisihnya adalah 4. Bilangan terbesar adalah...</p>
-        <div class="options">
-            <button class="option" data-answer="A">A. 8</button>
-            <button class="option" data-answer="B">B. 12</button>
-            <button class="option" data-answer="C">C. 16</button>
+    <div class="quiz-question" data-question="7">
+        <p>7.  Sistem persamaan $x + 2y = 5$ dan $2x + 4y = 10$ memiliki solusi...</p>
+        <div class="options" id="quiz-question-7">
+            <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 7)">A.  Satu</div>
+            <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(this, 'B', 7)">B.  Tak hingga</div>
+            <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 7)">C.  Tidak ada</div>
         </div>
-        <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-        <div class="feedback">
-            <p><strong>Pembahasan:</strong></p>
-            <p>Jawaban benar: B. 12</p>
-            <p>1. Misalkan bilangan pertama adalah $x$ dan bilangan kedua adalah $y$.</p>
-            <p>2. Persamaan yang terbentuk: $x + y = 20$ dan $x - y = 4$</p>
-            <p>3. Tambahkan kedua persamaan: $2x = 24 \rightarrow x = 12$</p>
-            <p>4. Substitusi nilai $x$ ke persamaan pertama: $12 + y = 20 \rightarrow y = 8$</p>
-            <p>Bilangan terbesar adalah 12.</p>
+        <div class="explanation" id="explanation7">
+            <p>Jawaban benar: <strong>B</strong></p>
+            <p>Kedua persamaan sebenarnya sama (persamaan kedua adalah kelipatan persamaan pertama), sehingga memiliki tak hingga solusi.</p>
         </div>
+        <div class="feedback" id="feedback-quiz-7"></div>
     </div>
 
-    <div class="quiz-question">
-        <p>8. Harga 2 baju dan 3 celana adalah Rp210.000. Harga 3 baju dan 2 celana adalah Rp190.000. Harga sebuah baju adalah...</p>
-        <div class="options">
-            <button class="option" data-answer="A">A. Rp40.000</button>
-            <button class="option" data-answer="B">B. Rp50.000</button>
-            <button class="option" data-answer="C">C. Rp60.000</button>
+    <div class="quiz-question" data-question="8">
+        <p>8.  Jika $x - y = 4$ dan $x + y = 10$, maka nilai $x$ adalah...</p>
+        <div class="options" id="quiz-question-8">
+            <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 8)">A.  5</div>
+            <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(this, 'B', 8)">B.  7</div>
+            <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 8)">C.  14</div>
         </div>
-        <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-        <div class="feedback">
-            <p><strong>Pembahasan:</strong></p>
-            <p>Jawaban benar: A. Rp40.000</p>
-            <p>1. Misalkan harga baju adalah $b$ dan harga celana adalah $c$.</p>
-            <p>2. Persamaan yang terbentuk: $2b + 3c = 210000$ dan $3b + 2c = 190000$</p>
-            <p>3. Kalikan persamaan pertama dengan 3 dan persamaan kedua dengan 2: $6b + 9c = 630000$ dan $6b + 4c = 380000$</p>
-            <p>4. Kurangkan kedua persamaan: $5c = 250000 \rightarrow c = 50000$</p>
-            <p>5. Substitusi nilai $c$ ke persamaan pertama: $2b + 3(50000) = 210000 \rightarrow b = 40000$</p>
+        <div class="explanation" id="explanation8">
+            <p>Jawaban benar: <strong>B</strong></p>
+            <p>Dengan eliminasi (penjumlahan), $2x = 14$, maka $x = 7$.</p>
         </div>
+        <div class="feedback" id="feedback-quiz-8"></div>
     </div>
 
-    <div class="quiz-question">
-        <p>9. Jika $x$ dan $y$ memenuhi persamaan $2x + y = 5$ dan $x - 2y = -5$, nilai $x + y$ adalah...</p>
-        <div class="options">
-            <button class="option" data-answer="A">A. 0</button>
-            <button class="option" data-answer="B">B. 2</button>
-            <button class="option" data-answer="C">C. 4</button>
+    <div class="quiz-question" data-question="9">
+        <p>9.  Himpunan penyelesaian dari $y = x + 1$ dan $y = 2x - 3$ adalah...</p>
+        <div class="options" id="quiz-question-9">
+            <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 9)">A.  {(-3, -2)}</div>
+            <div class="option" data-answer="B" onclick="selectAnswer(this, 'B', 9)">B.  {(2, 3)}</div>
+            <div class="option" data-answer="C" data-correct="true" onclick="selectAnswer(this, 'C', 9)">C.  {(4, 5)}</div>
         </div>
-        <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-        <div class="feedback">
-            <p><strong>Pembahasan:</strong></p>
-            <p>Jawaban benar: C. 4</p>
-            <p>1. Kalikan persamaan pertama dengan 2: $4x + 2y = 10$</p>
-            <p>2. Tambahkan persamaan yang baru dengan persamaan kedua: $5x = 5 \rightarrow x = 1$</p>
-            <p>3. Substitusi nilai $x$ ke persamaan pertama: $2(1) + y = 5 \rightarrow y = 3$</p>
-            <p>4. Maka, $x + y = 1 + 3 = 4$</p>
+        <div class="explanation" id="explanation9">
+            <p>Jawaban benar: <strong>C</strong></p>
+            <p>Substitusi: $x + 1 = 2x - 3$, maka $x = 4$ dan $y = 4 + 1 = 5$.</p>
         </div>
+        <div class="feedback" id="feedback-quiz-9"></div>
     </div>
 
-    <div class="quiz-question">
-        <p>10. Sebuah persegi panjang memiliki keliling 50 cm. Jika panjangnya 5 cm lebih dari lebarnya, luas persegi panjang tersebut adalah...</p>
-        <div class="options">
-            <button class="option" data-answer="A">A. 100 cm²</button>
-            <button class="option" data-answer="B">B. 150 cm²</button>
-            <button class="option" data-answer="C">C. 200 cm²</button>
+    <div class="quiz-question" data-question="10">
+        <p>10. SPLDV dapat digunakan untuk menyelesaikan masalah...</p>
+        <div class="options" id="quiz-question-10">
+            <div class="option" data-answer="A" onclick="selectAnswer(this, 'A', 10)">A.  Menghitung luas lingkaran</div>
+            <div class="option" data-answer="B" data-correct="true" onclick="selectAnswer(this, 'B', 10)">B.  Mencari harga dua barang yang berbeda</div>
+            <div class="option" data-answer="C" onclick="selectAnswer(this, 'C', 10)">C.  Menentukan volume kubus</div>
         </div>
-        <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-        <div class="feedback">
-            <p><strong>Pembahasan:</strong></p>
-            <p>Jawaban benar: B. 150 cm²</p>
-            <p>1. Misalkan panjang persegi panjang adalah $p$ dan lebar adalah $l$.</p>
-            <p>2. Persamaan yang terbentuk: $2(p + l) = 50$ dan $p = l + 5$</p>
-            <p>3. Substitusi persamaan kedua ke persamaan pertama: $4l + 10 = 50 \rightarrow l = 10$</p>
-            <p>4. Substitusi nilai $l$ ke persamaan kedua: $p = 15$</p>
-            <p>5. Luas persegi panjang adalah $p * l = 15 * 10 = 150$ cm²</p>
+        <div class="explanation" id="explanation10">
+            <p>Jawaban benar: <strong>B</strong></p>
+            <p>SPLDV cocok untuk masalah yang melibatkan dua kuantitas yang tidak diketahui dan hubungan linearnya.</p>
         </div>
+        <div class="feedback" id="feedback-quiz-10"></div>
     </div>
-</section>
 
-<script>
-    // Check answers for quiz questions
-    document.querySelectorAll('.check-answer').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const feedback = this.nextElementSibling;
-            feedback.style.display = feedback.style.display === 'block' ? 'none' : 'block';
-
-            // Reset styles for options
-            const options = this.previousElementSibling.querySelectorAll('.option');
-            options.forEach(option => {
-                option.classList.remove('selected', 'correct', 'incorrect');
-            });
-        });
-    });
-
-    // Handle option selection
-    document.querySelectorAll('.options').forEach(optionsDiv => {
-        optionsDiv.addEventListener('click', function(event) {
-            if (event.target.classList.contains('option')) {
-                const options = this.querySelectorAll('.option');
-                options.forEach(option => option.classList.remove('selected'));
-                event.target.classList.add('selected');
-            }
-        });
-    });
-
-    // Advanced Check Answer Logic
-    document.querySelectorAll('.quiz-question').forEach(question => {
-        const checkButton = question.querySelector('.check-answer');
-        const feedbackDiv = question.querySelector('.feedback');
-        const options = question.querySelectorAll('.option');
-
-        checkButton.addEventListener('click', () => {
-            let isCorrect = false;
-            let selectedOption = null;
-
-            options.forEach(option => {
-                option.classList.remove('correct', 'incorrect');
-                if (option.classList.contains('selected')) {
-                    selectedOption = option;
-                    if (option.dataset.answer === 'A' || option.dataset.answer === 'B' || option.dataset.answer === 'C') { // Assuming A, B, C are the correct answers
-                        isCorrect = true;
-                        option.classList.add('correct');
-                    } else {
-                        option.classList.add('incorrect');
-                    }
-                }
-            });
-
-            if (!selectedOption) {
-                alert('Pilih jawaban terlebih dahulu!');
-                feedbackDiv.style.display = 'none'; // Hide feedback if no answer selected
-                return;
-            }
-
-            if (isCorrect) {
-                feedbackDiv.style.display = 'block'; // Show feedback for correct answer
-            } else {
-                feedbackDiv.style.display = 'block'; // Show feedback for incorrect answer
-            }
-        });
-    });
-</script>
-    
-            
+    <button class="btn" onclick="submitQuiz()">Periksa Kuis</button>
+    <div id="quiz-result" class="result"></div>
+</section>            
 </body>
 </html>
