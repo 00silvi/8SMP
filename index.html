@@ -43,16 +43,39 @@
             color: white;
             text-align: center;
             padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
 
         .nav-container {
             background-color: var(--dark-color);
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
+        }
+
+        .nav-toggle {
+            background-color: var(--dark-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+
+        .nav-toggle:focus {
+            outline: none;
         }
 
         nav {
@@ -61,194 +84,251 @@
             transition: max-height 0.3s ease-out;
         }
 
+        nav.open {
+            max-height: 200px; /* Sesuaikan dengan tinggi menu */
+        }
+
         nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
             display: flex;
             justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+            flex-wrap: wrap;
         }
 
         nav li {
-            margin: 0 1rem;
+            margin: 0 1.5rem;
         }
 
         nav a {
             color: white;
             text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
             padding: 0.5rem 1rem;
+            border-radius: 4px;
             display: block;
         }
 
         nav a:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .nav-toggle {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .nav-toggle:focus {
-            outline: none;
-        }
-
-        nav.open {
-            max-height: 100vh;
+            color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .container {
-            width: 80%;
+            max-width: 1200px;
             margin: 2rem auto;
-            background-color: white;
-            padding: 1.5rem;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 0 2rem;
         }
 
         section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
             margin-bottom: 2rem;
         }
 
         h2 {
             color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--light-color);
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
         }
 
         .accordion {
-            border: 1px solid #ccc;
             margin-bottom: 1rem;
+            border-radius: 4px;
+            overflow: hidden;
         }
 
         .accordion-header {
-            background-color: #f0f0f0;
-            color: var(--dark-color);
-            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: background-color 0.3s;
         }
 
-        .accordion-header i {
-            transition: transform 0.3s ease;
+        .accordion-header:hover {
+            background-color: var(--secondary-color);
         }
 
         .accordion-content {
             padding: 1rem;
+            border: 1px solid #ddd;
+            border-top: none;
             display: none;
+            background-color: #f9f9f9;
         }
 
         .accordion.active .accordion-content {
             display: block;
         }
 
-        .show-solution,
-        .check-answer,
-        .show-explanation {
+        .accordion.active .accordion-header {
+            background-color: var(--secondary-color);
+        }
+
+        .btn {
+            display: inline-block;
             background-color: var(--primary-color);
             color: white;
+            padding: 0.7rem 1.5rem;
             border: none;
-            padding: 0.5rem 1rem;
+            border-radius: 4px;
             cursor: pointer;
-            border-radius: 5px;
-            margin-bottom: 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin: 0.5rem 0;
         }
 
-        .solution,
-        .answer-feedback,
-        .explanation {
-            display: none;
-            padding: 1rem;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            margin-top: 1rem;
+        .btn:hover {
+            background-color: var(--secondary-color);
         }
 
-        .quiz-question {
-            margin-bottom: 1rem;
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
         }
 
-        .options {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .option {
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            padding: 0.5rem 1rem;
-            margin: 0.5rem;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .option.selected {
+        .btn-outline:hover {
             background-color: var(--primary-color);
             color: white;
         }
 
-        .option.correct {
-            background-color: var(--success-color);
-            color: white;
-        }
-
-        .option.incorrect {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        #check-quiz {
-            background-color: var(--success-color);
-        }
-
-        #quiz-result {
-            display: none;
-            padding: 1rem;
-            background-color: #e6ffec;
-            border: 1px solid var(--success-color);
-            margin-top: 1rem;
+        .simulation-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            background-color: #f9f9f9;
         }
 
         .equation-input {
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
-        }
-
-        .equation-input label {
-            margin-right: 0.5rem;
+            flex-wrap: wrap;
         }
 
         .equation-input input {
+            width: 60px;
             padding: 0.5rem;
-            margin-right: 1rem;
-            width: 50px;
+            margin: 0 0.5rem;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
 
-        #draw-graph {
-            background-color: var(--secondary-color);
+        .equation-input span {
+            font-weight: bold;
+            margin: 0 0.5rem;
         }
 
-        #graphCanvas {
-            max-width: 500px;
-            margin: 1rem auto;
-        }
-
-        #graph-result,
-        #calculation-steps {
-            display: none;
+        .result {
+            margin-top: 1.5rem;
             padding: 1rem;
-            background-color: #e6f3ff;
-            border: 1px solid var(--primary-color);
+            background-color: #e8f4fc;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .example {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-container {
+            margin: 1.5rem 0;
+        }
+
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .options {
+            margin: 1rem 0;
+        }
+
+        .option {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .option.selected {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .option.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .option.incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .explanation {
             margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .essay-question {
+            margin-bottom: 1.5rem;
+        }
+
+        .essay-answer {
+            width: 100%;
+            min-height: 100px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .interactive-element {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
         }
 
         footer {
@@ -284,11 +364,10 @@
         }
     </style>
 </head>
-
 <body>
-
     <header>
-        <h1>Sistem Persamaan Linear Dua Variabel (SPLDV)</h1>
+        <h1>Media Pembelajaran Matematika Kelas 8 SMP</h1>
+        <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
     </header>
 
     <div class="nav-container">
@@ -307,191 +386,252 @@
 
     <div class="container">
         <section id="tujuan">
-            <h2>Tujuan Pembelajaran</h2>
-            <p>Setelah mempelajari materi ini, siswa diharapkan dapat:</p>
-            <ol>
-                <li>Memahami konsep Sistem Persamaan Linear Dua Variabel (SPLDV).</li>
-                <li>Menentukan solusi SPLDV menggunakan metode grafik, substitusi, dan eliminasi.</li>
-                <li>Menerapkan SPLDV dalam menyelesaikan masalah sehari-hari.</li>
-            </ol>
-        </section>
-
-        <section id="materi">
-            <h2>Materi Pembelajaran</h2>
-            <p>SPLDV adalah sistem yang terdiri dari dua persamaan linear dengan dua variabel. Bentuk umum SPLDV adalah:</p>
-            <p>
-                $ax + by = c$ <br>
-                $px + qy = r$
-            </p>
-            <p>Metode penyelesaian SPLDV meliputi:</p>
+            <h2><i class="fas fa-bullseye"></i> Tujuan Pembelajaran</h2>
+            <p>Setelah mempelajari materi ini, siswa diharapkan mampu:</p>
             <ul>
-                <li>Metode Grafik</li>
-                <li>Metode Substitusi</li>
-                <li>Metode Eliminasi</li>
+                <li>Memahami konsep sistem persamaan linear dua variabel (SPLDV)</li>
+                <li>Mengidentifikasi permasalahan sehari-hari yang dapat dimodelkan dengan SPLDV</li>
+                <li>Menyelesaikan SPLDV dengan metode grafik, substitusi, eliminasi, dan campuran</li>
+                <li>Menerapkan SPLDV dalam menyelesaikan masalah kontekstual</li>
             </ul>
         </section>
 
-        <section id="simulasi">
-            <h2>Simulasi Grafik</h2>
-            <p>Masukkan koefisien dan konstanta untuk melihat grafik persamaan dan solusinya.</p>
-            <div class="equation-input">
-                <label for="a1">a1:</label><input type="number" id="a1" value="1">
-                <label for="b1">b1:</label><input type="number" id="b1" value="1">
-                <label for="c1">c1:</label><input type="number" id="c1" value="5">
-                <label for="a2">a2:</label><input type="number" id="a2" value="2">
-                <label for="b2">b2:</label><input type="number" id="b2" value="-1">
-                <label for="c2">c2:</label><input type="number" id="c2" value="1">
-                <button id="draw-graph">Gambar Grafik</button>
+        <section id="materi">
+            <h2><i class="fas fa-book"></i> Materi Ajar</h2>
+
+            <div class="accordion active">
+                <div class="accordion-header">
+                    <span>Konsep Dasar SPLDV</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <h3>Pengertian SPLDV</h3>
+                    <p>Sistem Persamaan Linear Dua Variabel (SPLDV) adalah sistem yang terdiri dari dua persamaan linear dengan dua variabel yang sama.</p>
+                    <p>Bentuk umum: $a_1x + b_1y = c_1$ dan $a_2x + b_2y = c_2$</p>
+
+                    <h3>Contoh SPLDV</h3>
+                    <p>1. $2x + 3y = 7$ dan $x - y = 1$</p>
+                    <p>2. $5x - 2y = 8$ dan $3x + 4y = 10$</p>
+                </div>
             </div>
-            <canvas id="graphCanvas"></canvas>
-            <div id="graph-result">
-                <p id="solution-type"></p>
-                <p id="solution-point"></p>
+
+            <div class="accordion">
+                <div class="accordion-header">
+                    <span>Metode Penyelesaian</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <h3>1. Metode Grafik</h3>
+                    <p>Menggambar grafik kedua persamaan dan mencari titik potongnya.</p>
+
+                    <h3>2. Metode Substitusi</h3>
+                    <p>Menggantikan salah satu variabel dengan ekspresi dari persamaan lain.</p>
+
+                    <h3>3. Metode Eliminasi</h3>
+                    <p>Menghilangkan salah satu variabel dengan operasi penjumlahan/pengurangan.</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">
+                    <span>Contoh Penerapan</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <h3>Masalah Sehari-hari</h3>
+                    <p>Contoh: Menentukan harga dua jenis barang jika diketahui kombinasi harga pembeliannya.</p>
+
+                    <h3>Langkah Penyelesaian</h3>
+                    <ol>
+                        <li>Identifikasi variabel</li>
+                        <li>Buat model matematika</li>
+                        <li>Selesaikan SPLDV</li>
+                        <li>Interpretasikan solusi</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="simulasi">
+            <h2><i class="fas fa-laptop-code"></i> Simulasi SPLDV</h2>
+
+            <div class="simulation-container">
+                <h3>Simulator Grafik SPLDV</h3>
+                <div class="equation-input">
+                    <span>Persamaan 1:</span>
+                    <input type="number" id="a1" value="1">
+                    <span>x +</span>
+                    <input type="number" id="b1" value="1">
+                    <span>y =</span>
+                    <input type="number" id="c1" value="5">
+                </div>
+
+                <div class="equation-input">
+                    <span>Persamaan 2:</span>
+                    <input type="number" id="a2" value="1">
+                    <span>x +</span>
+                    <input type="number" id="b2" value="-1">
+                    <span>y =</span>
+                    <input type="number" id="c2" value="1">
+                </div>
+
+                <button class="btn" id="draw-graph">Gambar Grafik</button>
+                <canvas id="graphCanvas" height="400"></canvas>
+
+                <div id="graph-result" class="result">
+                    <h4>Hasil Analisis:</h4>
+                    <p id="solution-type"></p>
+                    <p id="solution-point"></p>
+                </div>
+            </div>
+
+            <div class="simulation-container">
+                <h3>Kalkulator SPLDV</h3>
+                <select id="method" class="btn">
+                    <option value="substitution">Substitusi</option>
+                    <option value="elimination">Eliminasi</option>
+                </select>
+
+                <div class="equation-input">
+                    <input type="number" id="calc-a1" value="2" placeholder="a₁">
+                    <span>x +</span>
+                    <input type="number" id="calc-b1" value="3" placeholder="b₁">
+                    <span>y =</span>
+                    <input type="number" id="calc-c1" value="7" placeholder="c₁">
+                </div>
+
+                <div class="equation-input">
+                    <input type="number" id="calc-a2" value="4" placeholder="a₂">
+                    <input type="number" id="calc-b2" value="-1" placeholder="b₂">
+                    <span>y =</span>
+                    <input type="number" id="calc-c2" value="1" placeholder="c₂">
+                </div>
+
+                <button class="btn" id="solve-btn">Hitung Solusi</button>
+
+                <div id="calculation-steps" class="result"></div>
             </div>
         </section>
 
         <section id="contoh">
-            <h2>Contoh Soal dan Pembahasan</h2>
+            <h2><i class="fas fa-chalkboard-teacher"></i> Contoh Soal</h2>
 
-            <div class="accordion">
-                <div class="accordion-header">
-                    Contoh 1: Menentukan solusi dengan metode substitusi
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="accordion-content">
-                    <p>Tentukan solusi dari sistem persamaan:</p>
-                    <p>
-                        $2x + y = 7$ <br>
-                        $x - y = -1$
-                    </p>
-                    <button class="show-solution">Tampilkan Solusi</button>
-                    <div class="solution">
-                        <p>1. Dari persamaan kedua, kita dapatkan $x = y - 1$.</p>
-                        <p>2. Substitusikan ke persamaan pertama: $2(y - 1) + y = 7$.</p>
-                        <p>3. Selesaikan untuk $y$: $3y - 2 = 7 \\Rightarrow y = 3$.</p>
-                        <p>4. Substitusikan $y = 3$ ke $x = y - 1$ untuk mendapatkan $x = 2$.</p>
-                        <p>Jadi, solusinya adalah $(2, 3)$.</p>
-                    </div>
+            <div class="example">
+                <h3>Contoh 1: Metode Substitusi</h3>
+                <p>Tentukan solusi dari sistem persamaan:</p>
+                <p>
+                    $2x + y = 7$ <br>
+                    $x - y = 1$
+                </p>
+                <button class="btn btn-outline show-solution">Tampilkan Solusi</button>
+                <div class="solution">
+                    <p>1. Dari persamaan kedua, kita dapatkan $x = y + 1$.</p>
+                    <p>2. Substitusikan ke persamaan pertama: $2(y + 1) + y = 7$.</p>
+                    <p>3. Selesaikan untuk $y$: $3y + 2 = 7 \Rightarrow y = \frac{5}{3}$.</p>
+                    <p>4. Substitusikan $y$ ke persamaan untuk $x$: $x = \frac{5}{3} + 1 = \frac{8}{3}$.</p>
+                    <p>Jadi, solusinya adalah $x = \frac{8}{3}$ dan $y = \frac{5}{3}$.</p>
                 </div>
             </div>
 
-            <div class="accordion">
-                <div class="accordion-header">
-                    Contoh 2: Menentukan solusi dengan metode eliminasi
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="accordion-content">
-                    <p>Tentukan solusi dari sistem persamaan:</p>
-                    <p>
-                        $3x + 2y = 8$ <br>
-                        $2x - y = 3$
-                    </p>
-                    <button class="show-solution">Tampilkan Solusi</button>
-                    <div class="solution">
-                        <p>1. Kalikan persamaan kedua dengan 2: $4x - 2y = 6$.</p>
-                        <p>2. Tambahkan persamaan ini ke persamaan pertama: $7x = 14 \\Rightarrow x = 2$.</p>
-                        <p>3. Substitusikan $x = 2$ ke salah satu persamaan awal untuk mendapatkan $y = 1$.</p>
-                        <p>Jadi, solusinya adalah $(2, 1)$.</p>
-                    </div>
+            <div class="example">
+                <h3>Contoh 2: Metode Eliminasi</h3>
+                <p>Tentukan solusi dari sistem persamaan:</p>
+                <p>
+                    $3x + 2y = 8$ <br>
+                    $2x - y = 3$
+                </p>
+                <button class="btn btn-outline show-solution">Tampilkan Solusi</button>
+                <div class="solution">
+                    <p>1. Kalikan persamaan kedua dengan 2: $4x - 2y = 6$.</p>
+                    <p>2. Tambahkan persamaan ini ke persamaan pertama: $7x = 14 \Rightarrow x = 2$.</p>
+                    <p>3. Substitusikan $x = 2$ ke salah satu persamaan awal untuk mendapatkan $y$: $3(2) + 2y = 8 \Rightarrow y = 1$.</p>
+                    <p>Jadi, solusinya adalah $x = 2$ dan $y = 1$.</p>
                 </div>
             </div>
         </section>
 
         <section id="latihan">
-            <h2>Latihan Soal</h2>
+            <h2><i class="fas fa-pencil-alt"></i> Latihan Soal</h2>
 
-            <div class="exercise">
-                <p>1. Tentukan solusi dari sistem persamaan:</p>
+            <div class="example">
+                <h3>Latihan 1</h3>
+                <p>Tentukan solusi dari sistem persamaan:</p>
                 <p>
                     $x + 2y = 5$ <br>
                     $2x - y = -5$
                 </p>
-                <button class="check-answer">Cek Jawaban</button>
+                <button class="btn btn-outline check-answer">Cek Jawaban</button>
                 <div class="answer-feedback">
-                    <p>Jawaban: $(-1, 3)$</p>
+                    <p>Jawaban: $x = -1$, $y = 3$</p>
                 </div>
             </div>
 
-            <div class="exercise">
-                <p>2. Tentukan solusi dari sistem persamaan:</p>
+            <div class="example">
+                <h3>Latihan 2</h3>
+                <p>Tentukan solusi dari sistem persamaan:</p>
                 <p>
                     $4x - 3y = 6$ <br>
                     $2x + y = 8$
                 </p>
-                <button class="check-answer">Cek Jawaban</button>
+                <button class="btn btn-outline check-answer">Cek Jawaban</button>
                 <div class="answer-feedback">
-                    <p>Jawaban: $(3, 2)$</p>
+                    <p>Jawaban: $x = 3$, $y = 2$</p>
                 </div>
-            </div>
-
-            <div class="exercise">
-                <p>Hitung langkah penyelesaian dari persamaan berikut:</p>
-                <div class="equation-input">
-                    <label for="calc-a1">a1:</label><input type="number" id="calc-a1" value="2">
-                    <label for="calc-b1">b1:</label><input type="number" id="calc-b1" value="1">
-                    <label for="calc-c1">c1:</label><input type="number" id="calc-c1" value="7">
-                    <label for="calc-a2">a2:</label><input type="number" id="calc-a2" value="1">
-                    <label for="calc-b2">b2:</label><input type="number" id="calc-b2" value="-1">
-                    <label for="calc-c2">c2:</label><input type="number" id="calc-c2" value="-1">
-                    <select id="method">
-                        <option value="substitution">Substitusi</option>
-                        <option value="elimination">Eliminasi</option>
-                    </select>
-                    <button id="solve-btn">Hitung Solusi</button>
-                </div>
-                <div id="calculation-steps"></div>
             </div>
         </section>
 
         <section id="quiz">
-            <h2>Kuis</h2>
-            <div class="quiz-question">
-                <p>1. Manakah yang merupakan bentuk umum SPLDV?</p>
-                <div class="options">
-                    <div class="option" data-correct>
-                        $ax + by = c$, $px + qy = r$
-                    </div>
-                    <div class="option">
-                        $ax^2 + by = c$, $px + qy^2 = r$
-                    </div>
-                    <div class="option">
-                        $ax + by + cz = d$, $px + qy + rz = s$
-                    </div>
-                </div>
-                <button class="show-explanation">Tampilkan Penjelasan</button>
-                <div class="explanation">
-                    <p>Jawaban yang benar adalah $ax + by = c$, $px + qy = r$ karena merupakan bentuk linear dengan dua variabel.</p>
-                </div>
-            </div>
+            <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
 
-            <div class="quiz-question">
-                <p>2. Metode mana yang paling tepat untuk menyelesaikan SPLDV jika diketahui grafiknya?</p>
-                <div class="options">
-                    <div class="option">Substitusi</div>
-                    <div class="option">Eliminasi</div>
-                    <div class="option" data-correct>Grafik</div>
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <p>1. Manakah yang merupakan bentuk umum dari Sistem Persamaan Linear Dua Variabel (SPLDV)?</p>
+                    <div class="options">
+                        <div class="option" data-correct>
+                            $a_1x + b_1y = c_1$, $a_2x + b_2y = c_2$
+                        </div>
+                        <div class="option">
+                            $ax^2 + by = c$, $px + qy^2 = r$
+                        </div>
+                        <div class="option">
+                            $ax + by + cz = d$, $px + qy + rz = s$
+                        </div>
+                    </div>
+                    <button class="btn btn-outline show-explanation">Tampilkan Penjelasan</button>
+                    <div class="explanation">
+                        <p>Jawaban yang benar adalah $a_1x + b_1y = c_1$, $a_2x + b_2y = c_2$ karena ini adalah bentuk linear dengan dua variabel.</p>
+                    </div>
                 </div>
-                <button class="show-explanation">Tampilkan Penjelasan</button>
-                <div class="explanation">
-                    <p>Jawaban yang benar adalah Grafik karena metode grafik secara visual menunjukkan titik potong dua garis.</p>
-                </div>
-            </div>
 
-            <div class="quiz-question">
-                <p>3. Jika determinan SPLDV adalah 0, maka sistem tersebut...</p>
-                <div class="options">
-                    <div class="option">Pasti memiliki satu solusi</div>
-                    <div class="option" data-correct>Mungkin tidak memiliki solusi atau memiliki tak hingga solusi</div>
-                    <div class="option">Pasti memiliki dua solusi</div>
+                <div class="quiz-question">
+                    <p>2. Metode mana yang paling tepat digunakan untuk menyelesaikan SPLDV jika diberikan grafik kedua persamaan tersebut?</p>
+                    <div class="options">
+                        <div class="option">Substitusi</div>
+                        <div class="option">Eliminasi</div>
+                        <div class="option" data-correct>Grafik</div>
+                    </div>
+                    <button class="btn btn-outline show-explanation">Tampilkan Penjelasan</button>
+                    <div class="explanation">
+                        <p>Jawaban yang benar adalah Grafik, karena titik potong kedua garis pada grafik adalah solusi SPLDV.</p>
+                    </div>
                 </div>
-                <button class="show-explanation">Tampilkan Penjelasan</button>
-                <div class="explanation">
-                    <p>Jawaban yang benar adalah Mungkin tidak memiliki solusi atau memiliki tak hingga solusi. Determinan 0 mengindikasikan garis sejajar atau berhimpit.</p>
-                </div>
-            </div>
 
-            <button id="check-quiz">Periksa Jawaban</button>
-            <div id="quiz-result"></div>
+                <div class="quiz-question">
+                    <p>3. Jika determinan dari koefisien SPLDV adalah 0, maka sistem tersebut...</p>
+                    <div class="options">
+                        <div class="option">Pasti memiliki tepat satu solusi</div>
+                        <div class="option" data-correct>Mungkin tidak memiliki solusi atau memiliki tak hingga banyak solusi</div>
+                        <div class="option">Pasti memiliki dua solusi berbeda</div>
+                    </div>
+                    <button class="btn btn-outline show-explanation">Tampilkan Penjelasan</button>
+                    <div class="explanation">
+                        <p>Jawaban yang benar adalah Mungkin tidak memiliki solusi (garis sejajar) atau memiliki tak hingga banyak solusi (garis berhimpit).</p>
+                    </div>
+                </div>
+
+                <button class="btn" id="check-quiz">Periksa Jawaban</button>
+                <div id="quiz-result" class="result"></div>
+            </div>
         </section>
     </div>
 
@@ -501,6 +641,82 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Equation Solver
+            document.getElementById('solve-btn').addEventListener('click', function() {
+                const method = document.getElementById('method').value;
+                const a1 = parseFloat(document.getElementById('calc-a1').value);
+                const b1 = parseFloat(document.getElementById('calc-b1').value);
+                const c1 = parseFloat(document.getElementById('calc-c1').value);
+
+                const a2 = parseFloat(document.getElementById('calc-a2').value);
+                const b2 = parseFloat(document.getElementById('calc-b2').value);
+                const c2 = parseFloat(document.getElementById('calc-c2').value);
+
+                const calculationStepsDiv = document.getElementById('calculation-steps');
+                calculationStepsDiv.innerHTML = '';
+                calculationStepsDiv.style.display = 'block';
+
+                let latexString = '';
+
+                // Calculate determinant
+                const det = a1 * b2 - a2 * b1;
+
+                if (det === 0) {
+                    if (a1 / a2 === b1 / b2 && a1 / a2 === c1 / c2) {
+                        latexString = "<p>Sistem memiliki tak hingga solusi</p>";
+                    } else {
+                        latexString = "<p>Sistem tidak memiliki solusi</p>";
+                    }
+                } else {
+                    if (method === 'substitution') {
+                        // For simplicity, let's assume we always solve the second equation for x
+                        latexString += `<h4>Penyelesaian dengan Metode Substitusi</h4>`;
+                        latexString += `<p>1. Dari persamaan kedua, $${a2}x + ${b2}y = ${c2}$, kita dapatkan $x = \\frac{${c2} - ${b2}y}{${a2}}$</p>`;
+                        latexString += `<p>2. Substitusi ke persamaan pertama: $${a1}(\\frac{${c2} - ${b2}y}{${a2}}) + ${b1}y = ${c1}$</p>`;
+
+                        const y = (a1 * c2 - a2 * c1) / (a1 * b2 - a2 * b1);
+                        const x = (c2 - b2 * y) / a2;
+
+                        latexString += `<p>3. Selesaikan untuk $y$ dan dapatkan $y = ${y.toFixed(2)}$</p>`;
+                        latexString += `<p>4. Substitusi nilai $y$ ke persamaan untuk $x$ dan dapatkan $x = ${x.toFixed(2)}$</p>`;
+                        latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
+
+                    } else if (method === 'elimination') {
+                        latexString += `<h4>Penyelesaian dengan Metode Eliminasi</h4>`;
+                        latexString += `<p>1. Kalikan persamaan pertama dengan ${a2} dan persamaan kedua dengan ${a1} untuk mengeliminasi $x$:</p>`;
+                        latexString += `<p>$(${a2})(${a1}x + ${b1}y) = (${a2})${c1}$  dan  $(${a1})(${a2}x + ${b2}y) = (${a1})${c2}$</p>`;
+
+                        const yNum = a1 * c2 - a2 * c1;
+                        const yDenom = a1 * b2 - a2 * b1;
+                        const y = yNum / yDenom;
+
+                        latexString += `<p>2. Kurangkan kedua persamaan untuk mendapatkan $y$: $y = \\frac{${yNum}}{${yDenom}} = ${y.toFixed(2)}$</p>`;
+
+                        latexString += `<p>3. Substitusi nilai $y$ ke salah satu persamaan awal untuk mendapatkan $x$:</p>`;
+                        const x = (c1 - b1 * y) / a1;
+                        latexString += `<p>$x = ${x.toFixed(2)}$</p>`;
+                        latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
+                    } else if (method === 'determinant') {
+                      latexString += `<h4>Penyelesaian dengan Metode Determinan (Cramer)</h4>`;
+
+                      const det = a1 * b2 - a2 * b1;
+                      const xNum = c1 * b2 - c2 * b1;
+                      const yNum = a1 * c2 - a2 * c1;
+
+                      const x = xNum / det;
+                      const y = yNum / det;
+
+                      latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) = ${det}$</p>`;
+                      latexString += `<p>Nilai $x$ ($D_x$) = $(${c1} \\times ${b2}) - (${c2} \\times ${b1}) = ${xNum}$</p>`;
+                      latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
+                      latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} = ${y.toFixed(2)}$</strong></p>`;
+                    }
+                }
+
+                calculationStepsDiv.innerHTML = latexString;
+                calculationStepsDiv.style.display = 'block';
+            });
+
             // Dynamic Navigation Toggle
             const navToggle = document.querySelector('.nav-toggle');
             const nav = document.querySelector('nav');
@@ -622,7 +838,7 @@
                                 borderColor: 'rgb(255, 99, 132)',
                                 backgroundColor: 'rgba(255, 99, 132, 0.1)',
                                 tension: 0.1,
-                                fill: false
+                                fillfalse
                             }
                         ]
                     },
@@ -662,82 +878,6 @@
                 }
 
                 resultDiv.style.display = 'block';
-            });
-
-             // Equation Solver
-            document.getElementById('solve-btn').addEventListener('click', function() {
-                const method = document.getElementById('method').value;
-                const a1 = parseFloat(document.getElementById('calc-a1').value);
-                const b1 = parseFloat(document.getElementById('calc-b1').value);
-                const c1 = parseFloat(document.getElementById('calc-c1').value);
-
-                const a2 = parseFloat(document.getElementById('calc-a2').value);
-                const b2 = parseFloat(document.getElementById('calc-b2').value);
-                const c2 = parseFloat(document.getElementById('calc-c2').value);
-
-                const calculationStepsDiv = document.getElementById('calculation-steps');
-                calculationStepsDiv.innerHTML = '';
-                calculationStepsDiv.style.display = 'block';
-
-                let latexString = '';
-
-                // Calculate determinant
-                const det = a1 * b2 - a2 * b1;
-
-                if (det === 0) {
-                    if (a1 / a2 === b1 / b2 && a1 / a2 === c1 / c2) {
-                        latexString = "<p>Sistem memiliki tak hingga solusi</p>";
-                    } else {
-                        latexString = "<p>Sistem tidak memiliki solusi</p>";
-                    }
-                } else {
-                    if (method === 'substitution') {
-                        // For simplicity, let's assume we always solve the second equation for x
-                        latexString += `<h4>Penyelesaian dengan Metode Substitusi</h4>`;
-                        latexString += `<p>1. Dari persamaan kedua, $${a2}x + ${b2}y = ${c2}$, kita dapatkan $x = \\frac{${c2} - ${b2}y}{${a2}}$</p>`;
-                        latexString += `<p>2. Substitusi ke persamaan pertama: $${a1}(\\frac{${c2} - ${b2}y}{${a2}}) + ${b1}y = ${c1}$</p>`;
-
-                        const y = (a1 * c2 - a2 * c1) / (a1 * b2 - a2 * b1);
-                        const x = (c2 - b2 * y) / a2;
-
-                        latexString += `<p>3. Selesaikan untuk $y$ dan dapatkan $y = ${y.toFixed(2)}$</p>`;
-                        latexString += `<p>4. Substitusi nilai $y$ ke persamaan untuk $x$ dan dapatkan $x = ${x.toFixed(2)}$</p>`;
-                        latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
-
-                    } else if (method === 'elimination') {
-                        latexString += `<h4>Penyelesaian dengan Metode Eliminasi</h4>`;
-                        latexString += `<p>1. Kalikan persamaan pertama dengan ${a2} dan persamaan kedua dengan ${a1} untuk mengeliminasi $x$:</p>`;
-                        latexString += `<p>$(${a2})(${a1}x + ${b1}y) = (${a2})${c1}$  dan  $(${a1})(${a2}x + ${b2}y) = (${a1})${c2}$</p>`;
-
-                        const yNum = a1 * c2 - a2 * c1;
-                        const yDenom = a1 * b2 - a2 * b1;
-                        const y = yNum / yDenom;
-
-                        latexString += `<p>2. Kurangkan kedua persamaan untuk mendapatkan $y$: $y = \\frac{${yNum}}{${yDenom}} = ${y.toFixed(2)}$</p>`;
-
-                        latexString += `<p>3. Substitusi nilai $y$ ke salah satu persamaan awal untuk mendapatkan $x$:</p>`;
-                        const x = (c1 - b1 * y) / a1;
-                        latexString += `<p>$x = ${x.toFixed(2)}$</p>`;
-                        latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
-                    } else if (method === 'determinant') {
-                      latexString += `<h4>Penyelesaian dengan Metode Determinan (Cramer)</h4>`;
-
-                      const det = a1 * b2 - a2 * b1;
-                      const xNum = c1 * b2 - c2 * b1;
-                      const yNum = a1 * c2 - a2 * c1;
-
-                      const x = xNum / det;
-                      const y = yNum / det;
-
-                      latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) = ${det}$</p>`;
-                      latexString += `<p>Nilai $x$ ($D_x$) = $(${c1} \\times ${b2}) - (${c2} \\times ${b1}) = ${xNum}$</p>`;
-                      latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
-                      latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} = ${y.toFixed(2)}$</strong></p>`;
-                    }
-                }
-
-                calculationStepsDiv.innerHTML = latexString;
-                calculationStepsDiv.style.display = 'block';
             });
         });
     </script>
