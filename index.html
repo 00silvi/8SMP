@@ -544,49 +544,7 @@
          </section>
      </div>
 
-     <footer>
-         <p>&copy; 2024 Media Pembelajaran SPLDV</p>
-     </footer>
-
-     <script>
-         document.addEventListener('DOMContentLoaded', function() {
-             // Accordion Functionality
-             const accordionHeaders = document.querySelectorAll('.accordion-header');
-             accordionHeaders.forEach(header => {
-                 header.addEventListener('click', () => {
-                     const accordion = header.parentElement;
-                     const content = header.nextElementSibling;
-                     accordion.classList.toggle('active');
-                     content.style.display = accordion.classList.contains('active') ? 'block' : 'none';
-                     const icon = header.querySelector('i');
-                     icon.style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
-                 });
-             });
-
-             // Show/hide explanations for examples and exercises
-             const showSolutionButtons = document.querySelectorAll('.show-solution-btn');
-             showSolutionButtons.forEach(btn => {
-                 btn.addEventListener('click', function() {
-                     const explanation = this.nextElementSibling;
-                     explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
-                 });
-             });
-
-             // Dynamic Navigation Toggle
-             const navToggle = document.querySelector('.nav-toggle');
-             const nav = document.querySelector('nav');
-
-             navToggle.addEventListener('click', () => {
-                 nav.classList.toggle('open');
-             });
-
-             document.addEventListener('click', (event) => {
-                 const isClickInside = navToggle.contains(event.target) || nav.contains(event.target);
-                 if (!isClickInside && nav.classList.contains('open')) {
-                     nav.classList.remove('open');
-                 }
-             });
-         });
+     
      </script>
         <section id="latihan">
     <h2><i class="fas fa-pencil-alt"></i> Latihan Soal</h2>
@@ -912,5 +870,48 @@
         explanationDiv.style.display = 'block';
     }
 </script>       
+  <footer>
+         <p>&copy; 2024 Media Pembelajaran SPLDV</p>
+     </footer>
+
+     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+             // Accordion Functionality
+             const accordionHeaders = document.querySelectorAll('.accordion-header');
+             accordionHeaders.forEach(header => {
+                 header.addEventListener('click', () => {
+                     const accordion = header.parentElement;
+                     const content = header.nextElementSibling;
+                     accordion.classList.toggle('active');
+                     content.style.display = accordion.classList.contains('active') ? 'block' : 'none';
+                     const icon = header.querySelector('i');
+                     icon.style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                 });
+             });
+
+             // Show/hide explanations for examples and exercises
+             const showSolutionButtons = document.querySelectorAll('.show-solution-btn');
+             showSolutionButtons.forEach(btn => {
+                 btn.addEventListener('click', function() {
+                     const explanation = this.nextElementSibling;
+                     explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
+                 });
+             });
+
+             // Dynamic Navigation Toggle
+             const navToggle = document.querySelector('.nav-toggle');
+             const nav = document.querySelector('nav');
+
+             navToggle.addEventListener('click', () => {
+                 nav.classList.toggle('open');
+             });
+
+             document.addEventListener('click', (event) => {
+                 const isClickInside = navToggle.contains(event.target) || nav.contains(event.target);
+                 if (!isClickInside && nav.classList.contains('open')) {
+                     nav.classList.remove('open');
+                 }
+             });
+         });
 </body>
   </html>
