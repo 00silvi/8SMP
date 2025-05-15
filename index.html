@@ -582,6 +582,108 @@
     </footer>
 
     <script>
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .equation-input {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .equation-input input {
+                margin: 0.5rem 0;
+            }
+      
+        .nav-container {
+    background-color: var(--dark-color);
+    position: sticky; /* Atau fixed, sesuai kebutuhan */
+    top: 0;
+    z-index: 100;
+}
+
+.nav-toggle {
+    background-color: var(--dark-color);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    width: 100%; /* Agar selebar container */
+    text-align: center;
+    display: block; /* Agar mengambil seluruh lebar */
+}
+
+.nav-toggle:focus {
+    outline: none;
+}
+
+nav {
+    overflow: hidden;
+    max-height: 0; /* Menyembunyikan navigasi secara default */
+    transition: max-height 0.3s ease-out;
+}
+
+nav.open {
+    max-height: 200px; /* Sesuaikan dengan tinggi menu Anda */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    /* Styling untuk item menu */
+}
+
+nav a {
+    color: white;
+    display: block;
+    padding: 0.7rem 1.5rem;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+    .nav-toggle {
+        display: none; /* Sembunyikan tombol toggle di layar yang lebih besar jika tidak diperlukan */
+    }
+    nav {
+        max-height: none; /* Tampilkan semua menu di layar yang lebih besar */
+        display: flex;
+        justify-content: center; /* Atau tata letak lain sesuai keinginan */
+    }
+    nav ul {
+        display: flex;
+    }
+    nav li {
+        margin: 0 1.5rem;
+    }
+    nav a {
+        /* Styling untuk link di layar besar */
+    }
+
         <div class="nav-container">
     <button class="nav-toggle"><i class="fas fa-bars"></i> Menu</button>
     <nav>
