@@ -515,7 +515,7 @@
                  <p>Tentukan himpunan penyelesaian dari sistem persamaan:</p>
                  <p>$2x + y = 8$</p>
                  <p>$x - y = 1$</p>
-                 <button class="btn show-solution">Tampilkan Pembahasan</button>
+                 <button class="btn show-solution-btn">Tampilkan Pembahasan</button>
                  <div class="explanation">
                      <p><strong>Pembahasan:</strong></p>
                      <p>1. Dari persamaan kedua, kita dapatkan $x = y + 1$.</p>
@@ -531,7 +531,7 @@
                  <p>Tentukan himpunan penyelesaian dari sistem persamaan:</p>
                  <p>$3x + 2y = 10$</p>
                  <p>$2x - y = 2$</p>
-                 <button class="btn show-solution">Tampilkan Pembahasan</button>
+                 <button class="btn show-solution-btn">Tampilkan Pembahasan</button>
                  <div class="explanation">
                      <p><strong>Pembahasan:</strong></p>
                      <p>1. Kalikan persamaan kedua dengan 2: $4x - 2y = 4$</p>
@@ -540,77 +540,6 @@
                      <p>4. Substitusikan nilai x ke salah satu persamaan awal untuk mendapatkan $y = 2$</p>
                      <p>Jadi, himpunan penyelesaiannya adalah $(2, 2)$</p>
                  </div>
-             </div>
-         </section>
-
-         <section id="latihan">
-             <h2><i class="fas fa-pencil-alt"></i> Latihan Soal</h2>
-
-             <div class="example">
-                 <h3>Soal 1</h3>
-                 <p>Harga 2 kg mangga dan 3 kg apel adalah Rp 28.000,00. Harga 3 kg mangga dan 1 kg apel adalah Rp 23.000,00. Tentukan harga 1 kg mangga dan 1 kg apel.</p>
-                 <button class="btn show-solution">Tampilkan Pembahasan</button>
-                 <div class="explanation">
-                     <p><strong>Pembahasan:</strong></p>
-                     <p>Misalkan harga 1 kg mangga = x dan harga 1 kg apel = y.</p>
-                     <p>Persamaan 1: 2x + 3y = 28000</p>
-                     <p>Persamaan 2: 3x + y = 23000</p>
-                     <p>Selesaikan dengan metode substitusi atau eliminasi.</p>
-                     <p>Solusi: x = 7000, y = 4000</p>
-                 </div>
-             </div>
-
-             <div class="example">
-                 <h3>Soal 2</h3>
-                 <p>Sebuah tempat parkir berisi mobil dan motor. Jumlah kendaraan adalah 30 dan jumlah roda adalah 90. Tentukan jumlah mobil dan motor.</p>
-                 <button class="btn show-solution">Tampilkan Pembahasan</button>
-                 <div class="explanation">
-                     <p><strong>Pembahasan:</strong></p>
-                     <p>Misalkan jumlah mobil = m dan jumlah motor = t.</p>
-                     <p>Persamaan 1: m + t = 30</p>
-                     <p>Persamaan 2: 4m + 2t = 90</p>
-                     <p>Selesaikan dengan metode substitusi atau eliminasi.</p>
-                     <p>Solusi: m = 15, t = 15</p>
-                 </div>
-             </div>
-         </section>
-
-         <section id="quiz">
-             <h2><i class="fas fa-question-circle"></i> Kuis</h2>
-
-             <div class="quiz-container">
-                 <div class="quiz-question">
-                     <p>1. Manakah di bawah ini yang merupakan contoh SPLDV?</p>
-                     <div class="options">
-                         <div class="option" data-correct="true">a. $2x + y = 5$ dan $x - y = 1$</div>
-                         <div class="option">b. $x^2 + y = 4$ dan $x + y = 2$</div>
-                         <div class="option">c. $2x + y = 5$ dan $x + y^2 = 3$</div>
-                         <div class="option">d. $x + y + z = 6$ dan $x - y = 1$</div>
-                     </div>
-                 </div>
-
-                 <div class="quiz-question">
-                     <p>2. Metode apa yang digunakan untuk mencari titik potong grafik persamaan?</p>
-                     <div class="options">
-                         <div class="option">a. Substitusi</div>
-                         <div class="option">b. Eliminasi</div>
-                         <div class="option" data-correct="true">c. Grafik</div>
-                         <div class="option">d. Campuran</div>
-                     </div>
-                 </div>
-
-                 <div class="quiz-question">
-                     <p>3. Jika SPLDV tidak memiliki solusi, maka garisnya adalah...</p>
-                     <div class="options">
-                         <div class="option">a. Berpotongan</div>
-                         <div class="option" data-correct="true">b. Sejajar</div>
-                         <div class="option">c. Berhimpit</div>
-                         <div class="option">d. Tegak lurus</div>
-                     </div>
-                 </div>
-
-                 <button class="btn" id="check-quiz">Periksa Jawaban</button>
-                 <div id="quiz-result" class="result"></div>
              </div>
          </section>
      </div>
@@ -635,186 +564,12 @@
              });
 
              // Show/hide explanations for examples and exercises
-             document.querySelectorAll('.show-solution').forEach(btn => {
+             const showSolutionButtons = document.querySelectorAll('.show-solution-btn');
+             showSolutionButtons.forEach(btn => {
                  btn.addEventListener('click', function() {
                      const explanation = this.nextElementSibling;
                      explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
                  });
-             });
-
-             // Quiz functionality
-             document.querySelectorAll('.option').forEach(option => {
-                 option.addEventListener('click', function() {
-                     const question = this.closest('.quiz-question');
-                     question.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-                     this.classList.add('selected');
-                 });
-             });
-
-             document.getElementById('check-quiz').addEventListener('click', function() {
-                 let score = 0;
-                 const questions = document.querySelectorAll('.quiz-question');
-                 questions.forEach(question => {
-                     const selected = question.querySelector('.option.selected');
-                     if (selected && selected.hasAttribute('data-correct')) {
-                         score++;
-                         selected.classList.add('correct');
-                     } else if (selected) {
-                         selected.classList.add('incorrect');
-                         const correctOption = question.querySelector('.option[data-correct]');
-                         if (correctOption) correctOption.classList.add('correct');
-                     }
-                 });
-                 const resultDiv = document.getElementById('quiz-result');
-                 resultDiv.innerHTML = `<h4>Hasil Kuis: ${score} dari ${questions.length} benar</h4>`;
-                 resultDiv.style.display = 'block';
-             });
-
-             // Graph Simulation
-             let chart = null;
-             const graphCanvas = document.getElementById('graphCanvas');
-             const graphResultDiv = document.getElementById('graph-result');
-             const solutionTypeElement = document.getElementById('solution-type');
-             const solutionPointElement = document.getElementById('solution-point');
-
-             document.getElementById('draw-graph').addEventListener('click', function() {
-                 const a1 = parseFloat(document.getElementById('a1').value);
-                 const b1 = parseFloat(document.getElementById('b1').value);
-                 const c1 = parseFloat(document.getElementById('c1').value);
-                 const a2 = parseFloat(document.getElementById('a2').value);
-                 const b2 = parseFloat(document.getElementById('b2').value);
-                 const c2 = parseFloat(document.getElementById('c2').value);
-                 const ctx = graphCanvas.getContext('2d');
-
-                 if (chart) chart.destroy();
-
-                 const labels = Array.from({length: 21}, (_, i) => i - 10);
-                 const data1 = labels.map(x => (b1 === 0) ? NaN : (c1 - a1 * x) / b1);
-                 const data2 = labels.map(x => (b2 === 0) ? NaN : (c2 - a2 * x) / b2);
-
-                 chart = new Chart(ctx, {
-                     type: 'line',
-                     data: {
-                         labels: labels,
-                         datasets: [
-                             {
-                                 label: `$${a1}x + ${b1}y = ${c1}$`,
-                                 data: data1,
-                                 borderColor: 'rgb(75, 192, 192)',
-                                 backgroundColor: 'rgba(75, 192, 192, 0.1)',
-                                 tension: 0.1,
-                                 fill: false
-                             },
-                             {
-                                 label: `$${a2}x + ${b2}y = ${c2}$`,
-                                 data: data2,
-                                 borderColor: 'rgb(255, 99, 132)',
-                                 backgroundColor: 'rgba(255, 99, 132, 0.1)',
-                                 tension: 0.1,
-                                 fill: false
-                             }
-                         ]
-                     },
-                     options: {
-                         responsive: true,
-                         scales: {
-                             x: { type: 'linear', position: 'center' },
-                             y: { type: 'linear', position: 'center' }
-                         }
-                     }
-                 });
-
-                 const det = a1 * b2 - a2 * b1;
-                 let solutionTypeText = "";
-                 let solutionPointText = "";
-
-                 if (det === 0) {
-                     if ((a1 * c2 - a2 * c1) === 0 && (b1 * c2 - b2 * c1) === 0) {
-                         solutionTypeText = "Sistem memiliki tak hingga solusi (garis berhimpit)";
-                     } else {
-                         solutionTypeText = "Sistem tidak memiliki solusi (garis sejajar)";
-                     }
-                     solutionPointText = "";
-                 } else {
-                     const x = (b2 * c1 - b1 * c2) / det;
-                     const y = (a1 * c2 - a2 * c1) / det;
-                     solutionTypeText = "Sistem memiliki satu solusi";
-                     solutionPointText = `Titik potong: $\\left(${x.toFixed(2)}, ${y.toFixed(2)}\\right)$`;
-                 }
-
-                 solutionTypeElement.innerHTML = solutionTypeText;
-                 solutionPointElement.innerHTML = solutionPointText;
-                 graphResultDiv.style.display = 'block';
-             });
-
-             // Equation Solver
-             const solveBtn = document.getElementById('solve-btn');
-             const methodSelect = document.getElementById('method');
-             const calculationStepsDiv = document.getElementById('calculation-steps');
-
-             solveBtn.addEventListener('click', function() {
-                 const method = methodSelect.value;
-                 const a1 = parseFloat(document.getElementById('calc-a1').value);
-                 const b1 = parseFloat(document.getElementById('calc-b1').value);
-                 const c1 = parseFloat(document.getElementById('calc-c1').value);
-                 const a2 = parseFloat(document.getElementById('calc-a2').value);
-                 const b2 = parseFloat(document.getElementById('calc-b2').value);
-                 const c2 = parseFloat(document.getElementById('calc-c2').value);
-
-                 calculationStepsDiv.innerHTML = '';
-                 let latexString = `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
-
-                 if (method === 'substitution') {
-                     if (b1 !== 0) {
-                         latexString += `<p>Dari persamaan 1: $${a1}x + ${b1}y = ${c1} \\implies y = \\frac{${c1} - ${a1}x}{${b1}}$</p>`;
-                         latexString += `<p>Substitusi ke persamaan 2: $${a2}x + ${b2}\\left(\\frac{${c1} - ${a1}x}{${b1}}\\right) = ${c2}$</p>`;
-                         const det = a1 * b2 - a2 * b1;
-                         const xNum = (b2 * c1 - b1 * c2);
-                         const yNum = (a1 * c2 - a2 * c1);
-                         const x = det === 0 ? NaN : xNum / det;
-                         const y = det === 0 ? NaN : yNum / det;
-                         if (!isNaN(x) && !isNaN(y)) {
-                             latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
-                         } else if (det === 0) {
-                             latexString += "<p>Sistem tidak memiliki solusi atau memiliki tak hingga solusi.</p>";
-                         }
-                     } else if (a1 !== 0) {
-                         latexString += `<p>Dari persamaan 1: $${a1}x = ${c1} \\implies x = \\frac{${c1}}{${a1}}$</p>`;
-                         latexString += `<p>Substitusi ke persamaan 2: $${a2}\\left(\\frac{${c1}}{${a1}}\\right) + ${b2}y = ${c2}$</p>`;
-                         const det = a1 * b2 - a2 * b1;
-                         const xNum = (b2 * c1 - b1 * c2);
-                         const yNum = (a1 * c2 - a2 * c1);
-                         const x = det === 0 ? NaN : xNum / det;
-                         const y = det === 0 ? NaN : yNum / det;
-                         if (!isNaN(x) && !isNaN(y)) {
-                             latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
-                         } else if (det === 0) {
-                             latexString += "<p>Sistem tidak memiliki solusi atau memiliki tak hingga solusi.</p>";
-                         }
-                     } else {
-                         latexString += "<p>Persamaan 1 tidak memiliki variabel x atau y untuk diselesaikan secara langsung.</p>";
-                     }
-                 } else if (method === 'elimination') {
-                     const det = a1 * b2 - a2 * b1;
-                     if (det === 0) {
-                         if ((a1 * c2 - a2 * c1) === 0 && (b1 *c2 - b2 * c1) === 0) {
-                             latexString += "<p>Sistem memiliki tak hingga solusi</p>";
-                         } else {
-                             latexString += "<p>Sistem tidak memiliki solusi</p>";
-                         }
-                     } else {
-                         const xNum = (b2 * c1 - b1 * c2);
-                         const yNum = (a1 * c2 - a2 * c1);
-                         const x = xNum / det;
-                         const y = yNum / det;
-
-                         latexString += `<p>Determinan ($D$)= $(${a1} \times ${c2}) - (${a2} \times ${c1}) = ${yNum}$</p>
-                         latexString += `<p><strong>Solusi: $x = \frac{D_x}{D} = \frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \frac{D_y}{D} = \frac{${yNum}}{${det}} = ${y.toFixed(2)}$</strong></p>`;
-                     }
-                 }
-
-                 calculationStepsDiv.innerHTML = latexString;
-                 calculationStepsDiv.style.display = 'block';
              });
 
              // Dynamic Navigation Toggle
@@ -1158,4 +913,4 @@
     }
 </script>       
 </body>
- </html>
+  </html>
