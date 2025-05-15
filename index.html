@@ -7,6 +7,14 @@
     <title>Media Pembelajaran 8 SMP - SPLDV</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <style>
         :root {
             --primary-color: #3498db;
@@ -360,7 +368,7 @@
                     <div class="solution">
                         <p>1. Dari persamaan kedua, kita dapatkan $x = y - 1$.</p>
                         <p>2. Substitusikan ke persamaan pertama: $2(y - 1) + y = 7$.</p>
-                        <p>3. Selesaikan untuk $y$: $3y - 2 = 7 \Rightarrow y = 3$.</p>
+                        <p>3. Selesaikan untuk $y$: $3y - 2 = 7 \\Rightarrow y = 3$.</p>
                         <p>4. Substitusikan $y = 3$ ke $x = y - 1$ untuk mendapatkan $x = 2$.</p>
                         <p>Jadi, solusinya adalah $(2, 3)$.</p>
                     </div>
@@ -381,7 +389,7 @@
                     <button class="show-solution">Tampilkan Solusi</button>
                     <div class="solution">
                         <p>1. Kalikan persamaan kedua dengan 2: $4x - 2y = 6$.</p>
-                        <p>2. Tambahkan persamaan ini ke persamaan pertama: $7x = 14 \Rightarrow x = 2$.</p>
+                        <p>2. Tambahkan persamaan ini ke persamaan pertama: $7x = 14 \\Rightarrow x = 2$.</p>
                         <p>3. Substitusikan $x = 2$ ke salah satu persamaan awal untuk mendapatkan $y = 1$.</p>
                         <p>Jadi, solusinya adalah $(2, 1)$.</p>
                     </div>
@@ -400,7 +408,7 @@
                 </p>
                 <button class="check-answer">Cek Jawaban</button>
                 <div class="answer-feedback">
-                    <p>Jawaban: (-1, 3)</p>
+                    <p>Jawaban: $(-1, 3)$</p>
                 </div>
             </div>
 
@@ -412,7 +420,7 @@
                 </p>
                 <button class="check-answer">Cek Jawaban</button>
                 <div class="answer-feedback">
-                    <p>Jawaban: (3, 2)</p>
+                    <p>Jawaban: $(3, 2)$</p>
                 </div>
             </div>
 
@@ -457,13 +465,14 @@
             </div>
 
             <div class="quiz-question">
-                <p>2. Metode apa yang digunakan untuk mencari titik potong grafik persamaan?</p>
+                <p>2. Metode mana yang paling tepat untuk menyelesaikan SPLDV jika diketahui grafiknya?</p>
                 <div class="options">
                     <div class="option">Substitusi</div>
                     <div class="option">Eliminasi</div>
                     <div class="option" data-correct>Grafik</div>
-    </div>
-    <div class="explanation">
+                </div>
+                <button class="show-explanation">Tampilkan Penjelasan</button>
+                <div class="explanation">
                     <p>Jawaban yang benar adalah Grafik karena metode grafik secara visual menunjukkan titik potong dua garis.</p>
                 </div>
             </div>
@@ -523,19 +532,19 @@
                 });
             });
 
-            // Show/hide explanations
-            document.querySelectorAll('.show-solution').forEach(btn => {
+            // Show/hide solutions and answers
+            document.querySelectorAll('.show-solution, .check-answer').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    const explanation = this.nextElementSibling;
-                    explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
+                    const content = this.nextElementSibling;
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
                 });
             });
 
-            // Check answers
-            document.querySelectorAll('.check-answer').forEach(btn => {
+            // Show/hide explanations in quiz
+            document.querySelectorAll('.show-explanation').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    const feedback = this.nextElementSibling;
-                    feedback.style.display = feedback.style.display === 'block' ? 'none' : 'block';
+                    const explanation = this.nextElementSibling;
+                    explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
                 });
             });
 
@@ -549,13 +558,6 @@
                         opt.classList.remove('selected');
                     });
                     this.classList.add('selected');
-                });
-            });
-
-            document.querySelectorAll('.show-explanation').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const explanation = this.nextElementSibling;
-                    explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
                 });
             });
 
@@ -607,7 +609,7 @@
                         labels: labels,
                         datasets: [
                             {
-                                label: `${a1}x + ${b1}y = ${c1}`,
+                                label: `$${a1}x + ${b1}y = ${c1}$`,
                                 data: data1,
                                 borderColor: 'rgb(75, 192, 192)',
                                 backgroundColor: 'rgba(75, 192, 192, 0.1)',
@@ -615,7 +617,7 @@
                                 fill: false
                             },
                             {
-                                label: `${a2}x + ${b2}y = ${c2}`,
+                                label: `$${a2}x + ${b2}y = ${c2}$`,
                                 data: data2,
                                 borderColor: 'rgb(255, 99, 132)',
                                 backgroundColor: 'rgba(255, 99, 132, 0.1)',
@@ -656,13 +658,13 @@
                     const x = (b2 * c1 - b1 * c2) / det;
                     const y = (a1 * c2 - a2 * c1) / det;
                     solutionType.textContent = "Sistem memiliki satu solusi";
-                    solutionPoint.textContent = `Titik potong: (${x.toFixed(2)}, ${y.toFixed(2)})`;
+                    solutionPoint.innerHTML = `Titik potong: $(${x.toFixed(2)}, ${y.toFixed(2)})$`;
                 }
 
                 resultDiv.style.display = 'block';
             });
 
-            // Equation Solver
+             // Equation Solver
             document.getElementById('solve-btn').addEventListener('click', function() {
                 const method = document.getElementById('method').value;
                 const a1 = parseFloat(document.getElementById('calc-a1').value);
@@ -673,29 +675,69 @@
                 const b2 = parseFloat(document.getElementById('calc-b2').value);
                 const c2 = parseFloat(document.getElementById('calc-c2').value);
 
-                const stepsDiv = document.getElementById('calculation-steps');
-                stepsDiv.innerHTML = '';
+                const calculationStepsDiv = document.getElementById('calculation-steps');
+                calculationStepsDiv.innerHTML = '';
+                calculationStepsDiv.style.display = 'block';
 
+                let latexString = '';
+
+                // Calculate determinant
                 const det = a1 * b2 - a2 * b1;
 
                 if (det === 0) {
                     if (a1 / a2 === b1 / b2 && a1 / a2 === c1 / c2) {
-                        stepsDiv.innerHTML = "<p>Sistem memiliki tak hingga solusi</p>";
+                        latexString = "<p>Sistem memiliki tak hingga solusi</p>";
                     } else {
-                        stepsDiv.innerHTML = "<p>Sistem tidak memiliki solusi</p>";
+                        latexString = "<p>Sistem tidak memiliki solusi</p>";
                     }
                 } else {
-                    const x = (b2 * c1 - b1 * c2) / det;
-                    const y = (a1 * c2 - a2 * c1) / det;
+                    if (method === 'substitution') {
+                        // For simplicity, let's assume we always solve the second equation for x
+                        latexString += `<h4>Penyelesaian dengan Metode Substitusi</h4>`;
+                        latexString += `<p>1. Dari persamaan kedua, $${a2}x + ${b2}y = ${c2}$, kita dapatkan $x = \\frac{${c2} - ${b2}y}{${a2}}$</p>`;
+                        latexString += `<p>2. Substitusi ke persamaan pertama: $${a1}(\\frac{${c2} - ${b2}y}{${a2}}) + ${b1}y = ${c1}$</p>`;
 
-                    stepsDiv.innerHTML += `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
-                    stepsDiv.innerHTML += `<p>1. Determinan = (${a1} × ${b2}) - (${a2} × ${b1}) = ${det}</p>`;
-                    stepsDiv.innerHTML += `<p>2. Nilai x = (${b2} × ${c1} - ${b1} × ${c2}) / ${det} = ${x.toFixed(2)}</p>`;
-                    stepsDiv.innerHTML += `<p>3. Nilai y = (${a1} × ${c2} - ${a2} × ${c1}) / ${det} = ${y.toFixed(2)}</p>`;
-                    stepsDiv.innerHTML += `<p><strong>Solusi: x = ${x.toFixed(2)}, y = ${y.toFixed(2)}</strong></p>`;
+                        const y = (a1 * c2 - a2 * c1) / (a1 * b2 - a2 * b1);
+                        const x = (c2 - b2 * y) / a2;
+
+                        latexString += `<p>3. Selesaikan untuk $y$ dan dapatkan $y = ${y.toFixed(2)}$</p>`;
+                        latexString += `<p>4. Substitusi nilai $y$ ke persamaan untuk $x$ dan dapatkan $x = ${x.toFixed(2)}$</p>`;
+                        latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
+
+                    } else if (method === 'elimination') {
+                        latexString += `<h4>Penyelesaian dengan Metode Eliminasi</h4>`;
+                        latexString += `<p>1. Kalikan persamaan pertama dengan ${a2} dan persamaan kedua dengan ${a1} untuk mengeliminasi $x$:</p>`;
+                        latexString += `<p>$(${a2})(${a1}x + ${b1}y) = (${a2})${c1}$  dan  $(${a1})(${a2}x + ${b2}y) = (${a1})${c2}$</p>`;
+
+                        const yNum = a1 * c2 - a2 * c1;
+                        const yDenom = a1 * b2 - a2 * b1;
+                        const y = yNum / yDenom;
+
+                        latexString += `<p>2. Kurangkan kedua persamaan untuk mendapatkan $y$: $y = \\frac{${yNum}}{${yDenom}} = ${y.toFixed(2)}$</p>`;
+
+                        latexString += `<p>3. Substitusi nilai $y$ ke salah satu persamaan awal untuk mendapatkan $x$:</p>`;
+                        const x = (c1 - b1 * y) / a1;
+                        latexString += `<p>$x = ${x.toFixed(2)}$</p>`;
+                        latexString += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
+                    } else if (method === 'determinant') {
+                      latexString += `<h4>Penyelesaian dengan Metode Determinan (Cramer)</h4>`;
+
+                      const det = a1 * b2 - a2 * b1;
+                      const xNum = c1 * b2 - c2 * b1;
+                      const yNum = a1 * c2 - a2 * c1;
+
+                      const x = xNum / det;
+                      const y = yNum / det;
+
+                      latexString += `<p>Determinan ($D$) = $(${a1} \\times ${b2}) - (${a2} \\times ${b1}) = ${det}$</p>`;
+                      latexString += `<p>Nilai $x$ ($D_x$) = $(${c1} \\times ${b2}) - (${c2} \\times ${b1}) = ${xNum}$</p>`;
+                      latexString += `<p>Nilai $y$ ($D_y$) = $(${a1} \\times ${c2}) - (${a2} \\times ${c1}) = ${yNum}$</p>`;
+                      latexString += `<p><strong>Solusi: $x = \\frac{D_x}{D} = \\frac{${xNum}}{${det}} = ${x.toFixed(2)}$, $y = \\frac{D_y}{D} = \\frac{${yNum}}{${det}} = ${y.toFixed(2)}$</strong></p>`;
+                    }
                 }
 
-                stepsDiv.style.display = 'block';
+                calculationStepsDiv.innerHTML = latexString;
+                calculationStepsDiv.style.display = 'block';
             });
         });
     </script>
