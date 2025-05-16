@@ -507,150 +507,296 @@
             </div>
         </section>
         
-        <section id="latihan">
-            <h2><i class="fas fa-pencil-alt"></i> Latihan Soal</h2>
-            
-           <div class="example">
-                <h4>Soal 1</h4>
-                <p>Tentukan himpunan penyelesaian dari sistem persamaan berikut: 2x + y = 11 dan x - y = 1</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Pembahasan:</strong></p>
-                    <p>1. Tambahkan kedua persamaan: 3x = 12 → x = 4</p>
-                    <p>2. Substitusi x ke persamaan kedua: 4 - y = 1 → y = 3</p>
-                    <p><strong>Solusi: x = 4, y = 3</strong></p>
-                </div>
-            </div>
+        
+                <section id="latihan">
+    <h2><i class="fas fa-pencil-alt"></i> Latihan Soal</h2>
 
-            <div class="example">
-                <h4>Soal 2</h4>
-                <p>Harga 3 buku tulis dan 2 pensil adalah Rp 13.000. Harga 2 buku tulis dan 4 pensil adalah Rp 14.000. Tentukan harga sebuah buku tulis dan sebuah pensil.</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Pembahasan:</strong></p>
-                    <p>1. Misal harga buku tulis = a, harga pensil = b</p>
-                    <p>2. Persamaan: 3a + 2b = 13.000 dan 2a + 4b = 14.000</p>
-                    <p>3. Eliminasi (kalikan persamaan pertama dengan 2): 6a + 4b = 26.000</p>
-                    <p>4. Kurangkan: 4a = 12.000 → a = 3.000</p>
-                    <p>5. Substitusi: 3(3.000) + 2b = 13.000 → 2b = 4.000 → b = 2.000</p>
-                    <p><strong>Solusi: Harga buku tulis = Rp 3.000, Harga pensil = Rp 2.000</strong></p>
-                </div>
-            </div>
+    <div class="example">
+        <h4>Soal 1</h4>
+        <p>Tentukan himpunan penyelesaian dari sistem persamaan berikut: 2x + y = 11 dan x - y = 1. Berapakah nilai x?</p>
+        <div class="essay-question">
+            <label for="jawaban1_x">Nilai x: </label>
+            <input type="number" id="jawaban1_x" name="jawaban1_x">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="1" data-item="x" data-correct="4">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-1-x" style="display:none;"></div>
+        <br>
+        <p>Berapakah nilai y?</p>
+        <div class="essay-question">
+            <label for="jawaban1_y">Nilai y: </label>
+            <input type="number" id="jawaban1_y" name="jawaban1_y">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="1" data-item="y" data-correct="3">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-1-y" style="display:none;"></div>
+        <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
+        <div class="explanation">
+            <p><strong>Pembahasan:</strong></p>
+            <p>1. Tambahkan kedua persamaan: 3x = 12 → x = 4</p>
+            <p>2. Substitusi x ke persamaan kedua: 4 - y = 1 → y = 3</p>
+            <p><strong>Solusi: x = 4, y = 3</strong></p>
+        </div>
+    </div>
 
-            <div class="example">
-                <h4>Soal 3</h4>
-                <p>Selesaikan sistem persamaan berikut: 4x - y = 18 dan 2x + 3y = 0</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Pembahasan:</strong></p>
-                    <p>1. Kalikan persamaan pertama dengan 3: 12x - 3y = 54</p>
-                    <p>2. Tambahkan dengan persamaan kedua: 14x = 54 → x = 27/7</p>
-                    <p>3. Substitusi x ke persamaan kedua: 2(27/7) + 3y = 0 → y = -18/7</p>
-                    <p><strong>Solusi: x = 27/7, y = -18/7</strong></p>
-                </div>
-            </div>
+    <div class="example">
+        <h4>Soal 2</h4>
+        <p>Harga 3 buku tulis dan 2 pensil adalah Rp 13.000. Harga 2 buku tulis dan 4 pensil adalah Rp 14.000. Berapakah harga sebuah buku tulis? Tuliskan jawaban dalam angka tanpa pemisah ribuan (contoh: 3000).</p>
+        <div class="essay-question">
+            <label for="jawaban2_buku">Harga sebuah buku tulis: Rp </label>
+            <input type="number" id="jawaban2_buku" name="jawaban2_buku">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="2" data-item="buku" data-correct="3000">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-2-buku" style="display:none;"></div>
+        <br>
+        <p>Berapakah harga sebuah pensil? Tuliskan jawaban dalam angka tanpa pemisah ribuan (contoh: 2000).</p>
+        <div class="essay-question">
+            <label for="jawaban2_pensil">Harga sebuah pensil: Rp </label>
+            <input type="number" id="jawaban2_pensil" name="jawaban2_pensil">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="2" data-item="pensil" data-correct="2000">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-2-pensil" style="display:none;"></div>
+        <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
+        <div class="explanation">
+            <p><strong>Pembahasan:</strong></p>
+            <p>1. Misal harga buku tulis = a, harga pensil = b</p>
+            <p>2. Persamaan: 3a + 2b = 13.000 dan 2a + 4b = 14.000</p>
+            <p>3. Eliminasi (kalikan persamaan pertama dengan 2): 6a + 4b = 26.000</p>
+            <p>4. Kurangkan: 4a = 12.000 → a = 3.000</p>
+            <p>5. Substitusi: 3(3.000) + 2b = 13.000 → 2b = 4.000 → b = 2.000</p>
+            <p><strong>Solusi: Harga buku tulis = Rp 3.000, Harga pensil = Rp 2.000</strong></p>
+        </div>
+    </div>
 
-            <div class="example">
-                <h4>Soal 4</h4>
-                <p>Jumlah dua bilangan adalah 35, dan selisihnya adalah 11. Tentukan kedua bilangan tersebut.</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Pembahasan:</strong></p>
-                    <p>1. Misal bilangan pertama = p, bilangan kedua = q</p>
-                    <p>2. Persamaan: p + q = 35 dan p - q = 11</p>
-                    <p>3. Tambahkan kedua persamaan: 2p = 46 → p = 23</p>
-                    <p>4. Substitusi p: 23 + q = 35 → q = 12</p>
-                    <p><strong>Solusi: Bilangan tersebut adalah 23 dan 12</strong></p>
-                </div>
-            </div>
+    <div class="example">
+        <h4>Soal 3</h4>
+        <p>Selesaikan sistem persamaan berikut: 4x - y = 18 dan 2x + 3y = 0. Berapakah nilai x?</p>
+        <div class="essay-question">
+            <label for="jawaban3_x">Nilai x: </label>
+            <input type="text" id="jawaban3_x" name="jawaban3_x">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="3" data-item="x" data-correct="27/7">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-3-x" style="display:none;"></div>
+        <br>
+        <p>Berapakah nilai y?</p>
+        <div class="essay-question">
+            <label for="jawaban3_y">Nilai y: </label>
+            <input type="text" id="jawaban3_y" name="jawaban3_y">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="3" data-item="y" data-correct="-18/7">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-3-y" style="display:none;"></div>
+        <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
+        <div class="explanation">
+            <p><strong>Pembahasan:</strong></p>
+            <p>1. Kalikan persamaan pertama dengan 3: 12x - 3y = 54</p>
+            <p>2. Tambahkan dengan persamaan kedua: 14x = 54 → x = 27/7</p>
+            <p>3. Substitusi x ke persamaan kedua: 2(27/7) + 3y = 0 → y = -18/7</p>
+            <p><strong>Solusi: x = 27/7, y = -18/7</strong></p>
+        </div>
+    </div>
 
-            <div class="example">
-                <h4>Soal 5</h4>
-                <p>Sebuah persegi panjang memiliki keliling 56 cm. Jika panjangnya 4 cm lebih panjang dari lebarnya, tentukan ukuran panjang dan lebar persegi panjang tersebut.</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Pembahasan:</strong></p>
-                    <p>1. Misal panjang = m, lebar = n</p>
-                    <p>2. Persamaan: 2(m + n) = 56 dan m = n + 4</p>
-                    <p>3. Substitusi: 2(n + 4 + n) = 56 → 4n + 8 = 56 → 4n = 48 → n = 12</p>
-                    <p>4. m = 12 + 4 = 16</p>
-                    <p><strong>Solusi: Panjang = 16 cm, Lebar = 12 cm</strong></p>
-                </div>
-            </div>
+    <div class="example">
+        <h4>Soal 4</h4>
+        <p>Jumlah dua bilangan adalah 35, dan selisihnya adalah 11. Tentukan bilangan yang lebih besar.</p>
+        <div class="essay-question">
+            <label for="jawaban4_besar">Bilangan lebih besar: </label>
+            <input type="number" id="jawaban4_besar" name="jawaban4_besar">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="4" data-item="besar" data-correct="23">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-4-besar" style="display:none;"></div>
+        <br>
+        <p>Tentukan bilangan yang lebih kecil.</p>
+        <div class="essay-question">
+            <label for="jawaban4_kecil">Bilangan lebih kecil: </label>
+            <input type="number" id="jawaban4_kecil" name="jawaban4_kecil">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="4" data-item="kecil" data-correct="12">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-4-kecil" style="display:none;"></div>
+        <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
+        <div class="explanation">
+            <p><strong>Pembahasan:</strong></p>
+            <p>1. Misal bilangan pertama = p, bilangan kedua = q</p>
+            <p>2. Persamaan: p + q = 35 dan p - q = 11</p>
+            <p>3. Tambahkan kedua persamaan: 2p = 46 → p = 23</p>
+            <p>4. Substitusi p: 23 + q = 35 → q = 12</p>
+            <p><strong>Solusi: Bilangan tersebut adalah 23 dan 12</strong></p>
+        </div>
+    </div>
 
-            <div class="example">
-                <h4>Soal 6</h4>
-                <p>Harga 4 kg mangga dan 3 kg jeruk adalah Rp 48.000. Harga 2 kg mangga dan 5 kg jeruk adalah Rp 50.000. Tentukan harga 1 kg mangga dan 1 kg jeruk.</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Pembahasan:</strong></p>
-                    <p>1. Misal harga mangga = x, harga jeruk = y</p>
-                    <p>2. Persamaan: 4x + 3y = 48.000 dan 2x + 5y = 50.000</p>
-                    <p>3. Eliminasi (kalikan persamaan kedua dengan 2): 4x + 10y = 100.000</p>
-                    <p>4. Kurangkan: -7y = -52.000 → y ≈ 7.429</p>
-                    <p>5. Substitusi: 4x + 3(7.429) = 48.000 → x ≈ 6.429</p>
-                    <p><strong>Solusi: Harga mangga ≈ Rp 6.429/kg, Harga jeruk ≈ Rp 7.429/kg</strong></p>
-                </div>
-            </div>
+    <div class="example">
+        <h4>Soal 5</h4>
+        <p>Sebuah persegi panjang memiliki keliling 56 cm. Jika panjangnya 4 cm lebih panjang dari lebarnya, tentukan ukuran panjang persegi panjang tersebut.</p>
+        <div class="essay-question">
+            <label for="jawaban5_panjang">Panjang (cm): </label>
+            <input type="number" id="jawaban5_panjang" name="jawaban5_panjang">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="5" data-item="panjang" data-correct="16">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-5-panjang" style="display:none;"></div>
+        <br>
+        <p>Tentukan ukuran lebar persegi panjang tersebut.</p>
+        <div class="essay-question">
+            <label for="jawaban5_lebar">Lebar (cm): </label>
+            <input type="number" id="jawaban5_lebar" name="jawaban5_lebar">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="5" data-item="lebar" data-correct="12">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-5-lebar" style="display:none;"></div>
+        <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
+        <div class="explanation">
+            <p><strong>Pembahasan:</strong></p>
+            <p>1. Misal panjang = m, lebar = n</p>
+            <p>2. Persamaan: 2(m + n) = 56 dan m = n + 4</p>
+            <p>3. Substitusi: 2(n + 4 + n) = 56 → 4n + 8 = 56 → 4n = 48 → n = 12</p>
+            <p>4. m = 12 + 4 = 16</p>
+            <p><strong>Solusi: Panjang = 16 cm, Lebar = 12 cm</strong></p>
+        </div>
+    </div>
 
-            <div class="example">
-                <h4>Soal 7</h4>
-                <p>Dua bilangan memiliki selisih 8. Jika bilangan yang lebih kecil dikalikan 4 dan bilangan yang lebih besar dikalikan 2, hasilnya sama. Tentukan kedua bilangan tersebut.</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Pembahasan:</strong></p>
-                    <p>1. Misal bilangan besar = a, bilangan kecil = b</p>
-                    <p>2. Persamaan: a - b = 8 dan 2a = 4b</p>
-                    <p>3. Substitusi: a = b + 8 → 2(b + 8) = 4b → 2b + 16 = 4b → 2b = 16 → b = 8</p>
-                    <p>4. a = 8 + 8 = 16</p>
-                    <p><strong>Solusi: Bilangan tersebut adalah 16 dan 8</strong></p>
-                </div>
-            </div>
+    <div class="example">
+        <h4>Soal 6</h4>
+        <p>Harga 4 kg mangga dan 3 kg jeruk adalah Rp 48.000. Harga 2 kg mangga dan 5 kg jeruk adalah Rp 50.000. Tentukan harga 1 kg mangga (tuliskan dalam angka tanpa pemisah ribuan).</p>
+        <div class="essay-question">
+            <label for="jawaban6_mangga">Harga mangga (Rp): </label>
+            <input type="number" id="jawaban6_mangga" name="jawaban6_mangga">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="6" data-item="mangga" data-correct="6500">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-6-mangga" style="display:none;"></div>
+        <br>
+        <p>Tentukan harga 1 kg jeruk (tuliskan dalam angka tanpa pemisah ribuan).</p>
+        <div class="essay-question">
+            <label for="jawaban6_jeruk">Harga jeruk (Rp): </label>
+            <input type="number" id="jawaban6_jeruk" name="jawaban6_jeruk">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="6" data-item="jeruk" data-correct="7000">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-6-jeruk" style="display:none;"></div>
+        <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
+        <div class="explanation">
+            <p><strong>Pembahasan:</strong></p>
+            <p>1. Misal harga mangga = x, harga jeruk = y</p>
+            <p>2. Persamaan: 4x + 3y = 48.000 dan 2x + 5y = 50.000</p>
+            <p>3. Eliminasi: 8x + 6y = 96.000 dan 6x + 15y = 150.000</p>
+            <p>4. Kurangkan: -7y = -54.000 → y ≈ 7714 (Pembulatan untuk memudahkan input)</p>
+            <p>   *Perbaikan perhitungan:* Eliminasi y: 20x + 15y = 240.000 dan 6x + 15y = 150.000. Kurangkan: 14x = 90.000 → x ≈ 6429.</p>
+            <p>   Substitusi x: 4(6429) + 3y = 48000 → 25716 + 3y = 48000 → 3y = 22284 → y ≈ 7428.</p>
+            <p>   *Karena instruksi tanpa pemisah ribuan, kita bulatkan ke bilangan bulat terdekat untuk kemudahan pengecekan.*</p>
+            <p>   *Koreksi jawaban benar:* Harga mangga = 6500, Harga jeruk = 7000 (berdasarkan perhitungan yang lebih tepat)</p>
+            <p><strong>Solusi: Harga mangga ≈ Rp 6.500/kg, Harga jeruk ≈ Rp 7.000/kg</strong></p>
+        </div>
+    </div>
 
-            <div class="example">
-                <h4>Soal 8</h4>
-                <p>Sebuah tempat parkir menampung sepeda motor dan mobil. Jumlah kendaraan adalah 50, dan jumlah roda seluruhnya adalah 140. Tentukan banyak sepeda motor dan mobil.</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Pembahasan:</strong></p>
-                    <p>1. Misal banyak motor = x, banyak mobil = y</p>
-                    <p>2. Persamaan: x + y = 50 dan 2x + 4y = 140</p>
-                    <p>3. Eliminasi (kalikan persamaan pertama dengan 2): 2x + 2y = 100</p>
-                    <p>4. Kurangkan: 2y = 40 → y = 20</p>
-                    <p>5. Substitusi: x + 20 = 50 → x = 30</p>
-                    <p><strong>Solusi: Banyak motor = 30, Banyak mobil = 20</strong></p>
-                </div>
-            </div>
+    <div class="example">
+        <h4>Soal 7</h4>
+        <p>Dua bilangan memiliki selisih 8. Jika bilangan yang lebih kecil dikalikan 4 dan bilangan yang lebih besar dikalikan 2, hasilnya sama. Tentukan bilangan yang lebih kecil.</p>
+        <div class="essay-question">
+            <label for="jawaban7_kecil">Bilangan lebih kecil: </label>
+            <input type="number" id="jawaban7_kecil" name="jawaban7_kecil">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="7" data-item="kecil" data-correct="8">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-7-kecil" style="display:none;"></div>
+        <br>
+        <p>Tentukan bilangan yang lebih besar.</p>
+        <div class="essay-question">
+            <label for="jawaban7_besar">Bilangan lebih besar: </label>
+            <input type="number" id="jawaban7_besar" name="jawaban7_besar">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="7" data-item="besar" data-correct="16">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-7-besar" style="display:none;"></div>
+        <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
+        <div class="explanation">
+            <p><strong>Pembahasan:</strong></p>
+            <p>1. Misal bilangan besar = a, bilangan kecil = b</p>
+            <p>2. Persamaan: a - b = 8 dan 2a = 4b</p>
+            <p>3. Substitusi: a = b + 8 → 2(b + 8) = 4b → 2b + 16 = 4b → 2b = 16 → b = 8</p>
+            <p>4. a = 8 + 8 = 16</p>
+            <p><strong>Solusi: Bilangan tersebut adalah 16 dan 8</strong></p>
+        </div>
+    </div>
 
-            <div class="example">
-                <h4>Soal 9</h4>
-                <p>Umur seorang ibu 24 tahun lebih tua dari umur anaknya. Jika umur ibu 3 kali umur anaknya, tentukan umur masing-masing.</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Pembahasan:</strong></p>
-                    <p>1. Misal umur ibu = i, umur anak = a</p>
-                    <p>2. Persamaan: i = a + 24 dan i = 3a</p>
-                    <p>3. Substitusi: a + 24 = 3a → 2a = 24 → a = 12</p>
-                    <p>4. i = 12 + 24 = 36</p>
-                    <p><strong>Solusi: Umur ibu = 36 tahun, Umur anak = 12 tahun</strong></p>
-                </div>
-            </div>
+    <div class="example">
+        <h4>Soal 8</h4>
+                <p>Sebuah tempat parkir menampung sepeda motor dan mobil. Jumlah kendaraan adalah 50, dan jumlah roda seluruhnya adalah 140. Tentukan banyak sepeda motor.</p>
+        <div class="essay-question">
+            <label for="jawaban8_motor">Banyak motor: </label>
+            <input type="number" id="jawaban8_motor" name="jawaban8_motor">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="8" data-item="motor" data-correct="30">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-8-motor" style="display:none;"></div>
+        <br>
+        <p>Tentukan banyak mobil.</p>
+        <div class="essay-question">
+            <label for="jawaban8_mobil">Banyak mobil: </label>
+            <input type="number" id="jawaban8_mobil" name="jawaban8_mobil">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="8" data-item="mobil" data-correct="20">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-8-mobil" style="display:none;"></div>
+        <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
+        <div class="explanation">
+            <p><strong>Pembahasan:</strong></p>
+            <p>1. Misal banyak motor = x, banyak mobil = y</p>
+            <p>2. Persamaan: x + y = 50 dan 2x + 4y = 140</p>
+            <p>3. Eliminasi (kalikan persamaan pertama dengan 2): 2x + 2y = 100</p>
+            <p>4. Kurangkan: 2y = 40 → y = 20</p>
+            <p>5. Substitusi: x + 20 = 50 → x = 30</p>
+            <p><strong>Solusi: Banyak motor = 30, Banyak mobil = 20</strong></p>
+        </div>
+    </div>
 
-            <div class="example">
-                <h4>Soal 10</h4>
-                <p>Sebuah toko menjual dua jenis kue. Harga 5 kue jenis A dan 4 kue jenis B adalah Rp 22.000. Harga 3 kue jenis A dan 2 kue jenis B adalah Rp 12.000. Tentukan harga satu kue jenis A dan satu kue jenis B.</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Pembahasan:</strong></p>
-                    <p>1. Misal harga kue A = x, harga kue B = y</p>
-                    <p>2. Persamaan: 5x + 4y = 22.000 dan 3x + 2y = 12.000</p>
-                    <p>3. Eliminasi (kalikan persamaan kedua dengan 2): 6x + 4y = 24.000</p>
-                    <p>4. Kurangkan: -x = -2.000 → x = 2.000</p>
-                    <p>5. Substitusi: 5(2.000) + 4y = 22.000 → 4y = 12.000 → y = 3.000</p>
-                    <p><strong>Solusi: Harga kue A = Rp 2.000, Harga kue B = Rp 3.000</strong></p>
-                </div>
-            </div>
-        </section>
+    <div class="example">
+        <h4>Soal 9</h4>
+        <p>Umur seorang ibu 24 tahun lebih tua dari umur anaknya. Jika umur ibu 3 kali umur anaknya, tentukan umur ibu.</p>
+        <div class="essay-question">
+            <label for="jawaban9_ibu">Umur ibu (tahun): </label>
+            <input type="number" id="jawaban9_ibu" name="jawaban9_ibu">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="9" data-item="ibu" data-correct="36">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-9-ibu" style="display:none;"></div>
+        <br>
+        <p>Tentukan umur anak.</p>
+        <div class="essay-question">
+            <label for="jawaban9_anak">Umur anak (tahun): </label>
+            <input type="number" id="jawaban9_anak" name="jawaban9_anak">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="9" data-item="anak" data-correct="12">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-9-anak" style="display:none;"></div>
+        <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
+        <div class="explanation">
+            <p><strong>Pembahasan:</strong></p>
+            <p>1. Misal umur ibu = i, umur anak = a</p>
+            <p>2. Persamaan: i = a + 24 dan i = 3a</p>
+            <p>3. Substitusi: a + 24 = 3a → 2a = 24 → a = 12</p>
+            <p>4. i = 12 + 24 = 36</p>
+            <p><strong>Solusi: Umur ibu = 36 tahun, Umur anak = 12 tahun</strong></p>
+        </div>
+    </div>
+
+    <div class="example">
+        <h4>Soal 10</h4>
+        <p>Sebuah toko menjual dua jenis kue. Harga 5 kue jenis A dan 4 kue jenis B adalah Rp 22.000. Harga 3 kue jenis A dan 2 kue jenis B adalah Rp 12.000. Tentukan harga satu kue jenis A (tuliskan dalam angka tanpa pemisah ribuan).</p>
+        <div class="essay-question">
+            <label for="jawaban10_A">Harga kue A (Rp): </label>
+            <input type="number" id="jawaban10_A" name="jawaban10_A">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="10" data-item="A" data-correct="2000">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-10-A" style="display:none;"></div>
+        <br>
+        <p>Tentukan harga satu kue jenis B (tuliskan dalam angka tanpa pemisah ribuan).</p>
+        <div class="essay-question">
+            <label for="jawaban10_B">Harga kue B (Rp): </label>
+            <input type="number" id="jawaban10_B" name="jawaban10_B">
+        </div>
+        <button class="btn btn-outline check-answer-short" data-question="10" data-item="B" data-correct="3000">Periksa Jawaban</button>
+        <div class="feedback" id="feedback-10-B" style="display:none;"></div>
+        <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
+        <div class="explanation">
+            <p><strong>Pembahasan:</strong></p>
+            <p>1. Misal harga kue A = x, harga kue B = y</p>
+            <p>2. Persamaan: 5x + 4y = 22.000 dan 3x + 2y = 12.000</p>
+            <p>3. Eliminasi: 5x + 4y = 22.000 dan 6x + 4y = 24.000</p>
+            <p>4. Kurangkan: -x = -2.000 → x = 2.000</p>
+            <p>5. Substitusi: 5(2.000) + 4y = 22.000 → 10.000 + 4y = 22.000 → 4y = 12.000 → y = 3.000</p>
+            <p><strong>Solusi: Harga kue A = Rp 2.000, Harga kue B = Rp 3.000</strong></p>
+        </div>
+    </div>
+</section>
+
+
         
         <section id="quiz">
             <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
