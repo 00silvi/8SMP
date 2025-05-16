@@ -697,8 +697,7 @@
     <p>@2025 Media Pembelajaran Matematika Kelas 8 SMP</p>
     <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
 </footer>
-
-<script>
+    <script>
     document.addEventListener('DOMContentLoaded', function() {
         const menuItems = [
             { id: 'tujuan', text: 'Tujuan', icon: 'fas fa-bullseye' },
@@ -880,48 +879,25 @@
                 const x = (b2 * c1 - b1 * c2) / det;
                 const y = (a1 * c2 - a2 * c1) / det;
                 solutionType.textContent = "Sistem memiliki satu solusi";
-                solutionPoint.textContent = `Titik potong: (${x.toFixed(2)}, ${y.toFixed(2)})`;
+                solutionPoint.textContent = `Titik potong: ($${x.toFixed(2)}$, $${y.toFixed(2)}$)`;
             }
 
             resultDiv.style.display = 'block';
         });
 
        // Equation Solver
-document.getElementById('solve-btn').addEventListener('click', function() {
-    const method = document.getElementById('method').value;
-    const a1 = parseFloat(document.getElementById('calc-a1').value);
-    const b1 = parseFloat(document.getElementById('calc-b1').value);
-    const c1 = parseFloat(document.getElementById('calc-c1').value);
+        document.getElementById('solve-btn').addEventListener('click', function() {
+            const method = document.getElementById('method').value;
+            const a1 = parseFloat(document.getElementById('calc-a1').value);
+            const b1 = parseFloat(document.getElementById('calc-b1').value);
+            const c1 = parseFloat(document.getElementById('calc-c1').value);
 
-    const a2 = parseFloat(document.getElementById('calc-a2').value);
-    const b2 = parseFloat(document.getElementById('calc-b2').value);
-    const c2 = parseFloat(document.getElementById('calc-c2').value);
+            const a2 = parseFloat(document.getElementById('calc-a2').value);
+            const b2 = parseFloat(document.getElementById('calc-b2').value);
+            const c2 = parseFloat(document.getElementById('calc-c2').value);
 
-    const stepsDiv = document.getElementById('calculation-steps');
-    stepsDiv.innerHTML = '';
-
-    // Calculate determinant
-    const det = a1 * b2 - a2 * b1;
-
-    if (det === 0) {
-        if (a1/a2 === b1/b2 && a1/a2 === c1/c2) {
-            stepsDiv.innerHTML = "<p>Sistem memiliki tak hingga solusi</p>";
-        } else {
-            stepsDiv.innerHTML = "<p>Sistem tidak memiliki solusi</p>";
-        }
-    } else {
-        const x = (b2 * c1 - b1 * c2) / det;
-        const y = (a1 * c2 - a2 * c1) / det;
-
-        stepsDiv.innerHTML += `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
-        stepsDiv.innerHTML += `<p>1. Determinan ($D$) = ($${a1} \\times ${b2}$) - ($${a2} \\times ${b1}$) = $${det}$</p>`;
-        stepsDiv.innerHTML += `<p>2. Nilai $x$ = ($${b2} \\times ${c1} - ${b1} \\times ${c2}$) / $${det}$ = $${x.toFixed(2)}$</p>`;
-        stepsDiv.innerHTML += `<p>3. Nilai $y$ = ($${a1} \\times ${c2} - ${a2} \\times ${c1}$) / $${det}$ = $${y.toFixed(2)}$</p>`;
-        stepsDiv.innerHTML += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
-    }
-
-    stepsDiv.style.display = 'block';
-});
+            const stepsDiv = document.getElementById('calculation-steps');
+            stepsDiv.innerHTML = '';
 
             // Calculate determinant
             const det = a1 * b2 - a2 * b1;
@@ -937,16 +913,17 @@ document.getElementById('solve-btn').addEventListener('click', function() {
                 const y = (a1 * c2 - a2 * c1) / det;
 
                 stepsDiv.innerHTML += `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
-                stepsDiv.innerHTML += `<p>1. Determinan = (${a1} × ${b2}) - (${a2} × ${b1}) = ${det}</p>`;
-                stepsDiv.innerHTML += `<p>2. Nilai x = (${b2} × ${c1} - ${b1} × ${c2}) / ${det} = ${x.toFixed(2)}</p>`;
-                stepsDiv.innerHTML += `<p>3. Nilai y = (${a1} × ${c2} - ${a2} × ${c1}) / ${det} = ${y.toFixed(2)}</p>`;
-                stepsDiv.innerHTML += `<p><strong>Solusi: x = ${x.toFixed(2)}, y = ${y.toFixed(2)}</strong></p>`;
+                stepsDiv.innerHTML += `<p>1. Determinan ($D$) = ($${a1} \\times ${b2}$) - ($${a2} \\times ${b1}$) = $${det}$</p>`;
+                stepsDiv.innerHTML += `<p>2. Nilai $x$ = ($${b2} \\times ${c1} - ${b1} \\times ${c2}$) / $${det}$ = $${x.toFixed(2)}$</p>`;
+                stepsDiv.innerHTML += `<p>3. Nilai $y$ = ($${a1} \\times ${c2} - ${a2} \\times ${c1}$) / $${det}$ = $${y.toFixed(2)}$</p>`;
+                stepsDiv.innerHTML += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
             }
 
             stepsDiv.style.display = 'block';
         });
     });
 </script>
+
 
 </body>
 </html>
