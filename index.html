@@ -47,6 +47,91 @@
             opacity: 0.9;
         }
 
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+    display: block; /* Penting untuk kedua tampilan */
+}
+
+nav a:hover {
+    color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-toggle {
+    display: none;
+    background-color: var(--dark-color);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.menu-toggle i {
+    margin-right: 0.5rem;
+}
+
+nav ul.mobile-active {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: var(--dark-color);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 101;
+}
+
+nav ul.mobile-active li {
+    margin: 0;
+    width: 100%;
+}
+
+nav ul.mobile-active li a {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left; /* Hanya perlu di mobile */
+    border-radius: 0; /* Hapus border radius di mobile jika diinginkan */
+}
+
+nav ul.mobile-active li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        position: static;
+    }
+
+    nav li {
+        margin: 0;
+        width: 100%;
+    }
+
+    nav a {
+        padding: 0.7rem 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: block;
+        text-align: left;
+    }
+
+    nav a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: var(--primary-color);
+    }
         nav {
             background-color: var(--dark-color);
             position: sticky;
@@ -344,6 +429,9 @@
     </header>
 
     <nav>
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i> Menu
+    </div>
     <ul>
         </ul>
 </nav>
@@ -1022,11 +1110,12 @@
     <p>@2025 Media Pembelajaran Matematika Kelas 8 SMP</p>
     <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
 </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
+                                        <script>
+                                            document.addEventListener('DOMContentLoaded', function() {
     const navUl = document.querySelector('nav ul');
+    const menuToggle = document.querySelector('.menu-toggle');
 
-    // Daftar item menu (bisa didapatkan dari data eksternal atau array)
+    // Daftar item menu
     const menuItems = [
         { id: 'tujuan', text: 'Tujuan', icon: 'fas fa-bullseye' },
         { id: 'materi', text: 'Materi', icon: 'fas fa-book' },
@@ -1036,18 +1125,39 @@
         { id: 'quiz', text: 'Kuis', icon: 'fas fa-question-circle' }
     ];
 
-    // Loop melalui daftar item menu dan membuat elemen HTML untuk setiap item
+    // Membuat menu dinamis
     menuItems.forEach(item => {
         const li = document.createElement('li');
-        li.id = `menu-${item.id}`; // Set ID untuk setiap elemen LI
+        li.id = `menu-${item.id}`;
         const a = document.createElement('a');
-        a.href = `#${item.id}`; // Set tautan berdasarkan ID
-        a.innerHTML = `<i class="${item.icon}"></i> ${item.text}`; // Tambahkan ikon dan teks
-        li.appendChild(a); // Tambahkan tautan ke dalam list item
-        navUl.appendChild(li); // Tambahkan list item ke dalam unordered list (UL)
+        a.href = `#${item.id}`;
+        a.innerHTML = `<i class="${item.icon}"></i> ${item.text}`;
+        li.appendChild(a);
+        navUl.appendChild(li);
     });
 
+    // Event listener untuk tombol menu
+    menuToggle.addEventListener('click', () => {
+        navUl.classList.toggle('mobile-active');
+    });
+
+    // Accordion Functionality (tetap ada)
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const accordion = header.parentElement;
+            const content = header.nextElementSibling;
+            accordion.classList.toggle('active');
+            content.style.display = accordion.classList.contains('active') ? 'block' : 'none';
+            const icon = header.querySelector('i');
+            icon.style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+        });
+  
+
     document.addEventListener('DOMContentLoaded', function() {
+        const navUl = document.querySelector('nav ul');
+
+        // Daftar item menu
         const menuItems = [
             { id: 'tujuan', text: 'Tujuan', icon: 'fas fa-bullseye' },
             { id: 'materi', text: 'Materi', icon: 'fas fa-book' },
@@ -1057,9 +1167,7 @@
             { id: 'quiz', text: 'Kuis', icon: 'fas fa-question-circle' }
         ];
 
-        const navUl = document.querySelector('nav ul');
-        navUl.innerHTML = ''; // Clear existing menu
-
+        // Membuat menu dinamis
         menuItems.forEach(item => {
             const li = document.createElement('li');
             li.id = `menu-${item.id}`;
@@ -1072,23 +1180,18 @@
 
         // Accordion Functionality
         const accordionHeaders = document.querySelectorAll('.accordion-header');
-
         accordionHeaders.forEach(header => {
             header.addEventListener('click', () => {
                 const accordion = header.parentElement;
                 const content = header.nextElementSibling;
-
-                // Toggle current accordion
                 accordion.classList.toggle('active');
                 content.style.display = accordion.classList.contains('active') ? 'block' : 'none';
-
-                // Rotate icon
                 const icon = header.querySelector('i');
                 icon.style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
             });
         });
 
-        // Show/hide explanations
+        // Show/hide explanations (Contoh Soal)
         document.querySelectorAll('.show-solution').forEach(btn => {
             btn.addEventListener('click', function() {
                 const explanation = this.nextElementSibling;
@@ -1096,7 +1199,7 @@
             });
         });
 
-        // Check answers
+        // Check answers (Latihan Soal)
         document.querySelectorAll('.check-answer').forEach(btn => {
             btn.addEventListener('click', function() {
                 const feedback = this.nextElementSibling;
@@ -1105,17 +1208,12 @@
         });
 
         // Quiz functionality
-        let selectedOptions = [];
-
         document.querySelectorAll('.option').forEach(option => {
             option.addEventListener('click', function() {
-                // Remove selection from other options in same question
                 const question = this.closest('.quiz-question');
                 question.querySelectorAll('.option').forEach(opt => {
                     opt.classList.remove('selected');
                 });
-
-                // Select current option
                 this.classList.add('selected');
             });
         });
@@ -1138,7 +1236,6 @@
                     selected.classList.add('correct');
                 } else if (selected) {
                     selected.classList.add('incorrect');
-                    // Highlight correct answer
                     question.querySelector('.option[data-correct]').classList.add('correct');
                 }
             });
@@ -1150,27 +1247,22 @@
 
         // Graph Simulation
         let chart = null;
-
         document.getElementById('draw-graph').addEventListener('click', function() {
             const a1 = parseFloat(document.getElementById('a1').value);
             const b1 = parseFloat(document.getElementById('b1').value);
             const c1 = parseFloat(document.getElementById('c1').value);
-
             const a2 = parseFloat(document.getElementById('a2').value);
             const b2 = parseFloat(document.getElementById('b2').value);
             const c2 = parseFloat(document.getElementById('c2').value);
-
             const ctx = document.getElementById('graphCanvas').getContext('2d');
 
-            // Destroy previous chart if exists
             if (chart) {
                 chart.destroy();
             }
 
-            // Create data for equations
-            const labels = Array.from({length: 21}, (_, i) => i - 10); // x values from -10 to 10
-            const data1 = labels.map(x => (c1 - a1 * x) / b1); // y values for equation 1
-            const data2 = labels.map(x => (c2 - a2 * x) / b2); // y values for equation 2
+            const labels = Array.from({length: 21}, (_, i) => i - 10);
+            const data1 = labels.map(x => (c1 - a1 * x) / b1);
+            const data2 = labels.map(x => (c2 - a2 * x) / b2);
 
             chart = new Chart(ctx, {
                 type: 'line',
@@ -1198,84 +1290,59 @@
                 options: {
                     responsive: true,
                     scales: {
-                        x: {
-                            type: 'linear',
-                            position: 'center'
-                        },
-                        y: {
-                            type: 'linear',
-                            position: 'center'
-                        }
+                        x: { type: 'linear', position: 'center' },
+                        y: { type: 'linear', position: 'center' }
                     }
                 }
             });
 
-            // Show solution
             const det = a1 * b2 - a2 * b1;
             const resultDiv = document.getElementById('graph-result');
             const solutionType = document.getElementById('solution-type');
             const solutionPoint = document.getElementById('solution-point');
 
             if (det === 0) {
-                if (a1/a2 === b1/b2 && a1/a2 === c1/c2) {
-                    solutionType.textContent = "Sistem memiliki tak hingga solusi (garis berhimpit)";
-                    solutionPoint.textContent = "";
-                } else {
-                    solutionType.textContent = "Sistem tidak memiliki solusi (garis sejajar)";
-                    solutionPoint.textContent = "";
-                }
+                solutionType.textContent = (a1/a2 === b1/b2 && a1/a2 === c1/c2) ? "Sistem memiliki tak hingga solusi (garis berhimpit)" : "Sistem tidak memiliki solusi (garis sejajar)";
+                solutionPoint.textContent = "";
             } else {
                 const x = (b2 * c1 - b1 * c2) / det;
                 const y = (a1 * c2 - a2 * c1) / det;
                 solutionType.textContent = "Sistem memiliki satu solusi";
                 solutionPoint.textContent = `Titik potong: ($${x.toFixed(2)}$, $${y.toFixed(2)}$)`;
             }
-
             resultDiv.style.display = 'block';
-            MathJax.typesetPromise(); // Typeset MathJax after updating content
+            MathJax.typesetPromise();
         });
 
-       // Equation Solver
+        // Equation Solver
         document.getElementById('solve-btn').addEventListener('click', function() {
             const method = document.getElementById('method').value;
             const a1 = parseFloat(document.getElementById('calc-a1').value);
             const b1 = parseFloat(document.getElementById('calc-b1').value);
             const c1 = parseFloat(document.getElementById('calc-c1').value);
-
             const a2 = parseFloat(document.getElementById('calc-a2').value);
             const b2 = parseFloat(document.getElementById('calc-b2').value);
             const c2 = parseFloat(document.getElementById('calc-c2').value);
-
             const stepsDiv = document.getElementById('calculation-steps');
             stepsDiv.innerHTML = '';
-
-            // Calculate determinant
             const det = a1 * b2 - a2 * b1;
 
             if (det === 0) {
-                if (a1/a2 === b1/b2 && a1/a2 === c1/c2) {
-                    stepsDiv.innerHTML = "<p>Sistem memiliki tak hingga solusi</p>";
-                } else {
-                    stepsDiv.innerHTML = "<p>Sistem tidak memiliki solusi</p>";
-                }
+                stepsDiv.innerHTML = (a1/a2 === b1/b2 && a1/a2 === c1/c2) ? "<p>Sistem memiliki tak hingga solusi</p>" : "<p>Sistem tidak memiliki solusi</p>";
             } else {
                 const x = (b2 * c1 - b1 * c2) / det;
                 const y = (a1 * c2 - a2 * c1) / det;
-
                 stepsDiv.innerHTML += `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
                 stepsDiv.innerHTML += `<p>1. Determinan ($D$) = ($${a1} \\times ${b2}$) - ($${a2} \\times ${b1}$) = $${det}$</p>`;
                 stepsDiv.innerHTML += `<p>2. Nilai $x$ = ($${b2} \\times ${c1} - ${b1} \\times ${c2}$) / $${det}$ = $${x.toFixed(2)}$</p>`;
                 stepsDiv.innerHTML += `<p>3. Nilai $y$ = ($${a1} \\times ${c2} - ${a2} \\times ${c1}$) / $${det}$ = $${y.toFixed(2)}$</p>`;
                 stepsDiv.innerHTML += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
             }
-
             stepsDiv.style.display = 'block';
-            MathJax.typesetPromise(); // Typeset MathJax after updating content
+            MathJax.typesetPromise();
         });
     });
-        
 </script>
-
 
 </body>
 </html>
