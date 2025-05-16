@@ -344,15 +344,10 @@
     </header>
 
     <nav>
-        <ul>
-            <li id="menu-tujuan"><a href="#tujuan"><i class="fas fa-bullseye"></i> Tujuan</a></li>
-            <li id="menu-materi"><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
-            <li id="menu-simulasi"><a href="#simulasi"><i class="fas fa-laptop-code"></i> Simulasi</a></li>
-            <li id="menu-contoh"><a href="#contoh"><i class="fas fa-chalkboard-teacher"></i> Contoh</a></li>
-            <li id="menu-latihan"><a href="#latihan"><i class="fas fa-pencil-alt"></i> Latihan</a></li>
-            <li id="menu-quiz"><a href="#quiz"><i class="fas fa-question-circle"></i> Kuis</a></li>
+    <ul>
         </ul>
-    </nav>
+</nav>
+
 
     <div class="container">
         <section id="tujuan">
@@ -1028,6 +1023,30 @@
     <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
 </footer>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const navUl = document.querySelector('nav ul');
+
+    // Daftar item menu (bisa didapatkan dari data eksternal atau array)
+    const menuItems = [
+        { id: 'tujuan', text: 'Tujuan', icon: 'fas fa-bullseye' },
+        { id: 'materi', text: 'Materi', icon: 'fas fa-book' },
+        { id: 'simulasi', text: 'Simulasi', icon: 'fas fa-laptop-code' },
+        { id: 'contoh', text: 'Contoh', icon: 'fas fa-chalkboard-teacher' },
+        { id: 'latihan', text: 'Latihan', icon: 'fas fa-pencil-alt' },
+        { id: 'quiz', text: 'Kuis', icon: 'fas fa-question-circle' }
+    ];
+
+    // Loop melalui daftar item menu dan membuat elemen HTML untuk setiap item
+    menuItems.forEach(item => {
+        const li = document.createElement('li');
+        li.id = `menu-${item.id}`; // Set ID untuk setiap elemen LI
+        const a = document.createElement('a');
+        a.href = `#${item.id}`; // Set tautan berdasarkan ID
+        a.innerHTML = `<i class="${item.icon}"></i> ${item.text}`; // Tambahkan ikon dan teks
+        li.appendChild(a); // Tambahkan tautan ke dalam list item
+        navUl.appendChild(li); // Tambahkan list item ke dalam unordered list (UL)
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
         const menuItems = [
             { id: 'tujuan', text: 'Tujuan', icon: 'fas fa-bullseye' },
