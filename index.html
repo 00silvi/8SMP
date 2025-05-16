@@ -327,35 +327,76 @@
             .equation-input input {
                 margin: 0.5rem 0;
             }
-            nav ul li a {
-    /* Gaya default untuk desktop */
+            nav ul {
     display: flex;
-    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-/* Sembunyikan ikon menu pada desktop */
+nav ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    position: relative;
+}
+
 nav ul li a i {
-    display: none;
+    margin-right: 0.5em; /* Spasi antara ikon dan teks */
 }
 
 nav ul li a span {
-    margin-left: 0.5em; /* Jarak antara teks dan ikon (meskipun ikon disembunyikan) */
+    display: inline; /* Tampilkan teks di desktop */
+    color: white;
+    font-weight: bold;
 }
 
+.menu-toggle {
+    display: none; /* Sembunyikan ikon toggle default */
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
-    nav ul li a {
-        justify-content: space-between; /* Rata kanan kiri */
+    nav ul {
+        display: none; /* Sembunyikan menu defaultnya */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Sesuaikan dengan tinggi nav */
+        left: 0;
+        background-color: var(--dark-color);
+        text-align: left;
     }
 
-    /* Tampilkan ikon menu pada mobile */
+    nav ul.mobile-active {
+        display: flex; /* Tampilkan menu saat class 'mobile-active' ada */
+    }
+
     nav ul li a i {
-        display: inline-block;
+        display: inline-block; /* Tampilkan ikon di mobile */
     }
 
     nav ul li a span {
         display: inline;
         color: black;
         font-weight: bold;
+        justify-content: space-between;
+        flex: 1; /* Memastikan teks memenuhi ruang */
+    }
+
+    nav ul li a {
+        padding: 1rem;
+        border-bottom: 1px solid #444;
+    }
+
+    .menu-toggle {
+        display: block; /* Tampilkan ikon toggle */
+        cursor: pointer;
+        color: white;
+        font-size: 1.2rem;
+        padding: 1rem;
     }
 }
             
@@ -372,7 +413,7 @@ nav ul li a span {
     <div class="menu-toggle">
         <i class="fas fa-bars"></i> Menu
     </div>
-    <ul>
+    <ul class="nav-links">
         <li><a href="#tujuan"><i class="fas fa-bullseye"></i> Tujuan</a></li>
         <li><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
         <li><a href="#simulasi"><i class="fas fa-laptop-code"></i> Simulasi</a></li>
@@ -959,12 +1000,12 @@ nav ul li a span {
 
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
-const navUl = document.querySelector('nav ul');
+const navLinks = document.querySelector('.nav-links');
 
 menuToggle.addEventListener('click', () => {
-    navUl.classList.toggle('mobile-active');
+    navLinks.classList.toggle('mobile-menu');
 });
-        // Accordion Functionality
+        //Accordion Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const accordionHeaders = document.querySelectorAll('.accordion-header');
             
