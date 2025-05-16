@@ -327,6 +327,30 @@
             .equation-input input {
                 margin: 0.5rem 0;
             }
+            /* Gaya default menu horizontal */
+nav ul {
+    display: flex;
+    /* ... gaya lainnya ... */
+}
+
+/* Sembunyikan menu dan tampilkan menu-toggle di mobile */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Sembunyikan menu */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: block; /* Tampilkan ikon menu */
+    }
+}
+
+/* Gaya menu mobile ketika class 'mobile-active' ditambahkan */
+nav ul.mobile-active {
+    display: flex; /* Tampilkan menu */
+    /* ... gaya lainnya untuk menu mobile ... */
+            }
         }
     </style>
 </head>
@@ -926,6 +950,12 @@
     </footer>
 
     <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+const navUl = document.querySelector('nav ul');
+
+menuToggle.addEventListener('click', () => {
+    navUl.classList.toggle('mobile-active');
+});
         // Accordion Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const accordionHeaders = document.querySelectorAll('.accordion-header');
