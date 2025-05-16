@@ -327,31 +327,39 @@
             .equation-input input {
                 margin: 0.5rem 0;
             }
-            /* Gaya default menu horizontal */
-nav ul {
+            nav ul li a {
+    /* Gaya default untuk desktop */
     display: flex;
-    /* ... gaya lainnya ... */
+    align-items: center;
 }
 
-/* Sembunyikan menu dan tampilkan menu-toggle di mobile */
+/* Sembunyikan ikon menu pada desktop */
+nav ul li a i {
+    display: none;
+}
+
+nav ul li a span {
+    margin-left: 0.5em; /* Jarak antara teks dan ikon (meskipun ikon disembunyikan) */
+}
+
 @media (max-width: 768px) {
-    nav ul {
-        display: none; /* Sembunyikan menu */
-        flex-direction: column;
-        width: 100%;
+    nav ul li a {
+        justify-content: space-between; /* Rata kanan kiri */
     }
 
-    .menu-toggle {
-        display: block; /* Tampilkan ikon menu */
+    /* Tampilkan ikon menu pada mobile */
+    nav ul li a i {
+        display: inline-block;
+    }
+
+    nav ul li a span {
+        display: inline;
+        color: black;
+        font-weight: bold;
     }
 }
-
-/* Gaya menu mobile ketika class 'mobile-active' ditambahkan */
-nav ul.mobile-active {
-    display: flex; /* Tampilkan menu */
-    /* ... gaya lainnya untuk menu mobile ... */
-            }
-        }
+            
+      
     </style>
 </head>
 <body>
