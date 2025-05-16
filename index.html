@@ -1111,51 +1111,9 @@ nav ul.mobile-active li a:hover {
     <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
 </footer>
                                         <script>
-                                            document.addEventListener('DOMContentLoaded', function() {
-    const navUl = document.querySelector('nav ul');
-    const menuToggle = document.querySelector('.menu-toggle');
-
-    // Daftar item menu
-    const menuItems = [
-        { id: 'tujuan', text: 'Tujuan', icon: 'fas fa-bullseye' },
-        { id: 'materi', text: 'Materi', icon: 'fas fa-book' },
-        { id: 'simulasi', text: 'Simulasi', icon: 'fas fa-laptop-code' },
-        { id: 'contoh', text: 'Contoh', icon: 'fas fa-chalkboard-teacher' },
-        { id: 'latihan', text: 'Latihan', icon: 'fas fa-pencil-alt' },
-        { id: 'quiz', text: 'Kuis', icon: 'fas fa-question-circle' }
-    ];
-
-    // Membuat menu dinamis
-    menuItems.forEach(item => {
-        const li = document.createElement('li');
-        li.id = `menu-${item.id}`;
-        const a = document.createElement('a');
-        a.href = `#${item.id}`;
-        a.innerHTML = `<i class="${item.icon}"></i> ${item.text}`;
-        li.appendChild(a);
-        navUl.appendChild(li);
-    });
-
-    // Event listener untuk tombol menu
-    menuToggle.addEventListener('click', () => {
-        navUl.classList.toggle('mobile-active');
-    });
-
-    // Accordion Functionality (tetap ada)
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const accordion = header.parentElement;
-            const content = header.nextElementSibling;
-            accordion.classList.toggle('active');
-            content.style.display = accordion.classList.contains('active') ? 'block' : 'none';
-            const icon = header.querySelector('i');
-            icon.style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
-        });
-  
-
     document.addEventListener('DOMContentLoaded', function() {
         const navUl = document.querySelector('nav ul');
+        const menuToggle = document.querySelector('.menu-toggle');
 
         // Daftar item menu
         const menuItems = [
@@ -1176,6 +1134,11 @@ nav ul.mobile-active li a:hover {
             a.innerHTML = `<i class="${item.icon}"></i> ${item.text}`;
             li.appendChild(a);
             navUl.appendChild(li);
+        });
+
+        // Event listener untuk tombol menu
+        menuToggle.addEventListener('click', () => {
+            navUl.classList.toggle('mobile-active');
         });
 
         // Accordion Functionality
@@ -1342,6 +1305,7 @@ nav ul.mobile-active li a:hover {
             MathJax.typesetPromise();
         });
     });
+
 </script>
 
 </body>
