@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Pembelajaran 8 SMP - SPLDV</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <style>
         :root {
             --primary-color: #3498db;
@@ -47,96 +56,37 @@
             opacity: 0.9;
         }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-    transition: color 0.3s;
-    display: block; /* Penting untuk kedua tampilan */
-}
-
-nav a:hover {
-    color: var(--primary-color);
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.menu-toggle {
-    display: none;
-    background-color: var(--dark-color);
-    color: white;
-    padding: 0.7rem 1.5rem;
-    cursor: pointer;
-    text-align: center;
-}
-
-.menu-toggle i {
-    margin-right: 0.5rem;
-}
-
-nav ul.mobile-active {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    background-color: var(--dark-color);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 101;
-}
-
-nav ul.mobile-active li {
-    margin: 0;
-    width: 100%;
-}
-
-nav ul.mobile-active li a {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: left; /* Hanya perlu di mobile */
-    border-radius: 0; /* Hapus border radius di mobile jika diinginkan */
-}
-
-nav ul.mobile-active li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: var(--primary-color);
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        position: static;
-    }
-
-    nav li {
-        margin: 0;
-        width: 100%;
-    }
-
-    nav a {
-        padding: 0.7rem 1.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        display: block;
-        text-align: left;
-    }
-
-    nav a:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-        color: var(--primary-color);
-    }
-        nav {
+        .nav-container {
             background-color: var(--dark-color);
             position: sticky;
             top: 0;
             z-index: 100;
+        }
+
+        .nav-toggle {
+            background-color: var(--dark-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+
+        .nav-toggle:focus {
+            outline: none;
+        }
+
+        nav {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease-out;
+        }
+
+        nav.open {
+            max-height: 200px;
+            /* Sesuaikan dengan tinggi menu */
         }
 
         nav ul {
@@ -422,20 +372,26 @@ nav ul.mobile-active li a:hover {
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </head>
+
 <body>
     <header>
         <h1>Media Pembelajaran Matematika Kelas 8 SMP</h1>
         <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
     </header>
 
-    <nav>
-    <div class="menu-toggle">
-        <i class="fas fa-bars"></i> Menu
+    <div class="nav-container">
+        <button class="nav-toggle"><i class="fas fa-bars"></i> Menu</button>
+        <nav>
+            <ul>
+                <li><a href="#tujuan"><i class="fas fa-bullseye"></i> Tujuan</a></li>
+                <li><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
+                <li><a href="#simulasi"><i class="fas fa-laptop-code"></i> Simulasi</a></li>
+                <li><a href="#contoh"><i class="fas fa-chalkboard-teacher"></i> Contoh</a></li>
+                <li><a href="#latihan"><i class="fas fa-pencil-alt"></i> Latihan</a></li>
+                <li><a href="#quiz"><i class="fas fa-question-circle"></i> Kuis</a></li>
+            </ul>
+        </nav>
     </div>
-    <ul>
-        </ul>
-</nav>
-
 
     <div class="container">
         <section id="tujuan">
@@ -460,11 +416,11 @@ nav ul.mobile-active li a:hover {
                 <div class="accordion-content">
                     <h3>Pengertian SPLDV</h3>
                     <p>Sistem Persamaan Linear Dua Variabel (SPLDV) adalah sistem yang terdiri dari dua persamaan linear dengan dua variabel yang sama.</p>
-                    <p>Bentuk umum: a₁x + b₁y = c₁ dan a₂x + b₂y = c₂</p>
+                    <p>Bentuk umum: $a_1x + b_1y = c_1$ dan $a_2x + b_2y = c_2$</p>
 
                     <h3>Contoh SPLDV</h3>
-                    <p>1. 2x + 3y = 7 dan x - y = 1</p>
-                    <p>2. 5x - 2y = 8 dan 3x + 4y = 10</p>
+                    <p>1. $2x + 3y = 7$ dan $x - y = 1$</p>
+                    <p>2. $5x - 2y = 8$ dan $3x + 4y = 10$</p>
                 </div>
             </div>
 
@@ -548,773 +504,378 @@ nav ul.mobile-active li a:hover {
                 <div class="equation-input">
                     <input type="number" id="calc-a1" value="2" placeholder="a₁">
                     <span>x +</span>
-                    <input type="number" id="calc-b1" value="3" placeholder="b₁">
+                    <input type="number" id="calcb1" value="3" placeholder="b₁">
                     <span>y =</span>
                     <input type="number" id="calc-c1" value="7" placeholder="c₁">
                 </div>
 
                 <div class="equation-input">
-                    <input type="number" id="calc-a2" value="4" placeholder="a₂">
+                    <input type="number" id="calc-a2" value="1" placeholder="a₂">
                     <span>x +</span>
                     <input type="number" id="calc-b2" value="-1" placeholder="b₂">
                     <span>y =</span>
-                    <input type="number" id="calc-c2" value="5" placeholder="c₂">
+                    <input type="number" id="calc-c2" value="1" placeholder="c₂">
                 </div>
 
-                <button class="btn" id="solve-btn">Hitung Solusi</button>
-                <div id="calculation-steps" class="result"></div>
+                <button class="btn" id="solve-btn">Hitung</button>
+
+                <div id="calculation-steps" class="result">
+                    </div>
             </div>
         </section>
 
-        
-                <section id="contoh">
-            <h2><i class="fas fa-chalkboard-teacher"></i> Contoh Soal</h2>
+        <section id="contoh">
+            <h2><i class="fas fa-chalkboard-teacher"></i> Contoh Soal dan Pembahasan</h2>
 
             <div class="example">
-                <h4>Contoh 1:</h4>
-                <p>Selesaikan sistem persamaan berikut:</p>
-                <p>
-                    $x + y = 10$<br>
-                    $x - y = 2$
-                </p>
+                <h4>Contoh 1: Metode Substitusi</h4>
+                <p>Selesaikan: 2x + y = 7 dan x = y - 1</p>
                 <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
                 <div class="explanation">
                     <p><strong>Penyelesaian:</strong></p>
-                    <p>Kita dapat menggunakan metode eliminasi.</p>
-                    <p>Tambahkan kedua persamaan:</p>
-                    <p>$(x + y) + (x - y) = 10 + 2$</p>
-                    <p>$2x = 12$</p>
-                    <p>$x = 6$</p>
-                    <p>Substitusikan nilai $x$ ke persamaan pertama:</p>
-                    <p>$6 + y = 10$</p>
-                    <p>$y = 4$</p>
-                    <p><strong>Solusi:</strong> $x = 6$, $y = 4$</p>
+                    <p>1. Dari persamaan 2: x = y - 1</p>
+                    <p>2. Substitusi ke persamaan 1: 2(y-1) + y = 7 → 3y = 9 → y = 3</p>
+                    <p>3. x = 3 - 1 = 2</p>
+                    <p><strong>Solusi: x=2, y=3</strong></p>
                 </div>
             </div>
 
             <div class="example">
-                <h4>Contoh 2:</h4>
-                <p>Tentukan nilai $a$ dan $b$ yang memenuhi sistem persamaan:</p>
-                <p>
-                    $2a + 3b = 16$<br>
-                    $a - b = 2$
-                </p>
+                <h4>Contoh 2: Metode Eliminasi</h4>
+                <p>Selesaikan: 3x + 2y = 12 dan 2x + 3y = 13</p>
                 <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
                 <div class="explanation">
                     <p><strong>Penyelesaian:</strong></p>
-                    <p>Kita dapat menggunakan metode substitusi.</p>
-                    <p>Dari persamaan kedua, kita dapatkan $a = b + 2$.</p>
-                    <p>Substitusikan nilai $a$ ke persamaan pertama:</p>
-                    <p>$2(b + 2) + 3b = 16$</p>
-                    <p>$2b + 4 + 3b = 16$</p>
-                    <p>$5b = 12$</p>
-                    <p>$b = \frac{12}{5} = 2.4$</p>
-                    <p>Substitusikan nilai $b$ kembali ke persamaan $a = b + 2$:</p>
-                    <p>$a = 2.4 + 2 = 4.4$</p>
-                    <p><strong>Solusi:</strong> $a = 4.4$, $b = 2.4$</p>
-                </div>
-            </div>
-
-            <div class="example">
-                <h4>Contoh 3:</h4>
-                <p>Harga 2 buah buku dan 3 buah pensil adalah Rp17.000. Jika harga sebuah buku adalah Rp500 lebih mahal dari harga sebuah pensil, berapakah harga sebuah buku dan harga sebuah pensil?</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Penyelesaian:</strong></p>
-                    <p>Misal: harga buku = $b$, harga pensil = $p$</p>
-                    <p>Model matematika:</p>
-                    <p>$2b + 3p = 17000$</p>
-                    <p>$b = p + 500$</p>
-                    <p>Substitusikan persamaan kedua ke persamaan pertama:</p>
-                    <p>$2(p + 500) + 3p = 17000$</p>
-                    <p>$2p + 1000 + 3p = 17000$</p>
-                    <p>$5p = 16000$</p>
-                    <p>$p = 3200$</p>
-                    <p>Substitusikan nilai $p$ kembali ke persamaan $b = p + 500$:</p>
-                    <p>$b = 3200 + 500 = 3700$</p>
-                    <p><strong>Solusi:</strong> Harga buku = Rp3.700, Harga pensil = Rp3.200</p>
-                </div>
-            </div>
-
-            <div class="example">
-                <h4>Contoh 4: Metode Substitusi</h4>
-                <p>Selesaikan sistem persamaan berikut menggunakan metode substitusi:</p>
-                <p>
-                    $y = 2x + 1$<br>
-                    $3x + y = 11$
-                </p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Penyelesaian:</strong></p>
-                    <p>Substitusikan nilai $y$ dari persamaan pertama ke persamaan kedua:</p>
-                    <p>$3x + (2x + 1) = 11$</p>
-                    <p>$5x + 1 = 11$</p>
-                    <p>$5x = 10$</p>
-                    <p>$x = 2$</p>
-                    <p>Substitusikan nilai $x$ kembali ke persamaan pertama:</p>
-                    <p>$y = 2(2) + 1 = 4 + 1 = 5$</p>
-                    <p><strong>Solusi:</strong> $x = 2$, $y = 5$</p>
-                </div>
-            </div>
-
-            <div class="example">
-                <h4>Contoh 5: Metode Eliminasi</h4>
-                <p>Selesaikan sistem persamaan berikut menggunakan metode eliminasi:</p>
-                <p>
-                    $4x - 2y = 12$<br>
-                    $x + 2y = 8$
-                </p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Penyelesaian:</strong></p>
-                    <p>Tambahkan kedua persamaan untuk mengeliminasi $y$:</p>
-                    <p>$(4x - 2y) + (x + 2y) = 12 + 8$</p>
-                    <p>$5x = 20$</p>
-                    <p>$x = 4$</p>
-                    <p>Substitusikan nilai $x$ ke persamaan kedua:</p>
-                    <p>$4 + 2y = 8$</p>
-                    <p>$2y = 4$</p>
-                    <p>$y = 2$</p>
-                    <p><strong>Solusi:</strong> $x = 4$, $y = 2$</p>
-                </div>
-            </div>
-
-            <div class="example">
-                <h4>Contoh 6:</h4>
-                <p>Jumlah dua bilangan adalah 25, dan selisihnya adalah 7. Tentukan kedua bilangan tersebut.</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Penyelesaian:</strong></p>
-                    <p>Misal: bilangan pertama = $p$, bilangan kedua = $q$</p>
-                    <p>Model matematika:</p>
-                    <p>$p + q = 25$</p>
-                    <p>$p - q = 7$</p>
-                    <p>Tambahkan kedua persamaan:</p>
-                    <p>$(p + q) + (p - q) = 25 + 7$</p>
-                    <p>$2p = 32$</p>
-                    <p>$p = 16$</p>
-                    <p>Substitusikan nilai $p$ ke persamaan pertama:</p>
-                    <p>$16 + q = 25$</p>
-                    <p>$q = 9$</p>
-                    <p><strong>Solusi:</strong> Bilangan pertama = 16, Bilangan kedua = 9</p>
-                </div>
-            </div>
-
-            <div class="example">
-                <h4>Contoh 7:</h4>
-                <p>Sebuah persegi panjang memiliki keliling 48 cm. Jika panjangnya 6 cm lebih panjang dari lebarnya, tentukan panjang dan lebar persegi panjang tersebut.</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Penyelesaian:</strong></p>
-                    <p>Misal: panjang = $l$, lebar = $w$</p>
-                    <p>Model matematika:</p>
-                    <p>$2l + 2w = 48$</p>
-                    <p>$l = w + 6$</p>
-                    <p>Substitusikan persamaan kedua ke persamaan pertama:</p>
-                    <p>$2(w + 6) + 2w = 48$</p>
-                    <p>$2w + 12 + 2w = 48$</p>
-                    <p>$4w = 36$</p>
-                    <p>$w = 9$</p>
-                    <p>Substitusikan nilai $w$ kembali ke persamaan $l = w + 6$:</p>
-                    <p>$l = 9 + 6 = 15$</p>
-                    <p><strong>Solusi:</strong> Panjang = 15 cm, Lebar = 9 cm</p>
-                </div>
-            </div>
-
-            <div class="example">
-                <h4>Contoh 8:</h4>
-                <p>Selesaikan sistem persamaan berikut:</p>
-                <p>
-                    $0.5x + 0.2y = 2$<br>
-                    $x - y = 1$
-                </p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Penyelesaian:</strong></p>
-                    <p>Kalikan persamaan pertama dengan 10 untuk menghilangkan desimal:</p>
-                    <p>$5x + 2y = 20$</p>
-                    <p>Dari persamaan kedua, $x = y + 1$. Substitusikan ke persamaan yang baru:</p>
-                    <p>$5(y + 1) + 2y = 20$</p>
-                    <p>$5y + 5 + 2y = 20$</p>
-                    <p>$7y = 15$</p>
-                    <p>$y = \frac{15}{7} \approx 2.14$</p>
-                    <p>Substitusikan nilai $y$ kembali ke $x = y + 1$:</p>
-                    <p>$x = \frac{15}{7} + 1 = \frac{22}{7} \approx 3.14$</p>
-                    <p><strong>Solusi:</strong> $x \approx 3.14$, $y \approx 2.14$</p>
-                </div>
-            </div>
-
-            <div class="example">
-                <h4>Contoh 9:</h4>
-                <p>Di sebuah tempat parkir terdapat 15 kendaraan yang terdiri dari mobil dan motor. Jumlah roda seluruh kendaraan adalah 42. Berapa banyak mobil dan motor di tempat parkir tersebut?</p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Penyelesaian:</strong></p>
-                    <p>Misal: jumlah mobil = $m$, jumlah motor = $n$</p>
-                    <p>Model matematika:</p>
-                    <p>$m + n = 15$</p>
-                    <p>$4m + 2n = 42$</p>
-                    <p>Kalikan persamaan pertama dengan 2:</p>
-                    <p>$2m + 2n = 30$</p>
-                    <p>Kurangkan persamaan ini dari persamaan kedua:</p>
-                    <p>$(4m + 2n) - (2m + 2n) = 42 - 30$</p>
-                    <p>$2m = 12$</p>
-                    <p>$m = 6$</p>
-                    <p>Substitusikan nilai $m$ ke persamaan pertama:</p>
-                    <p>$6 + n = 15$</p>
-                    <p>$n = 9$</p>
-                    <p><strong>Solusi:</strong> Jumlah mobil = 6, Jumlah motor = 9</p>
-                </div>
-            </div>
-
-            <div class="example">
-                <h4>Contoh 10:</h4>
-                <p>Selesaikan sistem persamaan berikut:</p>
-                <p>
-                    $\frac{1}{2}x + \frac{1}{3}y = 4$<br>
-                    $x - y = 2$
-                </p>
-                <button class="btn btn-outline show-solution">Tampilkan Pembahasan</button>
-                <div class="explanation">
-                    <p><strong>Penyelesaian:</strong></p>
-                    <p>Kalikan persamaan pertama dengan 6 untuk menghilangkan pecahan:</p>
-                    <p>$3x + 2y = 24$</p>
-                    <p>Dari persamaan kedua, $x = y + 2$. Substitusikan ke persamaan yang baru:</p>
-                    <p>$3(y + 2) + 2y = 24$</p>
-                    <p>$3y + 6 + 2y = 24$</p>
-                    <p>$5y = 18$</p>
-                    <p>$y = \frac{18}{5} = 3.6$</p>
-                    <p>Substitusikan nilai $y$ kembali ke $x = y + 2$:</p>
-                    <p>$x = 3.6 + 2 = 5.6$</p>
-                    <p><strong>Solusi:</strong> $x = 5.6$, $y = 3.6$</p>
+                    <p>1. Eliminasi x: Pers.1 × 2 → 6x + 4y = 24</p>
+                    <p>Pers.2 × 3 → 6x + 9y = 39</p>
+                    <p>2. Kurangkan: -5y = -15 → y = 3</p>
+                    <p>3. Substitusi y ke pers.1: 3x + 6 = 12 → x = 2</p>
+                    <p><strong>Solusi: x=2, y=3</strong></p>
                 </div>
             </div>
         </section>
 
+        <section id="latihan">
+            <h2><i class="fas fa-pencil-alt"></i> Latihan Soal</h2>
 
-    <section id="latihan">
-        <h2><i class="fas fa-pencil-alt"></i> Latihan Soal</h2>
-
-        <div class="quiz-question">
-            <p>1. Selesaikan sistem persamaan berikut: $x + y = 5$ dan $2x - y = 4$</p>
-            <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
-            <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-            <div class="feedback">
-                <p><strong>Pembahasan:</strong></p>
-                <p>Tambahkan kedua persamaan: $(x + y) + (2x - y) = 5 + 4 \implies 3x = 9 \implies x = 3$</p>
-                <p>Substitusikan nilai $x$ ke persamaan pertama: $3 + y = 5 \implies y = 2$</p>
-                <p><strong>Solusi:</strong> $x = 3$, $y = 2$</p>
+            <div class="quiz-question">
+                <p>1. Selesaikan: x + y = 5 dan 2x - y = 4</p>
+                <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
+                <button class="btn btn-outline check-answer">Periksa Jawaban</button>
+                <div class="feedback">
+                    <p><strong>Pembahasan:</strong></p>
+                    <p>Tambahkan kedua persamaan: 3x = 9 → x = 3</p>
+                    <p>Substitusi x ke pers.1: 3 + y = 5 → y = 2</p>
+                    <p><strong>Solusi: x=3, y=2</strong></p>
+                </div>
             </div>
-        </div>
 
-        <div class="quiz-question">
-            <p>2. Harga 3 buku dan 2 pensil adalah Rp19.500. Harga 2 buku dan 3 pensil adalah Rp16.000. Berapa harga 1 buku dan 1 pensil?</p>
-            <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
-            <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-            <div class="feedback">
-                <p><strong>Pembahasan:</strong></p>
-                <p>Misal: harga buku = $b$, harga pensil = $p$</p>
-                <p>Model matematika: $3b + 2p = 19500$ dan $2b + 3p = 16000$</p>
-                <p>Kalikan persamaan pertama dengan 3 dan persamaan kedua dengan 2:</p>
-                <p>$9b + 6p = 58500$</p>
-                <p>$4b + 6p = 32000$</p>
-                <p>Kurangkan persamaan kedua dari persamaan pertama: $5b = 26500 \implies b = 5300$</p>
-                <p>Substitusikan nilai $b$ ke persamaan pertama: $3(5300) + 2p = 19500 \implies 15900 + 2p = 19500 \implies 2p = 3600 \implies p = 1800$</p>
-                <p>Harga 1 buku + 1 pensil = $5300 + 1800 = 7100$</p>
-                <p><strong>Solusi:</strong> Harga 1 buku = Rp5.300, Harga 1 pensil = Rp1.800. Jadi, harga 1 buku dan 1 pensil adalah Rp7.100.</p>
+            <div class="quiz-question">
+                <p>2. Harga 3 buku dan 2 pensil Rp19.500. Harga 2 buku dan 3 pensil Rp16.000. Berapa harga 1 buku dan 1 pensil?</p>
+                <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
+                <button class="btn btn-outline check-answer">Periksa Jawaban</button>
+                <div class="feedback">
+                    <p><strong>Pembahasan:</strong></p>
+                    <p>Misal: buku = $x$, pensil = $y$</p>
+                    <p>$3x + 2y = 19500$</p>
+                    <p>$2x + 3y = 16000$</p>
+                    <p>Solusi: $x=5300, y=1800$</p>
+                    <p>Harga 1 buku + 1 pensil = Rp7.100</p>
+                </div>
             </div>
-        </div>
-
-        <div class="quiz-question">
-            <p>3. Selisih dua bilangan adalah 12 dan jumlahnya adalah 40. Tentukan kedua bilangan tersebut.</p>
-            <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
-            <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-            <div class="feedback">
-                <p><strong>Pembahasan:</strong></p>
-                <p>Misal: bilangan pertama = $x$, bilangan kedua = $y$</p>
-                <p>Model matematika: $x - y = 12$ dan $x + y = 40$</p>
-                <p>Tambahkan kedua persamaan: $2x = 52 \implies x = 26$</p>
-                <p>Substitusikan nilai $x$ ke persamaan kedua: $26 + y = 40 \implies y = 14$</p>
-                <p><strong>Solusi:</strong> Kedua bilangan tersebut adalah 26 dan 14.</p>
-            </div>
-        </div>
-
-        <div class="quiz-question">
-            <p>4. Selesaikan sistem persamaan berikut: $2x + 3y = 7$ dan $x - y = 1$</p>
-            <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
-            <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-            <div class="feedback">
-                <p><strong>Pembahasan:</strong></p>
-                <p>Dari persamaan kedua, $x = y + 1$. Substitusikan ke persamaan pertama:</p>
-                <p>$2(y + 1) + 3y = 7 \implies 2y + 2 + 3y = 7 \implies 5y = 5 \implies y = 1$</p>
-                <p>Substitusikan nilai $y$ kembali ke $x = y + 1$: $x = 1 + 1 = 2$</p>
-                <p><strong>Solusi:</strong> $x = 2$, $y = 1$</p>
-            </div>
-        </div>
-
-        <div class="quiz-question">
-            <p>5. Keliling sebuah persegi panjang adalah 56 cm. Jika panjangnya 4 cm lebih dari lebarnya, tentukan panjang dan lebar persegi panjang tersebut.</p>
-            <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
-            <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-            <div class="feedback">
-                <p><strong>Pembahasan:</strong></p>
-                <p>Misal: panjang = $p$, lebar = $l$</p>
-                <p>Model matematika: $2(p + l) = 56 \implies p + l = 28$ dan $p = l + 4$</p>
-                <p>Substitusikan persamaan kedua ke persamaan pertama: $(l + 4) + l = 28 \implies 2l + 4 = 28 \implies 2l = 24 \implies l = 12$</p>
-                <p>Substitusikan nilai $l$ kembali ke $p = l + 4$: $p = 12 + 4 = 16$</p>
-                <p><strong>Solusi:</strong> Panjang = 16 cm, Lebar = 12 cm</p>
-            </div>
-        </div>
-
-        <div class="quiz-question">
-            <p>6. Selesaikan sistem persamaan berikut: $4x - y = 10$ dan $3x + 2y = 9$</p>
-            <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
-            <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-            <div class="feedback">
-                <p><strong>Pembahasan:</strong></p>
-                <p>Kalikan persamaan pertama dengan 2: $8x - 2y = 20$</p>
-                <p>Tambahkan persamaan ini dengan persamaan kedua: $(8x - 2y) + (3x + 2y) = 20 + 9 \implies 11x = 29 \implies x = \frac{29}{11}$</p>
-                <p>Substitusikan nilai $x$ ke persamaan pertama: $4(\frac{29}{11}) - y = 10 \implies \frac{116}{11} - y = 10 \implies y = \frac{116}{11} - \frac{110}{11} = \frac{6}{11}$</p>
-                <p><strong>Solusi:</strong> $x = \frac{29}{11}$, $y = \frac{6}{11}$</p>
-            </div>
-        </div>
-
-        <div class="quiz-question">
-            <p>7. Harga 5 kg apel dan 3 kg jeruk adalah Rp85.000. Harga 2 kg apel dan 4 kg jeruk adalah Rp60.000. Berapa harga 1 kg apel dan 1 kg jeruk?</p>
-            <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
-            <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-            <div class="feedback">
-                <p><strong>Pembahasan:</strong></p>
-                <p>Misal: harga 1 kg apel = $a$, harga 1 kg jeruk = $j$</p>
-                <p>Model matematika: $5a + 3j = 85000$ dan $2a + 4j = 60000$</p>
-                <p>Kalikan persamaan pertama dengan 4 dan persamaan kedua dengan 3:</p>
-                <p>$20a + 12j = 340000$</p>
-                <p>$6a + 12j = 180000$</p>
-                <p>Kurangkan persamaan kedua dari persamaan pertama: $14a = 160000 \implies a = \frac{160000}{14} = \frac{80000}{7} \approx 11428.57$</p>
-                <p>Substitusikan nilai $a$ ke persamaan kedua: $2(\frac{80000}{7}) + 4j = 60000 \implies \frac{160000}{7} + 4j = 60000 \implies 4j = 60000 - \frac{160000}{7} = \frac{420000 - 160000}{7} = \frac{260000}{7} \implies j = \frac{65000}{7} \approx 9285.71$</p>
-                <p>Harga 1 kg apel $\approx$ Rp11.428.57, Harga 1 kg jeruk $\approx$ Rp9.285.71</p>
-                <p>Harga 1 kg apel + 1 kg jeruk $\approx 11428.57 + 9285.71 \approx 20714.28$</p>
-                <p><strong>Solusi:</strong> Harga 1 kg apel $\approx$ Rp11.428.57, Harga 1 kg jeruk $\approx$ Rp9.285.71. Jadi, harga 1 kg apel dan 1 kg jeruk $\approx$ Rp20.714.28.</p>
-            </div>
-        </div>
-
-        <div class="quiz-question">
-            <p>8. Selesaikan sistem persamaan berikut: $0.2x + 0.3y = 1.6$ dan $x - y = 2$</p>
-            <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
-            <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-            <div class="feedback">
-                <p><strong>Pembahasan:</strong></p>
-                <p>Kalikan persamaan pertama dengan 10: $2x + 3y = 16$</p>
-                <p>Dari persamaan kedua, $x = y + 2$. Substitusikan ke persamaan yang baru:</p>
-                <p>$2(y + 2) + 3y = 16 \implies 2y + 4 + 3y = 16 \implies 5y = 12 \implies y = \frac{12}{5} = 2.4$</p>
-                <p>Substitusikan nilai $y$ kembali ke $x = y + 2$: $x = 2.4 + 2 = 4.4$</p>
-                <p><strong>Solusi:</strong> $x = 4.4$, $y = 2.4$</p>
-            </div>
-        </div>
-
-        <div class="quiz-question">
-            <p>9. Jumlah uang Andi dan Budi adalah Rp75.000. Jika uang Andi Rp15.000 lebih banyak dari uang Budi, berapa uang masing-masing?</p>
-            <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
-            <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-            <div class="feedback">
-                <p><strong>Pembahasan:</strong></p>
-                <p>Misal: uang Andi = $A$, uang Budi = $B$</p>
-                <p>Model matematika: $A + B = 75000$ dan $A = B + 15000$</p>
-                <p>Substitusikan persamaan kedua ke persamaan pertama: $(B + 15000) + B = 75000 \implies 2B + 15000 = 75000 \implies 2B = 60000 \implies B = 30000$</p>
-                <p>Substitusikan nilai $B$ kembali ke $A = B + 15000$: $A = 30000 + 15000 = 45000$</p>
-                <p><strong>Solusi:</strong> Uang Andi = Rp45.000, Uang Budi = Rp30.000</p>
-            </div>
-        </div>
-
-        <div class="quiz-question">
-            <p>10. Selesaikan sistem persamaan berikut: $\frac{1}{3}x + \frac{1}{2}y = 5$ dan $x - y = 1$</p>
-            <textarea class="essay-answer" placeholder="Tulis jawabanmu..."></textarea>
-            <button class="btn btn-outline check-answer">Periksa Jawaban</button>
-            <div class="feedback">
-                <p><strong>Pembahasan:</strong></p>
-                <p>Kalikan persamaan pertama dengan 6: $2x + 3y = 30$</p>
-                <p>Dari persamaan kedua, $x = y + 1$. Substitusikan ke persamaan yang baru:</p>
-                <p>$2(y + 1) + 3y = 30 \implies 2y + 2 + 3y = 30 \implies 5y = 28 \implies y = \frac{28}{5} = 5.6$</p>
-                <p>Substitusikan nilai $y$ kembali ke $x = y + 1$: $x = 5.6 + 1 = 6.6$</p>
-                <p><strong>Solusi:</strong> $x = 6.6$, $y = 5.6$</p>
-            </div>
-        </div>
-    </section>
-
+        </section>
 
         <section id="quiz">
-        <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
-
-        <div class="quiz-question">
-            <p>1. Manakah di bawah ini yang merupakan Sistem Persamaan Linear Dua Variabel (SPLDV)?</p>
-            <div class="options">
-                <div class="option" data-correct>A. $2x + y = 5$ dan $x - y = 1$</div>
-                <div class="option">B. $x^2 + y = 3$ dan $x - y = 2$</div>
-                <div class="option">C. $3x = 6$ dan $2y = 4$</div>
-                <div class="option">D. $xy = 8$ dan $x + y = 6$</div>
+            <h2><i class="fas fa-question-circle"></i> Kuis Interaktif</h2>
+            <div class="quiz-question">
+                <p>1. Manakah yang merupakan SPLDV?</p>
+                <div class="options">
+                    <div class="option" data-correct>A. $2x + y = 5$ dan $x - y = 1$</div>
+                    <div class="option">B. $x^2 + y = 3$ dan $x - y = 2$</div>
+                    <div class="option">C. $3x = 6$ dan $2y = 4$</div>
+                </div>
+                <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
+                <div class="explanation">
+                    <p>Jawaban benar: <strong>A</strong></p>
+                    <p>SPLDV harus memiliki dua persamaan linear dengan dua variabel yang sama.</p>
+                </div>
             </div>
-            <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
-            <div class="explanation">
-                <p>Jawaban benar: <strong>A</strong></p>
-                <p>SPLDV terdiri dari dua persamaan linear dengan dua variabel yang sama. Opsi A memenuhi kriteria ini.</p>
+
+            <div class="quiz-question">
+                <p>2. Penyelesaian dari $x + y = 7$ dan $x - y = 3$ adalah:</p>
+                <div class="options">
+                    <div class="option">A. $x=4, y=3$</div>
+                    <div class="option" data-correct>B. $x=5, y=2$</div>
+                    <div class="option">C. $x=6, y=1$</div>
+                </div>
+                <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
+                <div class="explanation">
+                    <p>Jawaban benar: <strong>B</strong></p>
+                    <p>Tambahkan kedua persamaan: $2x = 10 \rightarrow x=5$</p>
+                    <p>Substitusi: $5 + y = 7 \rightarrow y=2$</p>
+                </div>
             </div>
-        </div>
 
-        <div class="quiz-question">
-            <p>2. Penyelesaian dari sistem persamaan $x + y = 7$ dan $x - y = 3$ adalah:</p>
-            <div class="options">
-                <div class="option">A. $x = 4, y = 3$</div>
-                <div class="option" data-correct>B. $x = 5, y = 2$</div>
-                <div class="option">C. $x = 6, y = 1$</div>
-                <div class="option">D. $x = 3, y = 4$</div>
-            </div>
-            <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
-            <div class="explanation">
-                <p>Jawaban benar: <strong>B</strong></p>
-                <p>Menambahkan kedua persamaan memberikan $2x = 10 \implies x = 5$. Substitusi $x = 5$ ke persamaan pertama memberikan $5 + y = 7 \implies y = 2$.</p>
-            </div>
-        </div>
+            <button class="btn" id="check-quiz">Periksa Kuis</button>
+            <div id="quiz-result" class="result"></div>
+        </section>
+    </div>
 
-        <div class="quiz-question">
-            <p>3. Jika harga 2 buku dan 1 pensil adalah Rp8.000, dan harga 1 buku dan 2 pensil adalah Rp7.000, maka harga 1 buku adalah:</p>
-            <div class="options">
-                <div class="option">A. Rp2.000</div>
-                <div class="option" data-correct>B. Rp3.000</div>
-                <div class="option">C. Rp4.000</div>
-                <div class="option">D. Rp5.000</div>
-            </div>
-            <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
-            <div class="explanation">
-                <p>Jawaban benar: <strong>B</strong></p>
-                <p>Misal: harga buku = $b$, harga pensil = $p$. Persamaannya adalah $2b + p = 8000$ dan $b + 2p = 7000$. Kalikan persamaan kedua dengan 2: $2b + 4p = 14000$. Kurangkan persamaan pertama: $3p = 6000 \implies p = 2000$. Substitusi ke persamaan pertama: $2b + 2000 = 8000 \implies 2b = 6000 \implies b = 3000$.</p>
-            </div>
-        </div>
+    <footer>
+        <p>&copy; 2025 Media Pembelajaran Matematika Kelas 8 SMP</p>
+        <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
+    </footer>
 
-        <div class="quiz-question">
-            <p>4. Sistem persamaan $x + 2y = 6$ dan $2x + 4y = 12$ memiliki:</p>
-            <div class="options">
-                <div class="option">A. Satu solusi unik</div>
-                <div class="option" data-correct>B. Tak hingga solusi</div>
-                <div class="option">C. Tidak ada solusi</div>
-                <div class="option">D. Dua solusi berbeda</div>
-            </div>
-            <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
-            <div class="explanation">
-                <p>Jawaban benar: <strong>B</strong></p>
-                <p>Persamaan kedua adalah kelipatan dari persamaan pertama (dikali 2), sehingga kedua garis tersebut berhimpit dan memiliki tak hingga titik potong (solusi).</p>
-            </div>
-        </div>
+    <script>
+        // Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
 
-        <div class="quiz-question">
-            <p>5. Jika $a - b = 5$ dan $a + b = 11$, maka nilai $a$ adalah:</p>
-            <div class="options">
-                <div class="option">A. 3</div>
-                <div class="option">B. 5</div>
-                <div class="option">C. 7</div>
-                <div class="option" data-correct>D. 8</div>
-            </div>
-            <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
-            <div class="explanation">
-                <p>Jawaban benar: <strong>D</strong></p>
-                <p>Menambahkan kedua persamaan memberikan $2a = 16 \implies a = 8$.</p>
-            </div>
-        </div>
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordion = header.parentElement;
+                    const content = header.nextElementSibling;
 
-        <div class="quiz-question">
-            <p>6. Grafik dari sistem persamaan linear dua variabel dapat berupa:</p>
-            <div class="options">
-                <div class="option">A. Dua garis sejajar</div>
-                <div class="option">B. Dua garis berpotongan di satu titik</div>
-                <div class="option">C. Dua garis yang berhimpit</div>
-                <div class="option" data-correct>D. Semua jawaban benar</div>
-            </div>
-            <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
-            <div class="explanation">
-                <p>Jawaban benar: <strong>D</strong></p>
-                <p>Tergantung pada koefisien dan konstanta dalam persamaan, grafiknya bisa berupa garis sejajar (tidak ada solusi), berpotongan (satu solusi), atau berhimpit (tak hingga solusi).</p>
-            </div>
-        </div>
+                    // Toggle current accordion
+                    accordion.classList.toggle('active');
+                    content.style.display = accordion.classList.contains('active') ? 'block' : 'none';
 
-        <div class="quiz-question">
-            <p>7. Metode penyelesaian SPLDV yang melibatkan penggantian satu variabel dengan ekspresi dari persamaan lain disebut metode:</p>
-            <div class="options">
-                <div class="option">A. Grafik</div>
-                <div class="option" data-correct>B. Substitusi</div>
-                <div class="option">C. Eliminasi</div>
-                <div class="option">D. Campuran</div>
-            </div>
-            <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
-            <div class="explanation">
-                <p>Jawaban benar: <strong>B</strong></p>
-                <p>Definisi metode substitusi adalah menggantikan nilai satu variabel dari satu persamaan ke persamaan lainnya.</p>
-            </div>
-        </div>
-
-        <div class="quiz-question">
-            <p>8. Jika sistem persamaan $ax + by = c$ dan $dx + ey = f$ tidak memiliki solusi, maka grafiknya berupa:</p>
-            <div class="options">
-                <div class="option" data-correct>A. Dua garis sejajar</div>
-                <div class="option">B. Dua garis berpotongan</div>
-                <div class="option">C. Dua garis berhimpit</div>
-                <div class="option">D. Satu garis saja</div>
-            </div>
-            <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
-            <div class="explanation">
-                <p>Jawaban benar: <strong>A</strong></p>
-                <p>Sistem persamaan yang tidak memiliki solusi akan menghasilkan grafik berupa dua garis yang sejajar dan tidak pernah berpotongan.</p>
-            </div>
-        </div>
-
-        <div class="quiz-question">
-            <p>9. Nilai $y$ yang memenuhi sistem persamaan $x - 2y = 4$ dan $3x + y = 9$ adalah:</p>
-            <div class="options">
-                <div class="option">A. 1</div>
-                <div class="option" data-correct>B. 1.5</div>
-                <div class="option">C. 2</div>
-                <div class="option">D. 2.5</div>
-            </div>
-            <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
-            <div class="explanation">
-                <p>Jawaban benar: <strong>B</strong></p>
-                <p>Dari persamaan kedua, $y = 9 - 3x$. Substitusikan ke persamaan pertama: $x - 2(9 - 3x) = 4 \implies x - 18 + 6x = 4 \implies 7x = 22 \implies x = \frac{22}{7}$. Substitusikan nilai $x$ kembali ke persamaan kedua: $3(\frac{22}{7}) + y = 9 \implies \frac{66}{7} + y = \frac{63}{7} \implies y = \frac{63 - 66}{7} = -\frac{3}{7}$.</p>
-
-            </div>
-        </div>
-
-        <div class="quiz-question">
-            <p>10. Di sebuah tempat parkir terdapat sejumlah mobil dan motor. Jumlah total kendaraan adalah 20. Jika jumlah roda seluruh kendaraan adalah 50, maka jumlah motor adalah:</p>
-            <div class="options">
-                <div class="option">A. 5</div>
-                <div class="option" data-correct>B. 15</div>
-                <div class="option">C. 10</div>
-                <div class="option">D. 12</div>
-            </div>
-            <button class="btn btn-outline show-explanation">Tampilkan Pembahasan</button>
-            <div class="explanation">
-                <p>Jawaban benar: <strong>B</strong></p>
-                <p>Misal: jumlah mobil = $m$, jumlah motor = $n$. Persamaannya adalah $m + n = 20$ dan $4m + 2n = 50$. Dari persamaan pertama, $m = 20 - n$. Substitusikan ke persamaan kedua: $4(20 - n) + 2n = 50 \implies 80 - 4n + 2n = 50 \implies 80 - 2n = 50 \implies 2n = 30 \implies n = 15$.</p>
-            </div>
-        </div>
-
-
-        <button class="btn" id="check-quiz">Periksa Kuis</button>
-        <div id="quiz-result" class="result"></div>
-    </section>
-</div>
-
-<footer>
-    <p>@2025 Media Pembelajaran Matematika Kelas 8 SMP</p>
-    <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
-</footer>
-                                        <script>
-                                    document.addEventListener('DOMContentLoaded', function() {
-    const navUl = document.querySelector('nav ul');
-    const menuToggle = document.querySelector('.menu-toggle');
-    const checkQuizButton = document.getElementById('check-quiz');
-    const quizResultDiv = document.getElementById('quiz-result');
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-    const showSolutionButtons = document.querySelectorAll('.show-solution');
-    const checkAnswerButtons = document.querySelectorAll('.check-answer');
-    const quizOptions = document.querySelectorAll('.quiz-question .option');
-    const showExplanationButtons = document.querySelectorAll('.show-explanation');
-    const drawGraphButton = document.getElementById('draw-graph');
-    const solveButton = document.getElementById('solve-btn');
-    let chart = null;
-
-    // Daftar item menu
-    const menuItems = [
-        { id: 'tujuan', text: 'Tujuan', icon: 'fas fa-bullseye' },
-        { id: 'materi', text: 'Materi', icon: 'fas fa-book' },
-        { id: 'simulasi', text: 'Simulasi', icon: 'fas fa-laptop-code' },
-        { id: 'contoh', text: 'Contoh', icon: 'fas fa-chalkboard-teacher' },
-        { id: 'latihan', text: 'Latihan', icon: 'fas fa-pencil-alt' },
-        { id: 'quiz', text: 'Kuis', icon: 'fas fa-question-circle' }
-    ];
-
-    // Membuat menu dinamis
-    menuItems.forEach(item => {
-        const li = document.createElement('li');
-        li.id = `menu-${item.id}`;
-        const a = document.createElement('a');
-        a.href = `#${item.id}`;
-        a.innerHTML = `<i class="${item.icon}"></i> ${item.text}`;
-        li.appendChild(a);
-        navUl.appendChild(li);
-    });
-
-    // Event listener untuk tombol menu
-    menuToggle.addEventListener('click', () => {
-        navUl.classList.toggle('mobile-active');
-    });
-
-    // Accordion Functionality
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const accordion = header.parentElement;
-            const content = header.nextElementSibling;
-            accordion.classList.toggle('active');
-            content.style.display = accordion.classList.contains('active') ? 'block' : 'none';
-            const icon = header.querySelector('i');
-            icon.style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
-        });
-    });
-
-    // Show/hide explanations (Contoh Soal)
-    showSolutionButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const explanation = this.nextElementSibling;
-            explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
-        });
-    });
-
-    // Check answers (Latihan Soal)
-    checkAnswerButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const feedback = this.nextElementSibling;
-            feedback.style.display = feedback.style.display === 'block' ? 'none' : 'block';
-        });
-    });
-
-    // Quiz functionality
-    quizOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            const question = this.closest('.quiz-question');
-            question.querySelectorAll('.option').forEach(opt => {
-                opt.classList.remove('selected');
+                    // Rotate icon
+                    const icon = header.querySelector('i');
+                    icon.style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                });
             });
-            this.classList.add('selected');
-        });
-    });
 
-    showExplanationButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const explanation = this.nextElementSibling;
-            explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
-        });
-    });
+            // Show/hide explanations
+            document.querySelectorAll('.show-solution').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const explanation = this.nextElementSibling;
+                    explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
+                });
+            });
 
-    checkQuizButton.addEventListener('click', function() {
-        let score = 0;
-        const questions = document.querySelectorAll('.quiz-question');
+            // Check answers
+            document.querySelectorAll('.check-answer').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const feedback = this.nextElementSibling;
+                    feedback.style.display = feedback.style.display === 'block' ? 'none' : 'block';
+                });
+            });
 
-        questions.forEach(question => {
-            const selected = question.querySelector('.option.selected');
-            if (selected && selected.hasAttribute('data-correct')) {
-                score++;
-                selected.classList.add('correct');
-            } else if (selected) {
-                selected.classList.add('incorrect');
-                question.querySelector('.option[data-correct]').classList.add('correct');
-            }
-        });
+            // Quiz functionality
+            let selectedOptions = [];
 
-        quizResultDiv.innerHTML = `<h4>Hasil Kuis: ${score} dari ${questions.length} benar</h4>`;
-        quizResultDiv.style.display = 'block';
-    });
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selection from other options in same question
+                    const question = this.closest('.quiz-question');
+                    question.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
 
-    // Graph Simulation
-    drawGraphButton.addEventListener('click', function() {
-        const a1 = parseFloat(document.getElementById('a1').value);
-        const b1 = parseFloat(document.getElementById('b1').value);
-        const c1 = parseFloat(document.getElementById('c1').value);
-        const a2 = parseFloat(document.getElementById('a2').value);
-        const b2 = parseFloat(document.getElementById('b2').value);
-        const c2 = parseFloat(document.getElementById('c2').value);
-        const ctx = document.getElementById('graphCanvas').getContext('2d');
+                    // Select current option
+                    this.classList.add('selected');
+                });
+            });
 
-        if (chart) {
-            chart.destroy();
-        }
+            document.querySelectorAll('.show-explanation').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const explanation = this.nextElementSibling;
+                    explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
+                });
+            });
 
-        const labels = Array.from({length: 21}, (_, i) => i - 10);
-        const data1 = labels.map(x => (c1 - a1 * x) / b1);
-        const data2 = labels.map(x => (c2 - a2 * x) / b2);
+            document.getElementById('check-quiz').addEventListener('click', function() {
+                let score = 0;
+                const questions = document.querySelectorAll('.quiz-question');
+                let results = [];
 
-        chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [
-                    {
-                        label: `${a1}x + ${b1}y = ${c1}`,
-                        data: data1,
-                        borderColor: 'rgb(75, 192, 192)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.1)',
-                        tension: 0.1,
-                        fill: false
-                    },
-                    {
-                        label: `${a2}x + ${b2}y = ${c2}`,
-                        data: data2,
-                        borderColor: 'rgb(255, 99, 132)',
-                        backgroundColor: 'rgba(255, 99, 132, 0.1)',
-                        tension: 0.1,
-                        fill: false
+                questions.forEach((question, index) => {
+                    const selected = question.querySelector('.option.selected');
+                    const correctAnswer = question.querySelector('.option[data-correct]');
+                    let result = {
+                        question: question.querySelector('p').textContent,
+                        isCorrect: false,
+                        correctAnswer: correctAnswer ? correctAnswer.textContent : "Tidak ada jawaban yang benar",
+                        selectedAnswer: selected ? selected.textContent : "Tidak ada yang dipilih"
+                    };
+
+                    if (selected && selected.hasAttribute('data-correct')) {
+                        score++;
+                        selected.classList.add('correct');
+                        result.isCorrect = true;
+                    } else if (selected) {
+                        selected.classList.add('incorrect');
+                        if (correctAnswer) {
+                            correctAnswer.classList.add('correct'); // Highlight correct answer
+                        }
+                    } else {
+                        if (correctAnswer) {
+                            correctAnswer.classList.add('correct'); // Still highlight correct answer
+                        }
                     }
-                ]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: { type: 'linear', position: 'center' },
-                    y: { type: 'linear', position: 'center' }
+                    results.push(result);
+                });
+
+                const resultDiv = document.getElementById('quiz-result');
+                let resultText = `<h4>Hasil Kuis: ${score} dari ${questions.length} benar</h4>`;
+                results.forEach((res, index) => {
+                    resultText += `<p><strong>${index + 1}. ${res.question}</strong><br>`;
+                    resultText += `Jawaban Anda: ${res.selectedAnswer}<br>`;
+                    resultText += `Jawaban Benar: ${res.correctAnswer}<br>`;
+                    resultText += `Status: ${res.isCorrect ? 'Benar' : 'Salah'}</p>`;
+                });
+                resultDiv.innerHTML = resultText;
+                resultDiv.style.display = 'block';
+            });
+
+            // Graph Simulation
+            let chart = null;
+
+            document.getElementById('draw-graph').addEventListener('click', function() {
+                const a1 = parseFloat(document.getElementById('a1').value);
+                const b1 = parseFloat(document.getElementById('b1').value);
+                const c1 = parseFloat(document.getElementById('c1').value);
+
+                const a2 = parseFloat(document.getElementById('a2').value);
+                const b2 = parseFloat(document.getElementById('b2').value);
+                const c2 = parseFloat(document.getElementById('c2').value);
+
+                const ctx = document.getElementById('graphCanvas').getContext('2d');
+
+                // Destroy previous chart if exists
+                if (chart) {
+                    chart.destroy();
                 }
-            }
+
+                // Create data for equations
+                const labels = Array.from({length: 21}, (_, i) => i - 10); // x values from -10 to 10
+                const data1 = labels.map(x => (b1 === 0) ? NaN : (c1 - a1 * x) / b1); // y values for equation 1
+                const data2 = labels.map(x => (b2 === 0) ? NaN : (c2 - a2 * x) / b2); // y values for equation 2
+
+                chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: `${a1}x + ${b1}y = ${c1}`,
+                                data: data1,
+                                borderColor: 'rgb(75, 192, 192)',
+                                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                                tension: 0.1,
+                                fill: false
+                            },
+                            {
+                                label: `${a2}x + ${b2}y = ${c2}`,
+                                data: data2,
+                                borderColor: 'rgb(255, 99, 132)',
+                                backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                                tension: 0.1,
+                                fill: false
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                type: 'linear',
+                                position: 'center'
+                            },
+                            y: {
+                                type: 'linear',
+                                position: 'center'
+                            }
+                        }
+                    }
+                });
+
+                // Show solution
+                const det = a1 * b2 - a2 * b1;
+                const resultDiv = document.getElementById('graph-result');
+                const solutionType = document.getElementById('solution-type');
+                const solutionPoint = document.getElementById('solution-point');
+
+                if (det === 0) {
+                    if (Math.abs(a1/a2 - b1/b2) < 0.001 || (isNaN(a1/a2) && isNaN(b1/b2))) {
+                        if (Math.abs(a1/a2 - c1/c2) < 0.001 || (isNaN(a1/a2) && isNaN(c1/c2))) {
+                            solutionType.textContent = "Sistem memiliki tak hingga solusi (garis berhimpit)";
+                            solutionPoint.textContent = "";
+                        } else {
+                            solutionType.textContent = "Sistem tidak memiliki solusi (garis sejajar)";
+                            solutionPoint.textContent = "";
+                        }
+                    } else {
+                        solutionType.textContent = "Sistem tidak memiliki solusi (garis sejajar)";
+                        solutionPoint.textContent = "";
+                    }
+                } else {
+                    const x = (b2 * c1 - b1 * c2) / det;
+                    const y = (a1 * c2 - a2 * c1) / det;
+                    solutionType.textContent = "Sistem memiliki satu solusi";
+                    solutionPoint.textContent = `Titik potong: (${x.toFixed(2)}, ${y.toFixed(2)})`;
+                }
+
+                resultDiv.style.display = 'block';
+            });
+
+            // Equation Solver
+            document.getElementById('solve-btn').addEventListener('click', function() {
+                const method = document.getElementById('method').value;
+                const a1 = parseFloat(document.getElementById('calc-a1').value);
+                const b1 = parseFloat(document.getElementById('calc-b1').value);
+                const c1 = parseFloat(document.getElementById('calc-c1').value);
+
+                const a2 = parseFloat(document.getElementById('calc-a2').value);
+                const b2 = parseFloat(document.getElementById('calc-b2').value);
+                const c2 = parseFloat(document.getElementById('calc-c2').value);
+
+                const stepsDiv = document.getElementById('calculation-steps');
+                stepsDiv.innerHTML = '';
+
+                // Calculate determinant
+                const det = a1 * b2 - a2 * b1;
+
+                if (det === 0) {
+                    if (Math.abs(a1/a2 - b1/b2) < 0.001 || (isNaN(a1/a2) && isNaN(b1/b2))) {
+                        if (Math.abs(a1/a2 - c1/c2) < 0.001 || (isNaN(a1/a2) && isNaN(c1/c2))) {
+                            stepsDiv.innerHTML = "<p>Sistem memiliki tak hingga solusi (garis berhimpit)</p>";
+                        } else {
+                            stepsDiv.innerHTML = "<p>Sistem tidak memiliki solusi</p>";
+                        }
+                    } else {
+                        stepsDiv.innerHTML = "<p>Sistem tidak memiliki solusi</p>";
+                    }
+                } else {
+                    const x = (b2 * c1 - b1 * c2) / det;
+                    const y = (a1 * c2 - a2 * c1) / det;
+
+                    stepsDiv.innerHTML += `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
+                    stepsDiv.innerHTML += `<p>1. Determinan = (${a1} × ${b2}) - (${a2} × ${b1}) = ${det}</p>`;
+                    stepsDiv.innerHTML += `<p>2. Nilai x = (${b2} × ${c1} - ${b1} × ${c2}) / ${det} = ${y.toFixed(2)}</p>`;
+                    stepsDiv.innerHTML += `<p><strong>Solusi: x = ${x.toFixed(2)}, y = ${y.toFixed(2)}</strong></p>`;
+                }
+
+                stepsDiv.style.display = 'block';
+            });
+
+            // Dynamic Navigation Toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const nav = document.querySelector('nav');
+
+            navToggle.addEventListener('click', () => {
+                nav.classList.toggle('open');
+            });
+
+            document.addEventListener('click', (event) => {
+                const isClickInside = navToggle.contains(event.target) || nav.contains(event.target);
+                if (!isClickInside && nav.classList.contains('open')) {
+                    nav.classList.remove('open');
+                }
+            });
         });
-
-        const det = a1 * b2 - a2 * b1;
-        const resultDiv = document.getElementById('graph-result');
-        const solutionType = document.getElementById('solution-type');
-        const solutionPoint = document.getElementById('solution-point');
-
-        if (det === 0) {
-            solutionType.textContent = (a1/a2 === b1/b2 && a1/a2 === c1/c2) ? "Sistem memiliki tak hingga solusi (garis berhimpit)" : "Sistem tidak memiliki solusi (garis sejajar)";
-            solutionPoint.textContent = "";
-        } else {
-            const x = (b2 * c1 - b1 * c2) / det;
-            const y = (a1 * c2 - a2 * c1) / det;
-            solutionType.textContent = "Sistem memiliki satu solusi";
-            solutionPoint.textContent = `Titik potong: ($${x.toFixed(2)}$, $${y.toFixed(2)}$)`;
-        }
-        resultDiv.style.display = 'block';
-        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
-            MathJax.typesetPromise();
-        }
-    });
-
-    // Equation Solver
-    solveButton.addEventListener('click', function() {
-        const method = document.getElementById('method').value;
-        const a1 = parseFloat(document.getElementById('calc-a1').value);
-        const b1 = parseFloat(document.getElementById('calc-b1').value);
-        const c1 = parseFloat(document.getElementById('calc-c1').value);
-        const a2 = parseFloat(document.getElementById('calc-a2').value);
-        const b2 = parseFloat(document.getElementById('calc-b2').value);
-        const c2 = parseFloat(document.getElementById('calc-c2').value);
-        const stepsDiv = document.getElementById('calculation-steps');
-        stepsDiv.innerHTML = '';
-        const det = a1 * b2 - a2 * b1;
-
-        if (det === 0) {
-            stepsDiv.innerHTML = (a1/a2 === b1/b2 && a1/a2 === c1/c2) ? "<p>Sistem memiliki tak hingga solusi</p>" : "<p>Sistem tidak memiliki solusi</p>";
-        } else {
-            const x = (b2 * c1 - b1 * c2) / det;
-            const y = (a1 * c2 - a2 * c1) / det;
-            stepsDiv.innerHTML += `<h4>Penyelesaian dengan Metode ${method === 'substitution' ? 'Substitusi' : 'Eliminasi'}</h4>`;
-            stepsDiv.innerHTML += `<p>1. Determinan ($D$) = ($${a1} \\times ${b2}$) - ($${a2} \\times ${b1}$) = $${det}$</p>`;
-            stepsDiv.innerHTML += `<p>2. Nilai $x$ = ($${b2} \\times ${c1} - ${b1} \\times ${c2}$) / $${det}$ = $${x.toFixed(2)}$</p>`;
-            stepsDiv.innerHTML += `<p>3. Nilai $y$ = ($${a1} \\times ${c2} - ${a2} \\times ${c1}$) / $${det}$ = $${y.toFixed(2)}$</p>`;
-            stepsDiv.innerHTML += `<p><strong>Solusi: $x = ${x.toFixed(2)}$, $y = ${y.toFixed(2)}$</strong></p>`;
-        }
-        stepsDiv.style.display = 'block';
-        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
-            MathJax.typesetPromise();
-        }
-    });
-});
-
-</script>
-
+    </script>
 </body>
-</html>
 
+</html>
