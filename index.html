@@ -428,14 +428,19 @@ nav ul.mobile-active li a:hover {
         <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
     </header>
 
-    <nav>
+     <nav>
     <div class="menu-toggle">
         <i class="fas fa-bars"></i> Menu
     </div>
-    <ul>
-        </ul>
+    <ul id="menu-utama">
+        <li><a href="#tujuan"><i class="fas fa-bullseye"></i> Tujuan</a></li>
+        <li><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
+        <li><a href="#simulasi"><i class="fas fa-laptop-code"></i> Simulasi</a></li>
+        <li><a href="#contoh"><i class="fas fa-chalkboard-teacher"></i> Contoh</a></li>
+        <li><a href="#latihan"><i class="fas fa-pencil-alt"></i> Latihan</a></li>
+        <li><a href="#quiz"><i class="fas fa-question-circle"></i> Kuis</a></li>
+    </ul>
 </nav>
-
 
     <div class="container">
         <section id="tujuan">
@@ -1107,7 +1112,7 @@ nav ul.mobile-active li a:hover {
     <p>Sistem Persamaan Linear Dua Variabel (SPLDV)</p>
 </footer>
                                         <script>
-                                    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const navUl = document.querySelector('nav ul');
     const menuToggle = document.querySelector('.menu-toggle');
     const checkQuizButton = document.getElementById('check-quiz');
@@ -1145,6 +1150,8 @@ nav ul.mobile-active li a:hover {
     // Event listener untuk tombol menu
     menuToggle.addEventListener('click', () => {
         navUl.classList.toggle('mobile-active');
+        console.log('Tombol menu diklik!');
+        console.log('Class mobile-active:', navUl.classList.contains('mobile-active'));
     });
 
     // Accordion Functionality
@@ -1157,8 +1164,6 @@ nav ul.mobile-active li a:hover {
             const icon = header.querySelector('i');
             icon.style.transform = accordion.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
         });
-    });
-
     // Show/hide explanations (Contoh Soal)
     showSolutionButtons.forEach(btn => {
         btn.addEventListener('click', function() {
