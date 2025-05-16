@@ -328,78 +328,67 @@
                 margin: 0.5rem 0;
             }
             nav ul {
-    display: flex;
+    display: flex; /* Horizontal di desktop */
     list-style: none;
     padding: 0;
     margin: 0;
+    justify-content: center; /* Tengahkan menu */
 }
 
-nav ul li a {
-    display: flex;
-    align-items: center;
+nav li {
+    margin: 0 1.5rem;
+}
+
+nav a {
+    color: white;
     text-decoration: none;
-    color: white;
-    padding: 1rem;
-    position: relative;
-}
-
-nav ul li a i {
-    margin-right: 0.5em; /* Spasi antara ikon dan teks */
-}
-
-nav ul li a span {
-    display: inline; /* Tampilkan teks di desktop */
-    color: white;
     font-weight: bold;
+    display: block;
+    padding: 0.5rem 1rem;
 }
 
 .menu-toggle {
-    display: none; /* Sembunyikan ikon toggle default */
+    display: none; /* Sembunyikan di desktop */
+    background-color: var(--dark-color);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    text-align: center;
 }
 
-/* Mobile Styles */
+/* Gaya Mobile */
 @media (max-width: 768px) {
     nav ul {
-        display: none; /* Sembunyikan menu defaultnya */
-        flex-direction: column;
+        display: none; /* Sembunyikan default di mobile */
+        flex-direction: column; /* Vertikal di mobile */
+        align-items: flex-start;
         width: 100%;
         position: absolute;
         top: 60px; /* Sesuaikan dengan tinggi nav */
         left: 0;
         background-color: var(--dark-color);
-        text-align: left;
+        z-index: 1000; /* Pastikan di atas konten lain */
     }
 
     nav ul.mobile-active {
-        display: flex; /* Tampilkan menu saat class 'mobile-active' ada */
-    }
-
-    nav ul li a i {
-        display: inline-block; /* Tampilkan ikon di mobile */
-    }
-
-    nav ul li a span {
-        display: inline;
-        color: black;
-        font-weight: bold;
-        justify-content: space-between;
-        flex: 1; /* Memastikan teks memenuhi ruang */
-    }
-
-    nav ul li a {
-        padding: 1rem;
-        border-bottom: 1px solid #444;
+        display: flex; /* Tampilkan saat class 'mobile-active' */
     }
 
     .menu-toggle {
-        display: block; /* Tampilkan ikon toggle */
-        cursor: pointer;
-        color: white;
-        font-size: 1.2rem;
+        display: block; /* Tampilkan di mobile */
+    }
+
+    nav li {
+        margin: 0;
+        width: 100%;
+    }
+
+    nav a {
         padding: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: left;
     }
 }
-            
       
     </style>
 </head>
@@ -413,7 +402,7 @@ nav ul li a span {
     <div class="menu-toggle">
         <i class="fas fa-bars"></i> Menu
     </div>
-    <ul class="nav-links">
+    <ul class="nav-list">
         <li><a href="#tujuan"><i class="fas fa-bullseye"></i> Tujuan</a></li>
         <li><a href="#materi"><i class="fas fa-book"></i> Materi</a></li>
         <li><a href="#simulasi"><i class="fas fa-laptop-code"></i> Simulasi</a></li>
@@ -1000,10 +989,10 @@ nav ul li a span {
 
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+const navList = document.querySelector('.nav-list');
 
 menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('mobile-menu');
+    navList.classList.toggle('mobile-active');
 });
         //Accordion Functionality
         document.addEventListener('DOMContentLoaded', function() {
