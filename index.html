@@ -859,14 +859,6 @@
             });
         });
 
-        // Show/hide explanations
-        document.querySelectorAll('.show-solution').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const explanation = this.nextElementSibling;
-                explanation.style.display = explanation.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-
         // Check answers (Latihan Soal)
         const exampleContainers = document.querySelectorAll('.example');
 
@@ -876,7 +868,25 @@
                 checkAnswerButton.addEventListener('click', () => {
                     const explanationDiv = container.querySelector('.explanation');
                     if (explanationDiv) {
-                        explanationDiv.style.display = explanationDiv.style.display === 'block' ? 'none' : 'block';
+                        explanationDiv.style.display = 'block'; // Always show explanation
+
+                        // Basic check (replace with your actual logic)
+                        let isCorrect = false;
+                        // Example: Check if the first paragraph contains "Solusi:"
+                        if (explanationDiv.querySelector('p:first-child').textContent.includes("Solusi:")) {
+                            isCorrect = true;
+                        }
+
+                        if (isCorrect) {
+                            container.style.backgroundColor = 'var(--success-color)'; // Green
+                        } else {
+                            container.style.backgroundColor = 'var(--accent-color)'; // Red
+                        }
+
+                        // Reset background after a delay (optional)
+                        setTimeout(() => {
+                            container.style.backgroundColor = ''; // Reset to default
+                        }, 3000); // 3 seconds
                     }
                 });
             }
